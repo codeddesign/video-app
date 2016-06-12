@@ -8,7 +8,7 @@
 	<div class="display-rightsep">
 		<div class="display-septext">REVENUE</div>
 	</div>
-	
+
 	<!-- ANALYTICS STATS -->
 	<ul class="campaignstats-row">
 		<li>
@@ -32,18 +32,18 @@
 			<div class="campaignstats-digit" ><span id="sparkline4"></span></div>
 		</li>
 	</ul>
-	
+
 	<!-- CAMPAIGN SELECTION AREA -->
 	<div class="campaignselection-wrap">
 		<div class="currentcamp-title">CURRENT CAMPAIGN</div>
-		<div class="currentcamp-createbutton"><a href="{{URL::to('adminCreateCampaign/'.$user_account->id)}}">CREATE CAMPAIGN</a></div>
-		
+		<div class="currentcamp-createbutton"><a href="/campaign/create">CREATE CAMPAIGN</a></div>
+
 		<div class="campaignview-wrap">
-			<form action="{{URL::to('adminSearch/'.$user_account->id)}}" method="post">
+			<form action="{{URL::to('adminSearch/'.$user->id)}}" method="post">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input class="campaignview-search" name="all_search" placeholder="search for..">
 				<div class="campaignview-searchicon"></div>
-				
+
 				<div class="campaignview-dropbutton">+</div>
 				<div class="campaignview-droppedarea" style="display:none;">
 					<div class="campview-dropwhere">
@@ -59,7 +59,7 @@
 						<div class="campview-searchinput">
 							<input type="text" name="campaign_name">
 							<div class="campview-searchinputicon"></div>
-						</div>	
+						</div>
 					</div>
 					<div class="campview-dropandwhere">
 						<div class="campview-droptitle">WHERE</div>
@@ -83,7 +83,7 @@
 			<div class="campview-camplistwrap">
 				<table id="table1">
 				  <thead>
-				    <tr>       
+				    <tr>
 				      <th>Campaign Name</th>
 				      <th>Created On</th>
 				      <th>Ad Name</th>
@@ -96,9 +96,9 @@
 				  <tbody>
 				  <?php foreach ($campaign as $value) {?>
 				   <tr>
-			   			<?php $pm = $value->id.'@'.$user_account->id?>
+			   			<?php $pm = $value->id.'@'.$user->id?>
 				       	<td><?=$value->campaign_name?></td>
-				       	<td><?php 
+				       	<td><?php
                                 echo substr($value->created_at,5,2)."/".substr($value->created_at,8,2)."/".substr($value->created_at,0,4);
                             ?>
                        	</td>
@@ -106,10 +106,10 @@
 				       	<td><?=$value->video_plays?></td>
 				       	<td>$<?=$value->revenue?></td>
 				       	<td>
-					       <a href="{{URL::to('adminDeleteCampaign/'.$pm)}}"><div class="campview-campoff campview-campoffactive"></div></a>
+					       <a href="/campaign/delete/<?=$value->id?>"><div class="campview-campoff campview-campoffactive"></div></a>
 				       	</td>
 				       	<td>
-					       <a href="{{URL::to('adminEditCampaign/'.$pm)}}"><img class="edit_icon" src="{{url('/')}}/template/images/edit.png"></div></a>
+					       <a href="/campaign/view/<?=$value->id?>"><img class="edit_icon" src="{{url('/')}}/template/images/edit.png"></div></a>
 				       	</td>
 				    </tr>
 				    <?php }?>

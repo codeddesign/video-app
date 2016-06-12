@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
- 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
@@ -13,7 +13,7 @@
 <!-- ads -->
 <script src="http://players.brightcove.net/videojs-overlay/1/videojs-overlay.min.js"></script>
 <script type="text/javascript" src="http://3ee.com/videojs/videojs-disable-progress/src/videojs.disableProgress.js"></script>
-<link href="http://players.brightcove.net/videojs-overlay/1/videojs-overlay.css" rel='stylesheet'>  
+<link href="http://players.brightcove.net/videojs-overlay/1/videojs-overlay.css" rel='stylesheet'>
 <script type="text/javascript" src="{{url('/')}}/template/js/custom.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 <link href="{{url('/')}}/template/css/afterglow-custom-ads.css" rel="stylesheet" type="text/css">
@@ -29,86 +29,81 @@
 <!-- initialize ingrid -->
 <script type="text/javascript">
 $(document).ready(function() {
-	// table chart js
-	var mygrid1 = $("#table1").ingrid({ 
-		url: '/',
-		height: 'auto',
-		width: '100%',
-		rowClasses: ['grid-row-style1','grid-row-style2'],
-		resizableCols: true,
-		paging: false,
-		sorting: false
-	});
-	// search area dropdown
-	$('.campaignview-dropbutton').click(function(){
-		$('.campaignview-droppedarea').toggle();
-	});
-	$('.rightside-navdropdown, .rightside-navdroparea').mouseover(function(){
-		$('.rightside-navdroparea').show();
-		$('.rightside-navdropdown').css('background','#303749');
-		$('.rightside-navdropdown').css('border-left','1px solid #303749');
-	});
-	$('.rightside-navdropdown, .rightside-navdroparea').mouseout(function(){
-		$('.rightside-navdroparea').hide();
-		$('.rightside-navdropdown').css('background','transparent');
-		$('.rightside-navdropdown').css('border-left','1px solid #5C5882');
-	});
-}); 
+    // table chart js
+    var mygrid1 = $("#table1").ingrid({
+        url: '/',
+        height: 'auto',
+        width: '100%',
+        rowClasses: ['grid-row-style1','grid-row-style2'],
+        resizableCols: true,
+        paging: false,
+        sorting: false
+    });
+    // search area dropdown
+    $('.campaignview-dropbutton').click(function(){
+        $('.campaignview-droppedarea').toggle();
+    });
+    $('.rightside-navdropdown, .rightside-navdroparea').mouseover(function(){
+        $('.rightside-navdroparea').show();
+        $('.rightside-navdropdown').css('background','#303749');
+        $('.rightside-navdropdown').css('border-left','1px solid #303749');
+    });
+    $('.rightside-navdropdown, .rightside-navdroparea').mouseout(function(){
+        $('.rightside-navdroparea').hide();
+        $('.rightside-navdropdown').css('background','transparent');
+        $('.rightside-navdropdown').css('border-left','1px solid #5C5882');
+    });
+});
 </script>
 </head>
 <body>
 
 <!-- LEFT SIDE -->
 <div class="leftsidebar">
-	<div class="logoarea">
-		<div class="videologo"></div>
-	</div>
+    <div class="logoarea">
+        <div class="videologo"></div>
+    </div>
 
-	<?php if(!isset($menu_flag))
-    {
-        $menu_flag_demo=['','','','','',''];
-    }
-    else
-    {
-        $menu_flag_demo=['','','','','',''];
-        for($i=0;$i<6;$i++)
-        {
-            if($menu_flag[$i]==1)
-            {
-                $menu_flag_demo[$i]="active";
-            }
+    <?php if (!isset($menu_flag)) {
+    $menu_flag_demo = ['', '', '', '', '', ''];
+} else {
+    $menu_flag_demo = ['', '', '', '', '', ''];
+    for ($i = 0; $i < 6; $i++) {
+        if ($menu_flag[$i] == 1) {
+            $menu_flag_demo[$i] = "active";
         }
     }
-    ?>
+}
+?>
 
-	<ul class="navlist">
-		<li class="<?=$menu_flag_demo[0]?>">
-			<a href="{{URL::to('adminDashboard/'.$user_account->id)}}">DASHBOARD</a>
-		</li>
-		<li class="<?=$menu_flag_demo[1]?>">
-			<a href="{{URL::to('adminCreateCampaign/'.$user_account->id)}}">CREATE CAMPAIGN</a>
-		</li>
-		<!--<li>MANAGE ADS</li>-->
-		<!--<li>ANALYTICS</li>-->
-		<li class="<?=$menu_flag_demo[2]?>">
-			<a href="#">SUPPORT</a>
-		</li>
-	</ul>
+    <ul class="navlist">
+        <li class="<?=$menu_flag_demo[0]?>">
+            <a href="/">DASHBOARD</a>
+        </li>
+        <li class="<?=$menu_flag_demo[1]?>">
+            <a href="/campaign/create">CREATE CAMPAIGN</a>
+        </li>
+        <!--<li>MANAGE ADS</li>-->
+        <!--<li>ANALYTICS</li>-->
+        <li class="<?=$menu_flag_demo[2]?>">
+            <a href="#">SUPPORT</a>
+        </li>
+    </ul>
 </div>
 
 <!-- RIGHT SIDE -->
 <div class="rightside">
 
-	
-	<div class="rightside-nav">
-		<div class="rightside-navlefttitle"><?=$page_name?></div>
-		<div class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
-		<ul class="rightside-navdroparea" style="display:none;">
-			<li><a href="{{URL::to('adminEditAccount/'.$user_account->id)}}">EDIT ACCOUNT</a></li>
-			<li><a href="{{URL::to('adminLogout')}}">Logout</a></li>
-		</ul>
-	</div>
 
-@yield('content')   
+    <div class="rightside-nav">
+        <div class="rightside-navlefttitle"><?=$page_name?></div>
+        <div class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
+        <ul class="rightside-navdroparea" style="display:none;">
+            <li><a href="/account/edit">EDIT ACCOUNT</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </div>
 
-@extends('footer')  
+@yield('content')
+
+@extends('footer')

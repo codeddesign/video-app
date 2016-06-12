@@ -5,15 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>Video App</title>
-<link href="{{url('/')}}/template/css/style.css" rel="stylesheet" type="text/css">
+<link href="/template/css/style.css" rel="stylesheet" type="text/css">
 <!-- ingrid default stylesheet -->
-<style media="all" type="text/css">@import "{{url('/')}}/template/css/ingrid.css";</style>
+<style media="all" type="text/css">@import "/template/css/ingrid.css";</style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <!-- include ingrid lib -->
-<script type="text/javascript" src="{{url('/')}}/template/js/jquery.ingrid.js"></script>
+<script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
 <!-- Toastr style -->
-<link href="{{url('/')}}/template/css/toastr.min.css" rel="stylesheet">
+<link href="/template/css/toastr.min.css" rel="stylesheet">
 
 <!-- include typekit font -->
 <script src="https://use.typekit.net/lwk5wec.js"></script>
@@ -23,41 +23,41 @@
 <body id="loginpage">
 
 <div class="loginwrapper">
-	<div class="loginlogo">
-		<center>
-			<img src="{{url('/')}}/template/images/videologo.png" width="66" height="63">
-		</center>
-	</div>
-	<form action="{{URL::to('userLogin')}}" method="post">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div>
-			<input type="email" name="username" placeholder="email address.." required>
-			<span class="loginemailicon"></span>
-		</div>
-		<div>
-			<input type="password" name="password" placeholder="password.." required>
-			<span class="loginpassicon"></span>
-		</div>
-		<button>LOGIN</button>
-	</form>
-	<div class="loginadditional">
-		<div class="login-registerbutton"><a href="{{URL::to('adminRegister')}}">REGISTER</a></div>
-		<div class="login-lostpassbutton"><a href="{{URL::to('adminLostPassword')}}">LOST PASSWORD</a></div>
-	</div>
+    <div class="loginlogo">
+        <center>
+            <img src="/template/images/videologo.png" width="66" height="63">
+        </center>
+    </div>
+
+    <form action="/auth" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div>
+            <input type="email" name="email" placeholder="email address.." required>
+            <span class="loginemailicon"></span>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="password.." required>
+            <span class="loginpassicon"></span>
+        </div>
+        <button>LOGIN</button>
+    </form>
+
+    <div class="loginadditional">
+        <div class="login-registerbutton"><a href="/account">REGISTER</a></div>
+        <div class="login-lostpassbutton"><a href="/account/recover">LOST PASSWORD</a></div>
+    </div>
 </div>
 
 <!-- Toastr script -->
-<script src="{{url('/')}}/template/js/toastr.min.js"></script>
+<script src="/template/js/toastr.min.js"></script>
 
 <script>
 
     $(document).ready(function(){
-
-
             var i = -1;
             var toastCount = 0;
 
-            <?php if(isset($error)){ ?>
+            <?php if (isset($error)) {?>
                 var getMessage = function () {
 
                     var msg = '<?=$error?>';
@@ -92,8 +92,8 @@
 
                 toastr['error'](msg); // Wire up an event handler to a button in the toast, if it exists
 
-            <?php } else if(isset($success)){?>
-        	 	var getMessage = function () {
+            <?php } else if (isset($success)) {?>
+                var getMessage = function () {
 
                     var msg = '<?=$success?>';
                     return msg;

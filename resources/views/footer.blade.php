@@ -8,23 +8,23 @@
 <script>
 
     $(document).ready(function(){
-           
+
 
             var i = -1;
             var toastCount = 0;
 
             <?php if(isset($error)){ ?>
                 var getMessage = function () {
-                   
+
                     var msg = '<?=$error?>';
                     return msg;
                 };
-               
+
                 var msg = "";
                 var title = "";
-                
+
                 var toastIndex = toastCount++;
-                 
+
                 toastr.options = {
                     closeButton: true,
                     debug: true,
@@ -33,9 +33,9 @@
                     positionClass: "toast-top-right",
                     onclick: null
                 };
-              
-                toastr.options.showDuration = 1000;              
-                toastr.options.hideDuration = 1000;               
+
+                toastr.options.showDuration = 1000;
+                toastr.options.hideDuration = 1000;
                 toastr.options.timeOut = 7000;
                 toastr.options.extendedTimeOut = 1000;
                 toastr.options.showEasing = "swing";
@@ -45,21 +45,21 @@
                 if (!msg) {
                     msg = getMessage();
                 }
-               
+
                 toastr['error'](msg); // Wire up an event handler to a button in the toast, if it exists
-               
-            <?php } else if(isset($success)){?> 
+
+            <?php } else if(isset($success)){?>
         	 	var getMessage = function () {
-                   
+
                     var msg = '<?=$success?>';
                     return msg;
                 };
-               
+
                 var msg = "";
                 var title = "";
-                
+
                 var toastIndex = toastCount++;
-                 
+
                 toastr.options = {
                     closeButton: true,
                     debug: true,
@@ -68,9 +68,9 @@
                     positionClass: "toast-top-right",
                     onclick: null
                 };
-              
-                toastr.options.showDuration = 1000;              
-                toastr.options.hideDuration = 1000;               
+
+                toastr.options.showDuration = 1000;
+                toastr.options.hideDuration = 1000;
                 toastr.options.timeOut = 10000;
                 toastr.options.extendedTimeOut = 1000;
                 toastr.options.showEasing = "swing";
@@ -80,7 +80,7 @@
                 if (!msg) {
                     msg = getMessage();
                 }
-               
+
                 toastr['info'](msg);
             <?php }?>
      });

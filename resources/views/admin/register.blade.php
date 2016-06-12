@@ -24,31 +24,32 @@
 <body id="loginpage">
 
 <div class="loginwrapper">
-	<div class="loginlogo">
-		<center>
-			<img src="{{url('/')}}/template/images/videologo.png" width="66" height="63">
-		</center>
-	</div>
-	<form action="{{URL::to('adminRegisterCheck')}}" method="post">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div>
-			<input type="email" name="username" placeholder="email address.." required>
-			<span class="loginemailicon"></span>
-		</div>
-		<div>
-			<input type="password" name="password" placeholder="password.." required>
-			<span class="loginpassicon"></span>
-		</div>
-		<div>
-			<input type="password" name="confirm_password" placeholder="confirm..." required>
-			<span class="loginpassicon"></span>
-		</div>
-		<button>REGISTER</button>
-	</form>
-	<div class="loginadditional">
-		<div class="login-registerbutton"><a href="{{URL::to('/')}}">LOGIN</a></div>
-		<div class="login-lostpassbutton"><a href="{{URL::to('adminLostPassword')}}">LOST PASSWORD</a></div>
-	</div>
+    <div class="loginlogo">
+        <center>
+            <img src="{{url('/')}}/template/images/videologo.png" width="66" height="63">
+        </center>
+    </div>
+    <form action="/account" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div>
+            <input type="email" name="email" placeholder="email address.." required>
+            <span class="loginemailicon"></span>
+        </div>
+
+        <div>
+            <input type="password" name="password" placeholder="password.." required>
+            <span class="loginpassicon"></span>
+        </div>
+        <div>
+            <input type="password" name="confirm_password" placeholder="confirm..." required>
+            <span class="loginpassicon"></span>
+        </div>
+        <button>REGISTER</button>
+    </form>
+    <div class="loginadditional">
+        <div class="login-registerbutton"><a href="/">LOGIN</a></div>
+        <div class="login-lostpassbutton"><a href="/account/recover">LOST PASSWORD</a></div>
+    </div>
 </div>
 <!-- Toastr script -->
 <script src="{{url('/')}}/template/js/toastr.min.js"></script>
@@ -61,7 +62,7 @@
             var i = -1;
             var toastCount = 0;
 
-            <?php if(isset($error)){ ?>
+            <?php if (isset($error)) {?>
                 var getMessage = function () {
 
                     var msg = '<?=$error?>';
@@ -96,8 +97,8 @@
 
                 toastr['error'](msg); // Wire up an event handler to a button in the toast, if it exists
 
-            <?php } else if(isset($success)){?>
-        	 	var getMessage = function () {
+            <?php } else if (isset($success)) {?>
+                var getMessage = function () {
 
                     var msg = '<?=$success?>';
                     return msg;

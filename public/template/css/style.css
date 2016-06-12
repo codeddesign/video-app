@@ -29,7 +29,7 @@ body {
 }
 
 .videologo {
-	background: url('http://video.dev999.com/template/images/videologo.png');
+	background: url('/template/images/videologo.png');
 	width: 66px;
 	height: 63px;
 	margin-left: 53px;
@@ -102,7 +102,7 @@ ul.navlist li:hover, ul.navlist li.active {
 }
 
 .rightside-navdropdown span {
-	background: url('http://video.dev999.com/template/images/navdropdownspan.png');
+	background: url('/template/images/navdropdownspan.png');
 	width: 8px;
 	height: 4px;
 	float: right;
@@ -236,7 +236,7 @@ input.campaignview-search {
 
 .campaignview-searchicon {
 	position: absolute;
-	background: url('http://video.dev999.com/template/images/campviewsearchicon.png');
+	background: url('/template/images/campviewsearchicon.png');
 	width: 16px;
 	height: 16px;
 	margin-top: 11px;
@@ -302,7 +302,7 @@ input.campaignview-search {
 
 .campview-selectarrow {
 	position: absolute;
-	background: url('http://video.dev999.com/template/images/campviewselectarrow.png');
+	background: url('/template/images/campviewselectarrow.png');
 	width: 9px;
 	height: 4px;
 	margin-top: -15px;
@@ -435,7 +435,7 @@ input.campaignview-search {
 }
 
 .campview-campoff {
-	background: url('http://video.dev999.com/template/images/campviewoff.png');
+	background: url('/template/images/campviewoff.png');
 	width: 15px;
 	height: 15px;
 	margin-right: 12px;
@@ -443,18 +443,18 @@ input.campaignview-search {
 }
 
 .campview-campoff:hover, .campview-campoffactive {
-	background: url('http://video.dev999.com/template/images/campviewoff.png') 0 -15px;
+	background: url('/template/images/campviewoff.png') 0 -15px;
 }
 
 .campview-campon {
-	background: url('http://video.dev999.com/template/images/campviewon.png');
+	background: url('/template/images/campviewon.png');
 	width: 20px;
 	height: 15px;
 	float: left;
 }
 
 .campview-campon:hover, .campview-camponactive {
-	background: url('http://video.dev999.com/template/images/campviewon.png') 0 -15px;
+	background: url('/template/images/campviewon.png') 0 -15px;
 }
 
 .campaign-creationwrap {
@@ -477,7 +477,7 @@ input.campaignview-search {
 	margin-top: 30px;
 	width: calc(100% - 60px);
 	background: #555555;
-	height: 265px;
+	text-align: center;
 }
 
 .campaign-creationwrap form {
@@ -623,7 +623,7 @@ input.campaignview-search {
 }
 
 ul.rightside-navdroparea {
-	right: 0;
+	right: 2px;
 	position: absolute;
 	width: 179px;
 	padding: 0;
@@ -711,7 +711,7 @@ ul.rightside-navdroparea li:hover {
 
 .loginemailicon {
 	position: absolute;
-	background: url('http://video.dev999.com/template/images/loginemailicon.png') no-repeat;
+	background: url('/template/images/loginemailicon.png') no-repeat;
 	width: 18px;
 	height: 16px;
 	margin-top: -30px;
@@ -720,7 +720,7 @@ ul.rightside-navdroparea li:hover {
 
 .loginpassicon {
 	position: absolute;
-	background: url('http://video.dev999.com/template/images/loginpassicon.png') no-repeat;
+	background: url('/template/images/loginpassicon.png') no-repeat;
 	width: 15px;
 	height: 18px;
 	margin-top: -32px;
