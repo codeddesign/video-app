@@ -46,7 +46,7 @@
 	<div class="campaign-outputwrap">
 		<div class="campaign-videoarea">
 			<?php if (isset($video_url)) {?>
-				<script type="text/javascript" src="http://videoplayer.dev/the-player_vastless.js" video="<?= $video_url ?>"></script>
+				<script type="text/javascript" src="{{ env('PLAYER_HOST') }}/the-player_vastless.js" video="<?= $video_url ?>"></script>
 			<?php }?>
 		</div>
 		<div class="campvideoarea-embedtitles">
@@ -65,7 +65,7 @@
 				});
 			</script>
 			@if(isset($video_url))
-				<textarea readonly><script type="text/javascript" src="http://videoplayer.dev/the-player.js" video="<?= $video_url ?>"></script></textarea>
+				<textarea readonly><script type="text/javascript" src="{{ env('PLAYER_HOST') }}/the-player.js" video="<?= $video_url ?>"></script></textarea>
 			@endif
 		</div>
 	</div>
