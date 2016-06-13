@@ -1,8 +1,10 @@
 <script type="text/javascript" src="{{url('/')}}/template/js/admin.js"></script>
-<!-- Sparkline demo data -->
+<!-- COPY EMBED TO CLIPBOARD -->
+<script type="text/javascript" src="{{url('/')}}/template/js/copyclipboard.js"></script>
+<!-- SPARKLINE DATA CHART -->
 <script src="{{url('/')}}/template/js/sparkline.min.js"></script>
 <script src="{{url('/')}}/template/js/sparkline.js"></script>
-<!-- Toastr script -->
+<!-- TOASTR SCRIPT -->
 <script src="{{url('/')}}/template/js/toastr.min.js"></script>
 
 <script>

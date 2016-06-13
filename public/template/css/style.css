@@ -803,36 +803,80 @@ ul.rightside-navdroparea li:hover {
     cursor: pointer;
 }
 
-.accountpasswrap form button:hover{
+.accountpasswrap form button:hover {
 	background: #75709E;
 }
 
 
-.video_size_width
-{
+.video_size_width {
 	width: 80px !important;
 	margin-left: 30px;
 	margin-top: 30px;
 	display: inline-block;
 }
-.video_size_height
-{
+
+.video_size_height {
 	width: 80px !important;
 	margin-left: 30px;
 	margin-top: 30px;
 	display: inline-block;
 }
-.width_100
-{
+
+.width_100 {
 	width: 100%;
 	height: 100%;
 }
-.vjs-afterglow-skin .vjs-mute-control, .vjs-afterglow-skin .vjs-volume-menu-button
-{
+
+.vjs-afterglow-skin .vjs-mute-control, .vjs-afterglow-skin .vjs-volume-menu-button {
 	margin-right: 70px !important;
 }
-.edit_icon
-{
+
+.edit_icon {
 	width: 15px;
 	height: 15px;
+}
+
+.copied::after {
+/*
+  position: absolute;
+  top: 12%;
+  right: 110%;
+  display: block;
+  content: "copied";
+  font-size: 0.75em;
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #22a;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 1.5s ease;
+*/
+  float:left;
+  content: "copied";
+  font-size: 12px;
+  padding: 2px 6px;
+  color: #fff;
+  background-color: #22a;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 2.5s ease;
+  margin-top: -3px;
+  margin-right: 10px;
+  margin-bottom: -3px;
+}
+
+@keyframes showcopied {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+  }
 }

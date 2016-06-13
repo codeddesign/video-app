@@ -51,7 +51,7 @@
 		</div>
 		<div class="campvideoarea-embedtitles">
 			<div class="campvideoarea-embedcodetitle">EMBED CODE</div>
-			<div class="campvideoarea-copycodetitle">COPY THIS CODE</div>
+			<div class="campvideoarea-copycodetitle" data-copytarget="#campvideoarea-textembedcode">COPY THIS CODE</div>
 		</div>
 		<div class="campvideoarea-codearea">
 			<script>
@@ -65,7 +65,7 @@
 				});
 			</script>
 			@if(isset($video_url))
-				<textarea readonly><script type="text/javascript" src="{{ env('PLAYER_HOST') }}/the-player.js" video="<?= $video_url ?>"></script></textarea>
+				<textarea readonly id="campvideoarea-textembedcode"><script type="text/javascript" src="{{ env('PLAYER_HOST') }}/the-player.js" video="<?= $video_url ?>"></script></textarea>
 			@endif
 		</div>
 	</div>
