@@ -77,17 +77,17 @@ $(document).ready(function() {
 ?>
 
     <ul class="navlist">
-        <li class="<?=$menu_flag_demo[0]?>">
-            <a href="/">DASHBOARD</a>
-        </li>
-        <li class="<?=$menu_flag_demo[1]?>">
-            <a href="/campaign/create">CREATE CAMPAIGN</a>
-        </li>
+	    <a href="/">
+        	<li class="<?=$menu_flag_demo[0]?>">DASHBOARD</li>
+	    </a>
+        <a href="/campaign/create">
+        	<li class="<?=$menu_flag_demo[1]?>">CREATE CAMPAIGN</li>
+        </a>
         <!--<li>MANAGE ADS</li>-->
         <!--<li>ANALYTICS</li>-->
-        <li class="<?=$menu_flag_demo[2]?>">
-            <a href="#">SUPPORT</a>
-        </li>
+        <a href="#">
+        	<li class="<?=$menu_flag_demo[2]?>">SUPPORT</li>
+        </a>	
     </ul>
 </div>
 
@@ -99,8 +99,8 @@ $(document).ready(function() {
         <div class="rightside-navlefttitle"><?=$page_name?></div>
         <div class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
         <ul class="rightside-navdroparea" style="display:none;">
-            <li><a href="/account/edit">EDIT ACCOUNT</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
+            <a href="/account/edit"><li>EDIT ACCOUNT</li></a>
+            <a href="/auth/logout"><li>LOGOUT</li></a>
         </ul>
     </div>
 
