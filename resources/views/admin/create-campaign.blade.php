@@ -1,9 +1,9 @@
 @extends('header')
 @section('content')
-	<div class="display-leftsep">
+	<div class="createcampaign-leftsep">
 		<div class="display-septext">CREATION</div>
 	</div>
-	<div class="display-rightsep">
+	<div class="createcampaign-rightsep">
 		<div class="display-septext">OUTPUT</div>
 	</div>
 	<div class="campaign-creationwrap">

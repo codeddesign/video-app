@@ -118,9 +118,24 @@ ul.navlist li:hover, ul.navlist li.active {
 	border-bottom: 1px solid #E3E1E0;
 }
 
+.createcampaign-leftsep {
+	float: left;
+	width: calc(100% - 701px);
+	height: 46px;
+	border-right: 1px solid #E3E1E0;
+	border-bottom: 1px solid #E3E1E0;
+}
+
 .display-rightsep {
 	float: left;
 	width: calc(50% - 1px);
+	height: 46px;
+	border-bottom: 1px solid #E3E1E0;
+}
+
+.createcampaign-rightsep {
+	float: left;
+	width: 700px;
 	height: 46px;
 	border-bottom: 1px solid #E3E1E0;
 }
@@ -459,13 +474,15 @@ input.campaignview-search {
 
 .campaign-creationwrap {
 	float: left;
-	width: 50%;
+	/*width: 50%;*/
+	width: calc(100% - 701px);
 	background: #EFEFEE;
 }
 
 .campaign-outputwrap {
 	float: right;
-	width: calc(50% - 1px);
+	/*width: calc(50% - 1px);*/
+	width: 700px;
 	background: #FFFFFF;
 	border-left: 1px solid #E3E1E0;
 	height: calc(100% - 97px);
@@ -476,7 +493,7 @@ input.campaignview-search {
 	margin-left: 30px;
 	margin-top: 30px;
 	width: calc(100% - 60px);
-	background: #555555;
+	/*background: #555555;*/
 	text-align: center;
 }
 
@@ -811,14 +828,16 @@ ul.rightside-navdroparea li:hover {
 .video_size_width {
 	width: 80px !important;
 	margin-left: 30px;
-	margin-top: 30px;
+	/*margin-top: 30px;*/
+	margin-top: -13px;
 	display: inline-block;
 }
 
 .video_size_height {
 	width: 80px !important;
 	margin-left: 30px;
-	margin-top: 30px;
+	/*margin-top: 30px;*/
+	margin-top: -13px;
 	display: inline-block;
 }
 
@@ -837,21 +856,6 @@ ul.rightside-navdroparea li:hover {
 }
 
 .copied::after {
-/*
-  position: absolute;
-  top: 12%;
-  right: 110%;
-  display: block;
-  content: "copied";
-  font-size: 0.75em;
-  padding: 2px 3px;
-  color: #fff;
-  background-color: #22a;
-  border-radius: 3px;
-  opacity: 0;
-  will-change: opacity, transform;
-  animation: showcopied 1.5s ease;
-*/
   float:left;
   content: "copied";
   font-size: 12px;
