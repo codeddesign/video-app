@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
+use Illuminate\Http\Request;
 use Input;
 
 class AdminController extends ControllerUser
 {
-    public function index()
+    public function getIndex()
     {
         return view('admin.index', [
             'campaign'  => Campaign::whereUserId($this->user->id)->get(),
@@ -17,14 +18,15 @@ class AdminController extends ControllerUser
         ]);
     }
 
-    public function adminSearch()
+    public function postGlobalSearch(Request $request)
     {
+        $input = Input::all();
+
         $menu_flag = [1, 0, 0, 0, 0, 0];
         $page_name = "DASHBOARD";
-        $input     = Input::all();
 
-        $campaign = Campaign::all();
+        $campaigns = Campaign::where('campaign_name', 'LIKE', '%' . $input['searchFor'] . '%')->get();
 
-        return view('admin/index')->with(['campaign' => $campaign, 'menu_flag' => $menu_flag, 'page_name' => $page_name]);
+        return json_encode($campaigns);
     }
 }

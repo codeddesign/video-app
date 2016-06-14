@@ -7,21 +7,15 @@
 <title>Video App</title>
 <!-- ingrid default stylesheet -->
 <link href="{{url('/')}}/template/css/ingrid.css" rel="stylesheet" type="text/css">
-<!-- afterglow -->
-<script type="text/javascript" src="{{url('/')}}/template/js/afterglow.min.js"></script>
 
-<!-- ads -->
-<script src="http://players.brightcove.net/videojs-overlay/1/videojs-overlay.min.js"></script>
-<script type="text/javascript" src="http://3ee.com/videojs/videojs-disable-progress/src/videojs.disableProgress.js"></script>
-<link href="http://players.brightcove.net/videojs-overlay/1/videojs-overlay.css" rel='stylesheet'>
-<script type="text/javascript" src="{{url('/')}}/template/js/custom.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
-<link href="{{url('/')}}/template/css/afterglow-custom-ads.css" rel="stylesheet" type="text/css">
 
 <link href="{{url('/')}}/template/css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="{{url('/')}}/template/js/jquery.ingrid.js"></script>
+
 <!-- Toastr style -->
 <link href="{{url('/')}}/template/css/toastr.min.css" rel="stylesheet">
+
 <!-- include typekit font -->
 <script src="https://use.typekit.net/lwk5wec.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -77,17 +71,17 @@ $(document).ready(function() {
 ?>
 
     <ul class="navlist">
-	    <a href="/">
-        	<li class="<?=$menu_flag_demo[0]?>">DASHBOARD</li>
-	    </a>
-        <a href="/campaign/create">
-        	<li class="<?=$menu_flag_demo[1]?>">CREATE CAMPAIGN</li>
-        </a>
+        <li class="<?=$menu_flag_demo[0]?>">
+            <a href="/">DASHBOARD</a>
+        </li>
+        <li class="<?=$menu_flag_demo[1]?>">
+            <a href="/campaign/create">CREATE CAMPAIGN</a>
+        </li>
         <!--<li>MANAGE ADS</li>-->
         <!--<li>ANALYTICS</li>-->
-        <a href="#">
-        	<li class="<?=$menu_flag_demo[2]?>">SUPPORT</li>
-        </a>	
+        <li class="<?=$menu_flag_demo[2]?>">
+            <a href="#">SUPPORT</a>
+        </li>
     </ul>
 </div>
 
@@ -99,8 +93,8 @@ $(document).ready(function() {
         <div class="rightside-navlefttitle"><?=$page_name?></div>
         <div class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
         <ul class="rightside-navdroparea" style="display:none;">
-            <a href="/account/edit"><li>EDIT ACCOUNT</li></a>
-            <a href="/auth/logout"><li>LOGOUT</li></a>
+            <li><a href="/account/edit">EDIT ACCOUNT</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
         </ul>
     </div>
 

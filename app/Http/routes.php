@@ -6,4 +6,4 @@ Route::controller('/account', 'AccountController');
 
 Route::controller('/campaign', 'CampaignController');
 
-Route::get('/', 'AdminController@index');
+Route::controller('/', 'AdminController');
