@@ -13,9 +13,6 @@
 <link href="{{url('/')}}/template/css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="{{url('/')}}/template/js/jquery.ingrid.js"></script>
 
-<!-- Toastr style -->
-<link href="{{url('/')}}/template/css/toastr.min.css" rel="stylesheet">
-
 <!-- include typekit font -->
 <script src="https://use.typekit.net/lwk5wec.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
