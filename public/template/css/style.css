@@ -855,6 +855,31 @@ ul.rightside-navdroparea li:hover {
 	height: 15px;
 }
 
+.accountpass-accountidwrap {
+	float: left;
+	width: 100%;
+}
+
+.accountpass-accountidtitle {
+	float: left;
+    width: 100%;
+    font-size: 10px;
+    color: #7773A8;
+    font-weight: 600;
+    margin-bottom: 9px !important;
+}
+
+.accountpass-accountid {
+	float: left;
+	width: 100%;
+	height: 43px;
+	background: #DDDDDD;
+	text-align: center;
+	line-height: 43px;
+	font-size: 21px;
+	color: #666;
+}
+
 .copied::after {
   float:left;
   content: "copied";

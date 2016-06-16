@@ -6,6 +6,11 @@
 			<div class="display-septext">CHANGE YOUR ACCOUNT PASSWORD</div>
 		</div>
 		<form action="/account/edit" method="post">
+			<div class="accountpass-accountidwrap">
+				<div class="accountpass-accountidtitle">ACCOUNT ID</div>
+				<div class="accountpass-accountid">1034</div>
+			</div>
+			
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div>
 				<label>CHANGE PASSWORD</label>
