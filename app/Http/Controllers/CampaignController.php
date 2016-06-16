@@ -50,10 +50,7 @@ class CampaignController extends ControllerUser
             ->first();
 
         return view('admin/create-campaign', [
-            'campaign_name' => $campaign->campaign_name,
-            'video_url'     => $campaign->video_url,
-            'video_width'   => $campaign->video_width,
-            'video_height'  => $campaign->video_height,
+            'campaign'      => $campaign,
             'menu_flag'     => [0, 1, 0, 0, 0, 0],
             'page_name'     => 'DASHBOARD',
         ]);
