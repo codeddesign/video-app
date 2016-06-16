@@ -46,7 +46,7 @@
 	<div class="campaign-outputwrap">
 		<div class="campaign-videoarea">
 			<?php if (isset($campaign)) {?>
-				<script type="text/javascript" src="{{ env('PLAYER_HOST') }}/p{{$campaign->play_id}}.js"></script>
+				<script src="{{ env('PLAYER_HOST') }}/p{{$campaign->play_id}}.js"></script>
 			<?php }?>
 		</div>
 		<div class="campvideoarea-embedtitles">
@@ -65,7 +65,7 @@
 				});
 			</script>
 			@if(isset($campaign))
-				<textarea readonly id="campvideoarea-textembedcode"><script type="text/javascript" src="{{ env('PLAYER_HOST') }}/p{{$campaign->play_id}}.js"></script></textarea>
+				<textarea readonly id="campvideoarea-textembedcode"><script src="{{ env('PLAYER_HOST') }}/p{{$campaign->play_id}}.js"></script></textarea>
 			@endif
 		</div>
 	</div>
