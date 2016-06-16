@@ -55,7 +55,7 @@
 	                    <div class="campview-droptitle">WHERE</div>
 	                    <select name="ad_campaign_select">
 	                        <option value="campaign_name">Campaign Name</option>
-	                        <option value="ad_name">Ad Name</option>
+	                        <option value="video_rpm">RPM</option>
 	                    </select>
 	                    <div class="campview-selectarrow"></div>
 	                </div>
@@ -91,7 +91,7 @@
 				    <tr>
 				      <th>Campaign Name</th>
 				      <th>Created On</th>
-				      <th>Ad Name</th>
+				      <th>RPM</th>
 				      <th>Video Plays</th>
 				      <th>Revenue</th>
 				      <th>State</th>
@@ -103,7 +103,7 @@
 						<tr>
 					       	<td><?= $value->campaign_name?></td>
 					       	<td><?= substr($value->created_at, 5, 2) . "/" . substr($value->created_at, 8, 2) . "/" . substr($value->created_at, 0, 4);?></td>
-					       	<td><?= $value->ad_name?></td>
+					       	<td><?= $value->video_rpm?></td>
 					       	<td><?= $value->video_plays?></td>
 					       	<td>$<?= $value->revenue?></td>
 					       	<td>
@@ -141,7 +141,7 @@
                 result += '<tr>';
                 result += '<th>Campaign Name</th>';
                 result += '<th>Created On</th>';
-                result += '<th>Ad Name</th>';
+                result += '<th>RPM</th>';
                 result += '<th>Video Plays</th>';
                 result += '<th>Revenue</th>';
                 result += '<th>State</th>';
@@ -153,7 +153,7 @@
                     result += '<tr class="grid-row-style1">';
                     result += '<td data-ingrid-colid="0" style="width: 225px;"><div style="overflow: hidden;">' + this.campaign_name + '</div></td>';
                     result += '<td data-ingrid-colid="1" style="width: 225px;"><div style="overflow: hidden;">' + this.created_at + '</div></td>';
-                    result += '<td data-ingrid-colid="2" style="width: 225px;"><div style="overflow: hidden;">' + this.ad_name + '</div></td>';
+                    result += '<td data-ingrid-colid="2" style="width: 225px;"><div style="overflow: hidden;">' + this.video_rpm + '</div></td>';
                     result += '<td data-ingrid-colid="3" style="width: 225px;"><div style="overflow: hidden;">' + this.video_plays + '</div></td>';
                     result += '<td data-ingrid-colid="4" style="width: 57px;"><div style="overflow: hidden;">$' + this.revenue + '</div></td>';
                     result += '<td data-ingrid-colid="5" style="width: 57px;"><div style="overflow: hidden;">'
