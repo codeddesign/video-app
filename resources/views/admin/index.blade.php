@@ -103,7 +103,7 @@
                             <td><?=$value->campaign_name?></td>
                             <td><?=substr($value->created_at, 5, 2) . "/" . substr($value->created_at, 8, 2) . "/" . substr($value->created_at, 0, 4);?></td>
                             <td><?=$value->video_rpm?></td>
-                            <td><?=$value->video_plays?></td>
+                            <td id="c_plays_<?=$value->id?>"><?=$value->video_plays?></td>
                             <td>$<?=$value->revenue?></td>
                             <td>
                                <a href="/campaign/delete/<?=$value->id?>"><div class="campview-campoff campview-campoffactive"></div></a>
@@ -186,6 +186,13 @@
 
             $.get('/campaign/stats', function(response) {
                 var $hourViews = $('#currentDay');
+
+
+                if(typeof response.by_campaign == 'object') {
+                    Object.keys(response.by_campaign).forEach(function(c_id) {
+                        $('#c_plays_' + c_id).html(response.by_campaign[c_id]);
+                    });
+                }
 
                 $("#currentMonth").sparkline(response.by_date, {
                     type: 'bar',

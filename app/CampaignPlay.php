@@ -20,9 +20,16 @@ class CampaignPlay extends Model
             ->whereBetween('created_at', self::monthStartEnd())
             ->get();
 
-        $by_date = self::dates();
-        $by_hour = self::hours();
+        $by_campaign = [];
+        $by_date     = self::dates();
+        $by_hour     = self::hours();
         foreach ($plays as $play) {
+            if (!isset($by_campaign[$play->campaign_id])) {
+                $by_campaign[$play->campaign_id] = 0;
+            }
+
+            $by_campaign[$play->campaign_id] += 1;
+
             $ts = strtotime($play->created_at);
 
             $date = date('Y-m-d', $ts);
@@ -36,7 +43,7 @@ class CampaignPlay extends Model
             $by_hour[$hour] += 1;
         }
 
-        return compact('by_date', 'by_hour');
+        return compact('by_date', 'by_hour', 'by_campaign');
     }
 
     protected static function monthStartEnd($year = false, $month = false)

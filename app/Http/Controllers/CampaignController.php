@@ -79,8 +79,9 @@ class CampaignController extends ControllerUser
         }
 
         return [
-            'by_date' => array_values($stats['by_date']),
-            'by_hour' => array_values($stats['by_hour']),
+            'by_campaign' => $stats['by_campaign'],
+            'by_date'     => array_values($stats['by_date']),
+            'by_hour'     => array_values($stats['by_hour']),
         ];
     }
 }
