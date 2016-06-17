@@ -2,30 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\CampaignPlay;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \Storage;
 
-class VastController extends Controller
+class TrackController extends Controller
 {
-    // public function getIndex(Request $request)
-    // {
-    //     $campaign = $request->get('c');
-
-    //     $content = Storage::get('tag.xml');
-
-    //     return response($content)
-    //         ->header('Access-Control-Allow-Origin', '*')
-    //         ->header('Content-Type', 'text/xml');
-    // }
-
-    public function getTrack(Request $request)
+    public function getIndex(Request $request)
     {
+        if ($request->get('event') == 'yt:playing') {
+            CampaignPlay::create([
+                'campaign_id' => $request->get('campaign'),
+                'referer'     => $_SERVER['HTTP_REFERER'],
+            ]);
+        }
+
         return response($this->onePixel())
             ->header('Access-Control-Allow-Origin', '*')
             ->header('Content-Type', 'image/png');
     }
 
+    /**
+     * @return [type]
+     */
     protected function onePixel()
     {
         return base64_decode(

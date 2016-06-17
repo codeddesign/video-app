@@ -21,7 +21,7 @@ class CreateCampaignsTable extends Migration
 
             $table->string('campaign_name')->index();
 
-            $table->string('ad_name')->nullable()->index(); // todo
+            $table->integer('rpm')->default(0)->index();
 
             $table->string('video_url')->index();
 

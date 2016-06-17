@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
+use App\CampaignPlay;
 use App\Http\Controllers\ControllerUser;
+use App\User;
 use Illuminate\Http\Request;
 
 class CampaignController extends ControllerUser
@@ -24,7 +26,6 @@ class CampaignController extends ControllerUser
             'video_url',
             'video_width',
             'video_height',
-            'ad_name',
         ]);
 
         $exists = Campaign::whereCampaignName($data['campaign_name'])->first();
@@ -50,9 +51,9 @@ class CampaignController extends ControllerUser
             ->first();
 
         return view('admin/create-campaign', [
-            'campaign'      => $campaign,
-            'menu_flag'     => [0, 1, 0, 0, 0, 0],
-            'page_name'     => 'DASHBOARD',
+            'campaign'  => $campaign,
+            'menu_flag' => [0, 1, 0, 0, 0, 0],
+            'page_name' => 'DASHBOARD',
         ]);
     }
 
@@ -67,5 +68,19 @@ class CampaignController extends ControllerUser
         }
 
         return redirect('/');
+    }
+
+    public function getStats()
+    {
+        $stats = CampaignPlay::stats($this->user->id);
+
+        if (!$stats) {
+            abort(404);
+        }
+
+        return [
+            'by_date' => array_values($stats['by_date']),
+            'by_hour' => array_values($stats['by_hour']),
+        ];
     }
 }

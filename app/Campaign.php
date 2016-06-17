@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
-    protected $fillable = ['id', 'user_id', 'campaign_name', 'ad_name', 'video_url', 'video_width', 'video_height', 'video_plays', 'revenue', 'active'];
+    protected $fillable = ['id', 'user_id', 'campaign_name', 'video_url', 'video_width', 'video_height', 'video_plays', 'revenue', 'active'];
 
     protected $appends = ['play_id'];
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Campaign;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -38,5 +39,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = \Hash::make($password);
+    }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
     }
 }
