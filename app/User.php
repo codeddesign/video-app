@@ -36,13 +36,59 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * @param string $password
+     *
+     * @return void
+     */
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = \Hash::make($password);
     }
 
+    /**
+     * @return mixed
+     */
     public function campaigns()
     {
         return $this->hasMany(Campaign::class);
+    }
+
+    /**
+     * @param  string  $name
+     *
+     * @return Campaign|null
+     */
+    public function campaignByName($name)
+    {
+        return $this->campaigns()
+            ->whereCampaignName($name)
+            ->first();
+    }
+
+    /**
+     * @param  integer $id
+     *
+     * @return Campaign|null
+     */
+    public function campaignById($id)
+    {
+        return $this->campaigns()
+            ->whereId($id)
+            ->first();
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return Campaign
+     */
+    public function addCampaign(array $data)
+    {
+        $data['user_id'] = $this->id;
+
+        $campaign = Campaign::create($data);
+
+        return $campaign;
     }
 }

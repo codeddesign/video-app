@@ -27,23 +27,7 @@
         </center>
     </div>
 
-    <form action="/auth" method="post">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div>
-            <input type="email" name="email" placeholder="email address.." required>
-            <span class="loginemailicon"></span>
-        </div>
-        <div>
-            <input type="password" name="password" placeholder="password.." required>
-            <span class="loginpassicon"></span>
-        </div>
-        <button>LOGIN</button>
-    </form>
-
-    <div class="loginadditional">
-        <div class="login-registerbutton"><a href="/account">REGISTER</a></div>
-        <div class="login-lostpassbutton"><a href="/account/recover">LOST PASSWORD</a></div>
-    </div>
+    @yield('content')
 </div>
 
 </body>

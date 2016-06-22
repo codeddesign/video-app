@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Campaign;
-use App\CampaignPlay;
 use App\Http\Controllers\ControllerUser;
+use App\MonthStats;
 use App\User;
 use Illuminate\Http\Request;
 
 class CampaignController extends ControllerUser
 {
+    const CENTS = .3;
+
     public function getCreate()
     {
-        return view('admin/create-campaign', [
-            'menu_flag' => [0, 1, 0, 0, 0, 0],
-            'page_name' => 'CREATE CAMPAIGN',
-            'success'   => 'Please create new campaign',
-        ]);
+        return view('dashboard.campaign');
     }
 
     public function postCreate(Request $request)
@@ -28,40 +25,27 @@ class CampaignController extends ControllerUser
             'video_height',
         ]);
 
-        $exists = Campaign::whereCampaignName($data['campaign_name'])->first();
-        if ($exists) {
-            return view('admin.create-campaign', [
-                'page_name' => 'CREATE CAMPAIGN',
-                'menu_flag' => [0, 1, 0, 0, 0, 0],
-                'success'   => 'The campaign already exists',
-            ]);
+        if (!$this->user->campaignByName($data['campaign_name'])) {
+            $campaign = $this->user->addCampaign($data);
+
+            return redirect('/campaign/view/' . $campaign->id);
         }
 
-        $data['user_id'] = $this->user->id;
-
-        $campaign = Campaign::create($data);
-
-        return redirect('/campaign/view/' . $campaign->id);
+        return view('dashboard.campaign', [
+            'error' => 'This campaign name is taken',
+        ]);
     }
 
     public function getView($campaignId)
     {
-        $campaign = Campaign::whereUserId($this->user->id)
-            ->whereId($campaignId)
-            ->first();
-
-        return view('admin/create-campaign', [
-            'campaign'  => $campaign,
-            'menu_flag' => [0, 1, 0, 0, 0, 0],
-            'page_name' => 'DASHBOARD',
+        return view('dashboard.campaign', [
+            'campaign' => $this->user->campaignById($campaignId),
         ]);
     }
 
     public function getDelete($campaignId)
     {
-        $campaign = Campaign::whereUserId($this->user->id)
-            ->whereId($campaignId)
-            ->first();
+        $campaign = $this->user->campaignById($campaignId);
 
         if ($campaign) {
             $campaign->delete();
@@ -72,16 +56,12 @@ class CampaignController extends ControllerUser
 
     public function getStats()
     {
-        $stats = CampaignPlay::stats($this->user->id);
-
-        if (!$stats) {
-            abort(404);
-        }
+        $stats = MonthStats::current($this->user);
 
         return [
-            'by_campaign' => $stats['by_campaign'],
-            'by_date'     => array_values($stats['by_date']),
-            'by_hour'     => array_values($stats['by_hour']),
+            'campaigns'    => $this->user->campaigns,
+            'for_campaign' => $stats->all(),
+            'total'        => $stats->total(),
         ];
     }
 }

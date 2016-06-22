@@ -17,7 +17,7 @@ abstract class ControllerUser extends Controller
                 abort('Not authenticated', 403);
             }
 
-            Redirect::to('/auth')->send();
+            Redirect::to('/account')->send();
         }
     }
 }

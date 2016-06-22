@@ -6,28 +6,81 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 use \Auth;
 
 class AccountController extends Controller
 {
+    /**
+     * @return Redirect
+     */
     public function getIndex()
     {
-        if ($this->user) {
-            Redirect::to('/')->send();
-        }
-
-        return view('admin.register');
+        return redirect('/account/login');
     }
 
-    public function postIndex(Request $request)
+    /**
+     * @return View
+     */
+    public function getLogin()
     {
+        $this->redirectHomeWhenUser();
+
+        return view('account.login');
+    }
+
+    /**
+     * @param  Request $request
+     *
+     * @return View|Redirect
+     */
+    public function postLogin(Request $request)
+    {
+        if (!Auth::attempt($request->only(['email', 'password']))) {
+            return view('admin/login', [
+                'error' => 'Please enter your account again',
+            ]);
+        }
+
+        return redirect('/');
+    }
+
+    /**
+     * @return Redirect
+     */
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect('/');
+    }
+
+    /**
+     * @return View
+     */
+    public function getRegister()
+    {
+        $this->redirectHomeWhenUser();
+
+        return view('account.register');
+    }
+
+    /**
+     * @param  Request $request
+     *
+     * @return View|Redirect
+     */
+    public function postRegister(Request $request)
+    {
+        $this->redirectHomeWhenUser();
+
         $data = $request->only(['email', 'password', 'confirm_password']);
         if ($data['password'] != $data['confirm_password']) {
-            return view('admin.register', ['error' => 'Passwords do not match']);
+            return view('account.register', ['error' => 'Passwords do not match']);
         }
 
         if (User::whereEmail($data['email'])->first()) {
-            return view('admin.register', ['error' => 'This account already exists']);
+            return view('account.register', ['error' => 'This account already exists']);
         }
 
         $user = User::create($data);
@@ -37,38 +90,33 @@ class AccountController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @return View
+     */
     public function getRecover()
     {
-        return view('admin.lost-password');
+        $this->redirectHomeWhenUser();
+
+        return view('account.recover');
     }
 
+    /**
+     * @return View
+     */
     public function postRecover()
     {
-        return view('admin.lost-password'); // todo
+        $this->redirectHomeWhenUser();
+
+        return view('account.recover'); // todo
     }
 
-    public function getEdit()
+    /**
+     * @return void
+     */
+    protected function redirectHomeWhenUser()
     {
-        return view('admin/account-password', [
-            'menu_flag' => [1, 0, 0, 0, 0, 0],
-            'page_name' => 'EDIT ACCOUNT',
-        ]);
-    }
-
-    public function postEdit(Request $request)
-    {
-        $data = $request->only(['password', 'confirm_password']);
-        if ($data['password'] != $data['confirm_password']) {
-            return view('admin.account-password', [
-                'menu_flag' => [1, 0, 0, 0, 0, 0],
-                'error'     => 'Passwords do not match',
-                'page_name' => 'EDIT_ACCOUNT',
-            ]);
+        if ($this->user) {
+            Redirect::to('/')->send();
         }
-
-        $this->user->password = $data['password'];
-        $this->user->save();
-
-        return redirect('/');
     }
 }
