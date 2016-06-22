@@ -13,26 +13,26 @@
     </div>
 
     <!-- ANALYTICS STATS -->
-    <ul class="campaignstats-row">
+    <ul class="campaignstats-row" :graphStats='graphStats'>
         <li>
             <div class="campaignstats-title">THIS MONTH</div>
-            <div class="campaignstats-digit" id="currentMonthViews">@{{ graphStats.month.plays }}</div>
-            <div class="campaignstats-digit"><span id="graph_onDay"></span></div>
+            <div class="campaignstats-digit" id="currentMonthViews">@{{ response.stats.month.plays }}</div>
+            <div class="campaignstats-digit"><span id="graph_month"></span></div>
         </li>
         <li>
             <div class="campaignstats-title">TODAY</div>
-            <div class="campaignstats-digit" id="currentDayViews">@{{ graphStats.day.plays }}</div>
-            <div class="campaignstats-digit"><span id="graph_onHour"></span></div>
+            <div class="campaignstats-digit" id="currentDayViews">@{{ response.stats.day.plays }}</div>
+            <div class="campaignstats-digit"><span id="graph_day"></span></div>
         </li>
         <li>
             <div class="campaignstats-title">THIS MONTH</div>
-            <div class="campaignstats-digit">$@{{ graphStats.month.revenue.toFixed(2) }}</div>
-            <div class="campaignstats-digit"><span id="graph_onDay_r"></span></div>
+            <div class="campaignstats-digit">$@{{ response.stats.month.revenue.toFixed(2) }}</div>
+            <div class="campaignstats-digit"><span id="graph_month_r"></span></div>
         </li>
         <li>
             <div class="campaignstats-title">TODAY</div>
-            <div class="campaignstats-digit">$@{{ graphStats.day.revenue.toFixed(2) }}</div>
-            <div class="campaignstats-digit"><span id="graph_onHour_r"></span></div>
+            <div class="campaignstats-digit">$@{{ response.stats.day.revenue.toFixed(2) }}</div>
+            <div class="campaignstats-digit"><span id="graph_day_r"></span></div>
         </li>
     </ul>
 
@@ -105,8 +105,8 @@
                             <td>@{{ campaign.campaign_name }}</td>
                             <td>@{{ campaign.created_at }}</td>
                             <td>@{{ campaign.rpm }}</td>
-                            <td>@{{ response.for_campaign.onMonth[campaign.id].plays }}</td>
-                            <td>$@{{ response.for_campaign.onMonth[campaign.id].revenue }}</td>
+                            <td>@{{ response.stats.campaign[campaign.id].plays }}</td>
+                            <td>$@{{ response.stats.campaign[campaign.id].revenue.toFixed(2) }}</td>
                             <td>
                                 <a href="/campaign/delete/@{{ campaign.id }}">
                                     <div class="campview-campoff campview-campoffactive"></div>
@@ -137,11 +137,18 @@ new Vue({
         advancedSearch: false,
         response: {
             campaigns: [],
-            for_campaign: {},
-            total: {
-                onMonth: {},
-                onDay: {},
-                onHour: {}
+            stats: {
+                campaign: {},
+                day: {
+                    list: {},
+                    plays: 0,
+                    revenue: 0
+                },
+                month: {
+                    list: {},
+                    plays: 0,
+                    revenue: 0
+                }
             }
         }
     },
@@ -155,35 +162,18 @@ new Vue({
 
     computed: {
         graphStats: function() {
-            var keys = Object.keys(this.response.total),
-                default_ = {
-                    month: {
-                        plays: 0,
-                        revenue: 0
-                    },
-                    day: {
-                        plays: 0,
-                        revenue: 0
-                    }
-                },
-                stats;
+            var keys = Object.keys(this.response.stats)
 
-            if (!keys.length || typeof this.response.total.onMonth.revenue == 'undefined') {
-                return default_;
+            if (!keys.length) {
+                return false;
             }
 
             keys.forEach(function(key) {
-                stats = {
-                    plays: [],
-                    revenue: []
-                };
+                if (typeof this.response.stats[key].list == 'undefined') {
+                    return false;
+                }
 
-                Object.keys(this.response.total[key]).forEach(function(day) {
-                    stats.plays.push(this.response.total[key][day].plays);
-                    stats.revenue.push(this.response.total[key][day].revenue);
-                }.bind(this));
-
-                $("#graph_" + key).sparkline(stats.plays, {
+                $("#graph_" + key).sparkline(this.response.stats[key].list.plays, {
                     type: 'bar',
                     barWidth: 4,
                     height: '50px',
@@ -191,7 +181,7 @@ new Vue({
                     negBarColor: '#c6c6c6'
                 });
 
-                $("#graph_" + key + '_r').sparkline(stats.revenue, {
+                $("#graph_" + key + '_r').sparkline(this.response.stats[key].list.revenue, {
                     type: 'bar',
                     barWidth: 4,
                     height: '50px',
@@ -199,11 +189,6 @@ new Vue({
                     negBarColor: '#c6c6c6'
                 });
             }.bind(this));
-
-            return {
-                month: this.response.total.onMonth,
-                day: this.response.total.onDay[(new Date).getDate()]
-            };
         }
     },
 

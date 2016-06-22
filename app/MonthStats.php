@@ -3,7 +3,6 @@
 namespace App;
 
 use App\User;
-use Illuminate\Support\Collection;
 
 class MonthStats
 {
@@ -28,29 +27,19 @@ class MonthStats
     protected $month;
 
     /**
-     * @var Collection
+     * @var array
      */
-    protected $campaigns;
+    protected $monthData;
 
     /**
      * @var array
      */
-    protected $onMonth = [];
+    protected $dayData;
 
     /**
      * @var array
      */
-    protected $onDay = [];
-
-    /**
-     * @var array
-     */
-    protected $onHour = [];
-
-    /**
-     * @var array
-     */
-    protected $total = [];
+    protected $campaignData;
 
     /**
      * @var array
@@ -71,15 +60,9 @@ class MonthStats
         $this->year  = $year;
         $this->month = $month;
 
-        $this->campaigns = $this->user->campaigns()
-             ->with(['plays' => function ($query) {
-                 $query->whereBetween('created_at', $this::monthRange());
-             }])
-             ->get();
+        $this->setMonthData();
 
-        $this->setCampaignsStats();
-
-        $this->setTotalStats();
+        $this->setDayData();
     }
 
     public static function current(User $user)
@@ -90,129 +73,126 @@ class MonthStats
     /**
      * @return array
      */
-    public function all()
+    public function data()
     {
         return [
-            'onMonth' => $this->onMonth,
-            'onDay'   => $this->onDay,
-            'onHour'  => $this->onHour,
+            'month'    => $this->monthData,
+            'day'      => $this->dayData,
+            'campaign' => $this->campaignData,
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function total()
+    protected function setMonthData()
     {
-        return $this->total;
+        $data = [
+            'plays'   => 0,
+            'revenue' => 0,
+            'list'    => [
+                'plays'   => array_values($this->monthDays()),
+                'revenue' => array_values($this->monthDays()),
+            ],
+        ];
+
+        $campaigns = $this
+            ->user->campaigns()
+            ->with(['plays' => function ($query) {
+                $query->whereBetween('created_at', $this::monthRange());
+            }])
+            ->get();
+
+        foreach ($campaigns as $campaign) {
+            $this->addCampaignData($campaign);
+
+            $data['plays'] += $campaign->plays->count();
+            $data['revenue'] += $campaign->plays->count() * $this->CENTS;
+
+            $grouped = $campaign
+                ->plays
+                ->groupBy('day')
+                ->map(function ($p) {
+                    return $p->count();
+                });
+
+            foreach ($grouped as $key => $value) {
+                $data['list']['plays'][$key] += $value;
+                $data['list']['revenue'][$key] += $value * $this->CENTS;
+            }
+        }
+
+        $this->monthData = $data;
+
+        return $this;
     }
 
-    /**
-     * @return $this
-     */
-    protected function setCampaignsStats()
+    protected function addCampaignData(Campaign $campaign)
     {
-        foreach ($this->campaigns as $campaign) {
-            $this->onMonth[$campaign->id] = $this->playsAndRevenue($campaign->plays);
+        $this->campaignData[$campaign->id] = [
+            'plays'   => $campaign->plays->count(),
+            'revenue' => $campaign->plays->count() * $this->CENTS,
+        ];
 
-            $this->onDay[$campaign->id] = $this->getCampaignOnGroup(
-                $campaign,
-                'day',
-                $this->monthDays()
-            );
+        return $this;
+    }
 
-            $this->onHour[$campaign->id] = $this->getCampaignOnGroup(
-                $campaign,
-                'hour',
-                $this->dayHours()
-            );
+    protected function setDayData()
+    {
+        $data = [
+            'plays'   => 0,
+            'revenue' => 0,
+            'list'    => [
+                'plays'   => array_values($this->dayHours()),
+                'revenue' => array_values($this->dayHours()),
+            ],
+        ];
+
+        $campaigns = $this
+            ->user->campaigns()
+            ->with(['plays' => function ($query) {
+                $query->whereBetween('created_at', $this->monthRange(date('Y-m-d'), date('Y-m-d')));
+            }])
+            ->get();
+
+        foreach ($campaigns as $campaign) {
+            $data['plays'] += $campaign->plays->count();
+            $data['revenue'] += $campaign->plays->count() * $this->CENTS;
+
+            $grouped = $campaign
+                ->plays
+                ->groupBy('day')
+                ->map(function ($p) {
+                    return $p->count();
+                });
+
+            foreach ($grouped as $key => $value) {
+                $data['list']['plays'][$key] += $value;
+                $data['list']['revenue'][$key] += $value * $this->CENTS;
+            }
         }
+
+        $this->dayData = $data;
 
         return $this;
     }
 
     /**
-     * @return $this
-     */
-    protected function setTotalStats()
-    {
-        foreach (['onDay', 'onHour'] as $key) {
-            if (!isset($total[$key])) {
-                $this->total[$key] = [];
-            }
-
-            foreach ($this->{$key} as $campaignId => $chunks) {
-                foreach ($chunks as $chunkId => $data) {
-                    if (!isset($this->total[$key][$chunkId])) {
-                        $this->total[$key][$chunkId] = self::$default;
-                    }
-
-                    $this->total[$key][$chunkId]['plays'] += $data['plays'];
-                    $this->total[$key][$chunkId]['revenue'] += $data['revenue'];
-                }
-            }
-        }
-
-        foreach ($this->onMonth as $campaignIn => $data) {
-            if (!isset($this->total['onMonth'])) {
-                $this->total['onMonth'] = self::$default;
-            }
-
-            $this->total['onMonth']['plays'] += $data['plays'];
-            $this->total['onMonth']['revenue'] += $data['revenue'];
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param  Campaign $campaign
-     * @param  string   $groupedBy
-     * @param  array    $add
+     * @param  boolean|string $from_date
+     * @param  boolean|string $to_date
      *
      * @return array
      */
-    private function getCampaignOnGroup(Campaign $campaign, $groupedBy, $add)
+    protected function monthRange($from_date = false, $to_date = false)
     {
-        $plays = $campaign
-            ->plays
-            ->groupBy($groupedBy)
-            ->map(function ($plays) {
-                return $this->playsAndRevenue($plays);
-            })
-            ->toArray();
+        if (!$from_date) {
+            $from_date = date('Y-m-d', strtotime(implode('-', [$this->year, $this->month, '01'])));
+        }
 
-        $plays = $plays + $add;
-
-        ksort($plays);
-
-        return $plays;
-    }
-
-    /**
-     * @param  Collection $plays
-     *
-     * @return array
-     */
-    protected function playsAndRevenue(Collection $plays)
-    {
-        return [
-            'plays'   => $plays->count(),
-            'revenue' => $plays->count() * $this->CENTS,
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    protected function monthRange()
-    {
-        $from_date = date('Y-m-d', strtotime(implode('-', [$this->year, $this->month, '01'])));
-        $to_date   = date('Y-m-d', strtotime($from_date . ' 1 month -1 second'));
+        if (!$to_date) {
+            $to_date = date('Y-m-d', strtotime($from_date . ' 1 month -1 second'));
+        }
 
         return [
-            $from_date,
-            $to_date,
+            $from_date . ' 00:00:00',
+            $to_date . ' 23:59:59',
         ];
     }
 
@@ -225,7 +205,7 @@ class MonthStats
 
         $days = [];
         foreach (range(1, $last_day) as $day) {
-            $days[$day] = self::$default;
+            $days[$day] = 0;
         }
 
         return $days;
@@ -237,8 +217,8 @@ class MonthStats
     protected function dayHours()
     {
         $hours = [];
-        foreach (range(1, 24) as $hour) {
-            $hours[$hour] = self::$default;
+        foreach (range(0, 23) as $hour) {
+            $hours[$hour] = 0;
         }
 
         return $hours;

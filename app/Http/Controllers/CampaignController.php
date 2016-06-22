@@ -59,9 +59,8 @@ class CampaignController extends ControllerUser
         $stats = MonthStats::current($this->user);
 
         return [
-            'campaigns'    => $this->user->campaigns,
-            'for_campaign' => $stats->all(),
-            'total'        => $stats->total(),
+            'campaigns' => $this->user->campaigns,
+            'stats'     => $stats->data(),
         ];
     }
 }
