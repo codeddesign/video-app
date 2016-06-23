@@ -51,7 +51,7 @@ class DashboardController extends ControllerUser
     {
         $input = Input::all();
 
-        $campaigns = Campaign::where('campaign_name', 'LIKE', '%' . $input['searchFor'] . '%')->get();
+        $campaigns = Campaign::where('campaign_name', 'LIKE', '%'.$input['searchFor'].'%')->get();
 
         return json_encode($campaigns);
     }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\CampaignPlay;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TrackController extends Controller
@@ -13,7 +12,7 @@ class TrackController extends Controller
         if ($request->get('event') == 'yt:playing') {
             CampaignPlay::create([
                 'campaign_id' => $request->get('campaign'),
-                'referer'     => $_SERVER['HTTP_REFERER'],
+                'referer' => $_SERVER['HTTP_REFERER'],
             ]);
         }
 
@@ -23,7 +22,7 @@ class TrackController extends Controller
     }
 
     /**
-     * @return [type]
+     * @return mixed
      */
     protected function onePixel()
     {

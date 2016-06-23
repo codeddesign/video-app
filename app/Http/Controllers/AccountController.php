@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use \Auth;
+use Auth;
 
 class AccountController extends Controller
 {
@@ -30,7 +29,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @param  Request $request
+     * @param Request $request
      *
      * @return View|Redirect
      */
@@ -66,7 +65,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @param  Request $request
+     * @param Request $request
      *
      * @return View|Redirect
      */
@@ -111,7 +110,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @return void
+     * Redirect to home page.
      */
     protected function redirectHomeWhenUser()
     {

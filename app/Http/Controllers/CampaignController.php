@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\ControllerUser;
 use App\MonthStats;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,7 +27,7 @@ class CampaignController extends ControllerUser
         if (!$this->user->campaignByName($data['campaign_name'])) {
             $campaign = $this->user->addCampaign($data);
 
-            return redirect('/campaign/view/' . $campaign->id);
+            return redirect('/campaign/view/'.$campaign->id);
         }
 
         return view('dashboard.campaign', [
@@ -60,7 +59,7 @@ class CampaignController extends ControllerUser
 
         return [
             'campaigns' => $this->user->campaigns,
-            'stats'     => $stats->data(),
+            'stats' => $stats->data(),
         ];
     }
 }

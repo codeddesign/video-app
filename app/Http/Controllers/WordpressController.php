@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\ControllerUser;
 use App\WordpressSite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -26,7 +25,7 @@ class WordpressController extends ControllerUser
     }
 
     /**
-     * @param  Request $request
+     * @param Request $request
      *
      * @return Collection|array
      */
@@ -34,7 +33,7 @@ class WordpressController extends ControllerUser
     {
         $link = $request->get('link');
 
-        if (WordpressSite::whereLink($link)->first()) {
+        if (WordpressSite::byLink($link)) {
             return [
                 'error' => 'This site already exists',
             ];
@@ -46,7 +45,7 @@ class WordpressController extends ControllerUser
     }
 
     /**
-     * @param  integer $id
+     * @param int $id
      *
      * @return Collection|array
      */

@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Campaign;
-use App\WordpressSite;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -39,8 +37,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     /**
      * @param string $password
-     *
-     * @return void
      */
     public function setPasswordAttribute($password)
     {
@@ -72,12 +68,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return WordpressSite::create([
             'user_id' => $this->id,
-            'link'    => $link,
+            'domain' => $link,
         ]);
     }
 
     /**
-     * @param  integer $id
+     * @param int $id
      *
      * @return Wordpressite|null
      */
@@ -89,7 +85,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * @param  string  $name
+     * @param string $name
      *
      * @return Campaign|null
      */
@@ -101,7 +97,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * @param  integer $id
+     * @param int $id
      *
      * @return Campaign|null
      */

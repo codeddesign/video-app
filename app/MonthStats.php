@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\User;
-
 class MonthStats
 {
     /**
@@ -17,12 +15,12 @@ class MonthStats
     protected $user;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $year;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $month;
 
@@ -45,19 +43,19 @@ class MonthStats
      * @var array
      */
     private static $default = [
-        'plays'   => 0,
+        'plays' => 0,
         'revenue' => 0,
     ];
 
     /**
-     * @param User    $user
-     * @param integer $year
-     * @param integer $month
+     * @param User $user
+     * @param int  $year
+     * @param int  $month
      */
     public function __construct(User $user, $year, $month)
     {
-        $this->user  = $user;
-        $this->year  = $year;
+        $this->user = $user;
+        $this->year = $year;
         $this->month = $month;
 
         $this->setMonthData();
@@ -76,8 +74,8 @@ class MonthStats
     public function data()
     {
         return [
-            'month'    => $this->monthData,
-            'day'      => $this->dayData,
+            'month' => $this->monthData,
+            'day' => $this->dayData,
             'campaign' => $this->campaignData,
         ];
     }
@@ -85,10 +83,10 @@ class MonthStats
     protected function setMonthData()
     {
         $data = [
-            'plays'   => 0,
+            'plays' => 0,
             'revenue' => 0,
-            'list'    => [
-                'plays'   => array_values($this->monthDays()),
+            'list' => [
+                'plays' => array_values($this->monthDays()),
                 'revenue' => array_values($this->monthDays()),
             ],
         ];
@@ -127,7 +125,7 @@ class MonthStats
     protected function addCampaignData(Campaign $campaign)
     {
         $this->campaignData[$campaign->id] = [
-            'plays'   => $campaign->plays->count(),
+            'plays' => $campaign->plays->count(),
             'revenue' => $campaign->plays->count() * $this->CENTS,
         ];
 
@@ -137,10 +135,10 @@ class MonthStats
     protected function setDayData()
     {
         $data = [
-            'plays'   => 0,
+            'plays' => 0,
             'revenue' => 0,
-            'list'    => [
-                'plays'   => array_values($this->dayHours()),
+            'list' => [
+                'plays' => array_values($this->dayHours()),
                 'revenue' => array_values($this->dayHours()),
             ],
         ];
@@ -175,8 +173,8 @@ class MonthStats
     }
 
     /**
-     * @param  boolean|string $from_date
-     * @param  boolean|string $to_date
+     * @param bool|string $from_date
+     * @param bool|string $to_date
      *
      * @return array
      */
@@ -187,12 +185,12 @@ class MonthStats
         }
 
         if (!$to_date) {
-            $to_date = date('Y-m-d', strtotime($from_date . ' 1 month -1 second'));
+            $to_date = date('Y-m-d', strtotime($from_date.' 1 month -1 second'));
         }
 
         return [
-            $from_date . ' 00:00:00',
-            $to_date . ' 23:59:59',
+            $from_date.' 00:00:00',
+            $to_date.' 23:59:59',
         ];
     }
 

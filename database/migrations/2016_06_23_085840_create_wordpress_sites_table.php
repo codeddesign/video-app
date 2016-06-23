@@ -19,7 +19,7 @@ class CreateWordpressSitesTable extends Migration
                 ->unsigned()
                 ->references('id')->on('users');
 
-            $table->string('link')
+            $table->string('domain')
                 ->unique()
                 ->index();
 

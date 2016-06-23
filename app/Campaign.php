@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\CampaignPlay;
 use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
@@ -18,11 +17,9 @@ class Campaign extends Model
     protected $appends = ['play_id'];
 
     /**
-     * Parse given youtube link and save only it's id
+     * Parse given youtube link and save only it's id.
      *
      * @param string $video_url
-     *
-     * @return void
      */
     public function setVideoUrlAttribute($video_url)
     {
@@ -39,13 +36,13 @@ class Campaign extends Model
 
     /**
      * Script embed pattern.
-     * campaign id - youtube video id
+     * campaign id - youtube video id.
      *
      * @return string
      */
     public function getPlayIdAttribute()
     {
-        return $this->id . '-' . $this->video_url;
+        return $this->id.'-'.$this->video_url;
     }
 
     /**
