@@ -113,6 +113,11 @@ ul.navlist li:hover, ul.navlist li.active {
     margin-right: 17px;
 }
 
+#availablesites-navdroparea {
+	right: 180px;
+	width: 178px;
+}
+
 .display-leftsep {
 	float: left;
 	width: 50%;
@@ -645,11 +650,15 @@ input.campaignview-search {
 ul.rightside-navdroparea {
 	right: 2px;
 	position: absolute;
-	width: 179px;
+	width: 177px;
 	padding: 0;
 	margin: 0;
 	margin-top: 50px;
 	z-index: 9999;
+}
+
+ul.rightside-navdroparea a {
+	text-decoration: none;
 }
 
 ul.rightside-navdroparea li {
@@ -666,8 +675,8 @@ ul.rightside-navdroparea li {
     cursor: pointer;
 }
 
-ul.rightside-navdroparea li:first-child {
-	border-top: 1px solid #5C5882;
+ul.rightside-navdroparea a li:first-child {
+	border-bottom: 1px solid #5C5882;
 }
 
 ul.rightside-navdroparea li:hover {
