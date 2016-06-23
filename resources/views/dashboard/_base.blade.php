@@ -60,8 +60,6 @@
 
         @yield('content')
 
-        <!-- COPY EMBED TO CLIPBOARD -->
-        <script type="text/javascript" src="/template/js/copyclipboard.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.rightside-navdropdown, .rightside-navdroparea').mouseover(function() {

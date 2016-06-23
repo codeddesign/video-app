@@ -79,4 +79,6 @@
 		</div>
 	</div>
 
+    <!-- COPY EMBED TO CLIPBOARD -->
+    <script type="text/javascript" src="/template/js/copyclipboard.js"></script>
 @endsection
