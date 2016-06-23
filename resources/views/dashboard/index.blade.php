@@ -39,7 +39,7 @@
     <!-- CAMPAIGN SELECTION AREA -->
     <div class="campaignselection-wrap">
         <div class="currentcamp-title">CURRENT CAMPAIGN</div>
-        <div class="currentcamp-createbutton"><a href="/campaign/create">CREATE CAMPAIGN</a></div>
+        <div class="currentcamp-createbutton"><a href="/campaign">CREATE CAMPAIGN</a></div>
 
         <div class="campaignview-wrap">
             <form @submit.prevent="">

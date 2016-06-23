@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Campaign;
+use App\WordpressSite;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -55,6 +56,39 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * @return mixed
+     */
+    public function wordpress()
+    {
+        return $this->hasMany(WordpressSite::class);
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return WordpressSite
+     */
+    public function addWordpress($link)
+    {
+        return WordpressSite::create([
+            'user_id' => $this->id,
+            'link'    => $link,
+        ]);
+    }
+
+    /**
+     * @param  integer $id
+     *
+     * @return Wordpressite|null
+     */
+    public function wordpressById($id)
+    {
+        return $this->wordpress()
+                    ->whereId($id)
+                    ->first();
+    }
+
+    /**
      * @param  string  $name
      *
      * @return Campaign|null
@@ -62,8 +96,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function campaignByName($name)
     {
         return $this->campaigns()
-            ->whereCampaignName($name)
-            ->first();
+                    ->whereCampaignName($name)
+                    ->first();
     }
 
     /**
@@ -74,8 +108,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function campaignById($id)
     {
         return $this->campaigns()
-            ->whereId($id)
-            ->first();
+                    ->whereId($id)
+                    ->first();
     }
 
     /**

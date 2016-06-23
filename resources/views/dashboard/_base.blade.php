@@ -27,8 +27,12 @@
                 <li class="{{ set_active_nav('/', 'active') }}">DASHBOARD</li>
             </a>
 
-            <a href="/campaign/create">
-                <li class="{{ set_active_nav('/campaign/create', 'active') }}">CREATE CAMPAIGN</li>
+            <a href="/campaign">
+                <li class="{{ set_active_nav('/campaign', 'active') }}">CREATE CAMPAIGN</li>
+            </a>
+
+            <a href="/wordpress">
+                <li class="{{ set_active_nav('/wordpress', 'active') }}">WORDPRESS SITES</li>
             </a>
 
             <a href="#">

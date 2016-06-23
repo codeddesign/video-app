@@ -11,12 +11,12 @@ class CampaignController extends ControllerUser
 {
     const CENTS = .3;
 
-    public function getCreate()
+    public function getIndex()
     {
         return view('dashboard.campaign');
     }
 
-    public function postCreate(Request $request)
+    public function postIndex(Request $request)
     {
         $data = $request->only([
             'campaign_name',

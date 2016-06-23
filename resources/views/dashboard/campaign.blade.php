@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="campaign-creationwrap">
-		<form action="/campaign/create" method="post">
+		<form action="/campaign" method="post">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="campaign-creationyoutube">
 				<label>YOUTUBE URL</label>
