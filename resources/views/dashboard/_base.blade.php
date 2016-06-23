@@ -27,12 +27,17 @@
                 <li class="{{ set_active_nav('/', 'active') }}">DASHBOARD</li>
             </a>
 
+
+            <a href="#">
+                <li class="{{ set_active_nav('/analytics', 'active') }}">ANALYTICS</li>
+            </a>
+
             <a href="/campaign">
                 <li class="{{ set_active_nav('/campaign', 'active') }}">CREATE CAMPAIGN</li>
             </a>
 
             <a href="/wordpress">
-                <li class="{{ set_active_nav('/wordpress', 'active') }}">WORDPRESS SITES</li>
+                <li class="{{ set_active_nav('/wordpress', 'active') }}">WEBSITE CONFIG</li>
             </a>
 
             <a href="#">
@@ -46,7 +51,7 @@
             <div class="rightside-navlefttitle">
                 @yield('page_name')
             </div>
-            
+
             <!-- ACCOUNT DETAILS -->
             <div id="accountdetails" class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
             <ul id="accountdetails-navdroparea" class="rightside-navdroparea" style="display:none;">
@@ -57,7 +62,7 @@
                     <li>LOGOUT</li>
                 </a>
             </ul>
-			
+
 			<!-- AVAILABLE WEBSITES -->
 			<div id="availablesites" class="rightside-navdropdown">WEBSITES <span></span></div>
             <ul id="availablesites-navdroparea" class="rightside-navdroparea" style="display:none;">
