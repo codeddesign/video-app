@@ -42,7 +42,7 @@ class Campaign extends Model
      */
     public function getPlayIdAttribute()
     {
-        return $this->id.'-'.$this->video_url;
+        return $this->id.'.'.$this->video_url;
     }
 
     /**

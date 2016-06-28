@@ -25,6 +25,7 @@ class PluginController extends Controller
         }
 
         $campaign = $user->addCampaign($request->only('campaign_name', 'video_url'));
+
         return $this->corsResponse([
             'play_id' => $campaign->play_id,
         ]);
