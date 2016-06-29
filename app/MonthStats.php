@@ -156,7 +156,7 @@ class MonthStats
 
             $grouped = $campaign
                 ->plays
-                ->groupBy('day')
+                ->groupBy('hour')
                 ->map(function ($p) {
                     return $p->count();
                 });
