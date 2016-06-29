@@ -162,12 +162,7 @@ class MonthStats
                 });
 
             foreach ($grouped as $key => $value) {
-		if (!isset($data['list']['plays'][$key])) {
-                    $data['list'] = [
-                        'plays' => [$key => 0],
-                        'revenue' => [$key => 0],
-                    ];
-                }
+                $key = ltrim($key, 0);
 
                 $data['list']['plays'][$key] += $value;
                 $data['list']['revenue'][$key] += $value * $this->CENTS;
