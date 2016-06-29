@@ -111,9 +111,11 @@ class MonthStats
                     return $p->count();
                 });
 
-            foreach ($grouped as $key => $value) {
-                $data['list']['plays'][$key] += $value;
-                $data['list']['revenue'][$key] += $value * $this->CENTS;
+            foreach ($grouped as $day => $value) {
+                $day = $day - 1;
+
+                $data['list']['plays'][$day] += $value;
+                $data['list']['revenue'][$day] += $value * $this->CENTS;
             }
         }
 
@@ -161,11 +163,11 @@ class MonthStats
                     return $p->count();
                 });
 
-            foreach ($grouped as $key => $value) {
-                $key = ltrim($key, 0);
+            foreach ($grouped as $hour => $value) {
+                $hour = ltrim($hour, 0);
 
-                $data['list']['plays'][$key] += $value;
-                $data['list']['revenue'][$key] += $value * $this->CENTS;
+                $data['list']['plays'][$hour] += $value;
+                $data['list']['revenue'][$hour] += $value * $this->CENTS;
             }
         }
 
