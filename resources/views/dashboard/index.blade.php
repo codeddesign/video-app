@@ -162,14 +162,14 @@ new Vue({
 
     computed: {
         graphStats: function() {
-            var keys = Object.keys(this.response.stats)
+            var keys = Object.keys(this.response.stats);
 
             if (!keys.length) {
                 return false;
             }
 
             keys.forEach(function(key) {
-                if (typeof this.response.stats[key].list == 'undefined') {
+                if (this.response.stats[key] == null || this.response.stats[key].list == null) {
                     return false;
                 }
 
