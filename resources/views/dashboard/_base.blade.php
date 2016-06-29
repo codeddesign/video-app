@@ -27,7 +27,6 @@
                 <li class="{{ set_active_nav('/', 'active') }}">DASHBOARD</li>
             </a>
 
-
             <a href="#">
                 <li class="{{ set_active_nav('/analytics', 'active') }}">ANALYTICS</li>
             </a>

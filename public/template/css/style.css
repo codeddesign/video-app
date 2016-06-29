@@ -149,19 +149,20 @@ ul.navlist li:hover, ul.navlist li.active {
 }
 
 .display-septext {
-	float: left;
+	text-align: center;
 	line-height: 47px;
 	color: #878787;
 	font-size: 11px;
 	font-family: "proxima-nova",sans-serif;
 	margin-left: 20px;
+	font-weight: bold;
 }
 
 ul.campaignstats-row {
 	float: left;
 	width: 100%;
 	height: 158px;
-	margin: 0;
+	margin: 0 0 30px 0;
 	padding: 0;
 	font-family: "proxima-nova",sans-serif;
 }
@@ -183,6 +184,23 @@ ul.campaignstats-row li:last-child {
 	border-right: 0;
 	width: calc(25% - 1px);
 }
+
+ul.totalstats-row {
+	float: left;
+	width: 100%;
+	height: 350px;
+	margin: 0;
+	padding: 0;
+	font-family: "proxima-nova",sans-serif;
+}
+
+ul.totalstats-row li {
+	float: left;
+	width: 100%;
+	height: 349px;
+	list-style-type: none;
+}
+
 
 .campaignstats-title {
 	float: left;

@@ -36,6 +36,16 @@
         </li>
     </ul>
 
+
+
+    <ul class="totalstats-row">
+        <li>
+            <div class="campaignstats-digit">
+                <canvas id="graph_total" width="1000" height="200"></canvas>
+            </div>
+        </li>
+    </ul>
+
     <!-- CAMPAIGN SELECTION AREA -->
     <div class="campaignselection-wrap">
         <div class="currentcamp-title">CURRENT CAMPAIGN</div>
@@ -126,7 +136,11 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+
 <script src="/template/js/sparkline.min.js"></script>
+<script src="/template/js/Chart.min.js"></script>
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
 <script type="text/javascript">
@@ -210,6 +224,39 @@ $(document).ready(function() {
         resizableCols: true,
         paging: false,
         sorting: false
+    });
+
+    var data = {
+        labels: ["Jul 1", "Jul 2", "Jul 3", "Jul 4", "Jul 5", "Jul 6", "Jul 7"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(5,164,222,0.7)",
+                borderColor: "rgba(5,164,222,0.7)",
+                pointBorderColor: "rgba(5,164,222,1)",
+                pointBackgroundColor: "rgba(255,255,255,1)",
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                pointHitRadius: 10,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(5,164,222,1)",
+                pointHoverBorderWidth: 2,
+                data: [100, 700, 500, 1300, 1100, 300, 900]
+            }
+        ]
+    };
+
+    var ctx = document.getElementById('graph_total').getContext("2d");
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            legend: { display: false }
+        }
     });
 });
 </script>
