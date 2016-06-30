@@ -4,7 +4,7 @@
 
 <div class="accountpasswrap page-wordpress" v-cloak>
     <div class="accountpass-leftsep" style="width:100%;">
-        <div class="display-septext">Add new wordpress site</div>
+        <div class="display-septext">SITE VALIDATION</div>
     </div>
 
     <form action="/account/edit" method="post" @submit.prevent="add">
@@ -15,18 +15,23 @@
             <input name="link" placeholder="http://example.com" required v-model="site.link">
         </div>
 
-        <button type="submit">ADD</button>
+        <button type="submit">REQUEST APPROVAL</button>
     </form>
 
-    <div class="accountpass-accountidwrap" style="float: left;max-width: 700px;width: calc(100% - 60px);margin-left: 30px;margin-top: 30px;margin-right: 30px;">
+    <div class="accountpass-accountidwrap">
         <div class="accountpass-accountidtitle">Added</div>
 
         <div v-for="site in sites">
-            <div class="accountpass-accountid" style="text-align: left;margin-top: 1px;">
-                <span style="padding-left: 10px;">@{{ site.link }}</span>
-                <span class="campview-campoff campview-campoffactive" style="cursor: pointer; float: right;margin: 14px;"
-                    @click="remove(site.id)"
-                ></span>
+            <div class="accountpass-accountid">
+                <div class="sitevalidation-sitelink">@{{ site.link }}</div>
+                <div class="sitevalidation-timestamp">MARCH 15, 2016</div>
+                <!-- site approval alert -->
+
+                <!-- end approval alert -->
+                <button v-on:click="remove(site.id)" class="sitevalidation-removesite">REMOVE</button>
+                
+                <div class="sitevalidation-siteapproved">APPROVED</div>
+                <div class="sitevalidation-sitepending">PENDING</div>
             </div>
         </div>
     </div>
