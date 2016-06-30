@@ -36,8 +36,6 @@
         </li>
     </ul>
 
-
-
     <ul class="totalstats-row">
         <li>
             <div class="campaignstats-digit">
@@ -136,13 +134,16 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+
+<script src="/template/js/d3.v3.js"></script>
+<script src="/template/js/nv.d3.js"></script>
 
 <script src="/template/js/sparkline.min.js"></script>
-<script src="/template/js/Chart.min.js"></script>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
+
 <script type="text/javascript">
 new Vue({
     el: '.page-index',
@@ -233,15 +234,15 @@ $(document).ready(function() {
                 label: "My First dataset",
                 fill: false,
                 lineTension: 0,
-                backgroundColor: "rgba(5,164,222,0.7)",
-                borderColor: "rgba(5,164,222,0.7)",
+                backgroundColor: "rgba(5,164,222,1)",
+                borderColor: "rgba(5,164,222,1)",
                 pointBorderColor: "rgba(5,164,222,1)",
                 pointBackgroundColor: "rgba(255,255,255,1)",
                 pointBorderWidth: 2,
                 pointRadius: 5,
                 pointHitRadius: 10,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBackgroundColor: "rgba(5,164,222,1)",
                 pointHoverBorderColor: "rgba(5,164,222,1)",
                 pointHoverBorderWidth: 2,
                 data: [100, 700, 500, 1300, 1100, 300, 900]
@@ -249,13 +250,56 @@ $(document).ready(function() {
         ]
     };
 
-    var ctx = document.getElementById('graph_total').getContext("2d");
+    Chart.controllers.line.prototype.origDraw = Chart.controllers.line.prototype.draw;
+    Chart.controllers.line.prototype.draw = function (ease) {
+        var me = this;
+        var meta = me.getMeta();
+        var points = meta.data || [];
+
+        for (var i=0; i<points.length; i++) {
+            if (points[i]._view.backgroundColor == "rgba(5,164,222,1)") {
+                var point = points[i];
+
+                var gridLineOptions = point._xScale.options.gridLines;
+                ctx.lineWidth = gridLineOptions.lineWidth;
+                ctx.strokeStyle = "rgba(5,164,222,1)";
+                ctx.beginPath();
+                ctx.moveTo(point._model.x, (point._xScale.top + point._xScale.bottom) / 2);
+                ctx.lineTo(point._model.x, 0);
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+        this.origDraw(ease);
+    };
+
+    var ctx = $('#graph_total').get(0).getContext("2d");
     var chart = new Chart(ctx, {
         type: 'line',
         data: data,
         options: {
             responsive: true,
-            legend: { display: false }
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontSize: 15
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontSize: 15,
+                        callback: function(value) {
+                            return '$' + value;
+                        }
+                    }
+                }]
+            },
+            tooltips: {
+                mode: 'label'
+            }
         }
     });
 });
