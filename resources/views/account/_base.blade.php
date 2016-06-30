@@ -23,7 +23,7 @@
 <div class="loginwrapper">
     <div class="loginlogo">
         <center>
-            <img src="/template/images/videologo.png" width="66" height="63">
+            <img src="/template/images/videologo.png" width="78" height="29">
         </center>
     </div>
 
