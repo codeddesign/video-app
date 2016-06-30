@@ -11,15 +11,20 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}" v-model="site._token">
 
         <div>
-            <label>NEW SITE</label>
+            <label>ADD A NEW SITE</label>
             <input name="link" placeholder="http://example.com" required v-model="site.link">
         </div>
 
         <button type="submit">REQUEST APPROVAL</button>
     </form>
+    <div class="sitevalidation-howitworkswrap">
+    	<div class="sitevalidation-howitworks"><span></span> HOW APPROVAL WORKS</div>
+    	
+    	<div class="sitevalidation-worksaddtl"><span>NEW WEBSITE APPROVAL MAY TAKE UP TO 24 HOURS.</span>  <br>YOU WILL RECIEVE AN EMAIL ONCE YOUR WEBSITE HAS BEEN APPROVED.</div>
+    </div>
 
-    <div class="accountpass-accountidwrap">
-        <div class="accountpass-accountidtitle">Added</div>
+    <div class="accountpass-accountidwrap" style="margin-bottom:30px;">
+        <div class="accountpass-accountidtitle">WEBSITES ADDED</div>
 
         <div v-for="site in sites">
             <div class="accountpass-accountid">

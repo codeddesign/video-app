@@ -986,6 +986,46 @@ button.sitevalidation-removesite:hover {
 	line-height: 27px;
 }
 
+.sitevalidation-howitworkswrap {
+	float: right;
+	margin-right: 30px;
+	margin-top: 60px;
+}
+
+.sitevalidation-howitworks {
+	float: right;
+	font-size: 11px;
+	color: #878787;
+	font-weight: 600;
+}
+
+.sitevalidation-howitworks span {
+	float: left;
+	background: url('/template/images/sitevalid-howitworksicon.png');
+	width: 14px;
+	height: 14px;
+	margin-right: 10px;
+}
+
+.sitevalidation-worksaddtl {
+	float: right;
+    width: 300px;
+    font-size: 11px;
+    color: #878787;
+    font-weight: 600;
+    clear: both;
+    text-align: right;
+    margin-top: 27px;
+    line-height: 17px;
+    letter-spacing: 0.3px;
+}
+
+.sitevalidation-worksaddtl span {
+	color: #777777;
+	float: right;
+	margin-bottom: 7px;
+}
+
 .copied::after {
   float:left;
   content: "copied";
