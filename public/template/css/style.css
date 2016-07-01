@@ -3,350 +3,349 @@
 }
 
 body {
-	margin: 0;
-	font-family: "proxima-nova",sans-serif;
-	background: #F9F9F7;
+    margin: 0;
+    font-family: "proxima-nova",sans-serif;
+    background: #F9F9F7;
 }
 
 .leftsidebar {
-	float: left;
-	background: #303749;
-	width: 186px;
-	/*position: absolute;*/
-	position: fixed;
-	height: 100%;
+    float: left;
+    background: #303749;
+    width: 186px;
+    position: absolute;
+    height: 100%;
 }
 
 .rightside {
-	width: calc(100% - 186px);
-	margin-left: 186px;
-	background: #F9F9F7;
-	position: absolute;
-	height: 100%;
+    width: calc(100% - 186px);
+    margin-left: 186px;
+    background: #F9F9F7;
+    position: absolute;
+    height: 100%;
 }
 
 .logoarea {
-	float: left;
-	width: 100%;
-	height: 95px;
-	border-bottom: 1px solid #2B3142;
+    float: left;
+    width: 100%;
+    height: 95px;
+    border-bottom: 1px solid #2B3142;
 }
 
 .videologo {
-	background: url('/template/images/videologo.png');
-	width: 78px;
-	height: 29px;
-	margin-left: 53px;
+    background: url('/template/images/videologo.png');
+    width: 78px;
+    height: 29px;
+    margin-left: 53px;
     margin-top: 16px;
 }
 
 ul.navlist {
-	float: left;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 ul.navlist li {
-	background: #303749;
-	float: left;
-	height: 46px;
-	color: #FFFFFF;
-	font-size: 12px;
-	line-height: 46px;
-	text-indent: 43px;
-	width: 100%;
-	cursor: pointer;
+    background: #303749;
+    float: left;
+    height: 46px;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 46px;
+    text-indent: 43px;
+    width: 100%;
+    cursor: pointer;
 }
 li > a {
-	color: white;
-	text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 .loginadditional div > a
 {
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 ul.navlist li:hover, ul.navlist li.active {
-	background: #6F6BA2;
+    background: #6F6BA2;
 }
 
 .rightside-nav {
-	float: left;
-	width: 100%;
-	height: 50px;
-	background: #6C689E;
+    float: left;
+    width: 100%;
+    height: 50px;
+    background: #6C689E;
 }
 
 .rightside-navlefttitle {
-	float: left;
-	font-size: 11px;
-	color: #FFFFFF;
-	line-height: 50px;
-	margin-left: 34px;
-	letter-spacing: 0.6px;
+    float: left;
+    font-size: 11px;
+    color: #FFFFFF;
+    line-height: 50px;
+    margin-left: 34px;
+    letter-spacing: 0.6px;
 }
 
 .rightside-navdropdown {
-	float: right;
-	width: 178px;
-	border-left: 1px solid #5C5882;
-	text-align: center;
-	color: #FFFFFF;
-	font-size: 12px;
-	line-height: 50px;
-	cursor: pointer;
+    float: right;
+    width: 178px;
+    border-left: 1px solid #5C5882;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 50px;
+    cursor: pointer;
 }
 
 .rightside-navdropdown:hover {
-	background: #303749;
-	border-left: 1px solid #303749;
+    background: #303749;
+    border-left: 1px solid #303749;
 }
 
 .rightside-navdropdown span {
-	background: url('/template/images/navdropdownspan.png');
-	width: 8px;
-	height: 4px;
-	float: right;
-	margin-top: 22px;
+    background: url('/template/images/navdropdownspan.png');
+    width: 8px;
+    height: 4px;
+    float: right;
+    margin-top: 22px;
     margin-right: 17px;
 }
 
 #availablesites-navdroparea {
-	right: 180px;
-	width: 178px;
+    right: 180px;
+    width: 178px;
 }
 
 .display-leftsep {
-	float: left;
-	width: 50%;
-	height: 46px;
-	border-right: 1px solid #E3E1E0;
-	border-bottom: 1px solid #E3E1E0;
+    float: left;
+    width: 50%;
+    height: 46px;
+    border-right: 1px solid #E3E1E0;
+    border-bottom: 1px solid #E3E1E0;
 }
 
 .createcampaign-leftsep {
-	float: left;
-	width: calc(100% - 701px);
-	height: 46px;
-	border-right: 1px solid #E3E1E0;
-	border-bottom: 1px solid #E3E1E0;
+    float: left;
+    width: calc(100% - 701px);
+    height: 46px;
+    border-right: 1px solid #E3E1E0;
+    border-bottom: 1px solid #E3E1E0;
 }
 
 .display-rightsep {
-	float: left;
-	width: calc(50% - 1px);
-	height: 46px;
-	border-bottom: 1px solid #E3E1E0;
+    float: left;
+    width: calc(50% - 1px);
+    height: 46px;
+    border-bottom: 1px solid #E3E1E0;
 }
 
 .createcampaign-rightsep {
-	float: left;
-	width: 700px;
-	height: 46px;
-	border-bottom: 1px solid #E3E1E0;
+    float: left;
+    width: 700px;
+    height: 46px;
+    border-bottom: 1px solid #E3E1E0;
 }
 
 .display-septext {
-	text-align: center;
-	line-height: 47px;
-	color: #878787;
-	font-size: 11px;
-	font-family: "proxima-nova",sans-serif;
-	margin-left: 20px;
-	font-weight: bold;
+    text-align: center;
+    line-height: 47px;
+    color: #878787;
+    font-size: 11px;
+    font-family: "proxima-nova",sans-serif;
+    margin-left: 20px;
+    font-weight: bold;
 }
 
 ul.campaignstats-row {
-	float: left;
-	width: 100%;
-	height: 158px;
-	margin: 0 0 30px 0;
-	padding: 0;
-	font-family: "proxima-nova",sans-serif;
+    float: left;
+    width: 100%;
+    height: 158px;
+    margin: 0 0 30px 0;
+    padding: 0;
+    font-family: "proxima-nova",sans-serif;
 }
 
 ul.campaignstats-row li {
-	float: left;
-	width: 25%;
-	border-right: 1px solid #E3E1E0;
-	border-bottom: 1px solid #E3E1E0;
-	height: 158px;
-	list-style-type: none;
+    float: left;
+    width: 25%;
+    border-right: 1px solid #E3E1E0;
+    border-bottom: 1px solid #E3E1E0;
+    height: 158px;
+    list-style-type: none;
 }
 
 ul.campaignstats-row li:nth-child(2), ul.campaignstats-row li:nth-child(3) {
-	width: calc(25% - 1px);
+    width: calc(25% - 1px);
 }
 
 ul.campaignstats-row li:last-child {
-	border-right: 0;
-	width: calc(25% - 1px);
+    border-right: 0;
+    width: calc(25% - 1px);
 }
 
 ul.totalstats-row {
-	float: left;
-	width: 100%;
-	height: 350px;
-	margin: 0;
-	padding: 0;
-	font-family: "proxima-nova",sans-serif;
+    float: left;
+    width: 100%;
+    height: 350px;
+    margin: 0;
+    padding: 0;
+    font-family: "proxima-nova",sans-serif;
 }
 
 ul.totalstats-row li {
-	float: left;
-	width: 100%;
-	height: 349px;
-	list-style-type: none;
+    float: left;
+    width: 100%;
+    height: 349px;
+    list-style-type: none;
 }
 
 .campaignstats-title {
-	float: left;
-	width: 100%;
-	text-align: center;
-	font-size: 11px;
-	color: #878787;
-	margin-top: 32px;
-	font-weight: 500;
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    color: #878787;
+    margin-top: 32px;
+    font-weight: 500;
 }
 
 .campaignstats-digit {
-	float: left;
-	width: 100%;
-	text-align: center;
-	font-size: 32px;
-	font-weight: 600;
-	color: #7772A7;
-	margin-top: 5px;
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #7772A7;
+    margin-top: 5px;
 }
 
 .campaignselection-wrap {
-	float: left;
-	width: calc(100% - 72px);
-	margin-left: 36px;
+    float: left;
+    width: calc(100% - 72px);
+    margin-left: 36px;
 }
 
 .currentcamp-title {
-	font-size: 11px;
-	color: #868686;
-	float: left;
-	margin-top: 28px;
+    font-size: 11px;
+    color: #868686;
+    float: left;
+    margin-top: 28px;
 }
 
 .currentcamp-createbutton {
-	float: right;
-	width: 152px;
-	height: 40px;
-	background: #303749;
-	line-height: 40px;
-	text-align: center;
-	font-size: 11px;
-	color: #EEEEEE;
-	margin-top: 8px;
-	cursor: pointer;
+    float: right;
+    width: 152px;
+    height: 40px;
+    background: #303749;
+    line-height: 40px;
+    text-align: center;
+    font-size: 11px;
+    color: #EEEEEE;
+    margin-top: 8px;
+    cursor: pointer;
 }
 .currentcamp-createbutton a {
-	color: #EEEEEE;
-	text-decoration: none;
+    color: #EEEEEE;
+    text-decoration: none;
 }
 .currentcamp-createbutton:hover {
-	background: #2B3142;
+    background: #2B3142;
 }
 
 .campaignview-wrap {
-	float: left;
-	width: 100%;
-	border: 1px solid #E3E1E0;
-	margin-top: 8px;
-	margin-bottom: 50px;
+    float: left;
+    width: 100%;
+    border: 1px solid #E3E1E0;
+    margin-top: 8px;
+    margin-bottom: 50px;
 }
 
 input.campaignview-search {
-	float: left;
-	width: calc(100% - 86px);
-	height: 38px;
-	padding: 0 15px 0 30px;
-	border: none;
-	border-bottom: 1px solid #E3E1E0;
-	border-right: 1px solid #E3E1E0;
-	color: #333333;
-	font-size: 13px;
+    float: left;
+    width: calc(100% - 86px);
+    height: 38px;
+    padding: 0 15px 0 30px;
+    border: none;
+    border-bottom: 1px solid #E3E1E0;
+    border-right: 1px solid #E3E1E0;
+    color: #333333;
+    font-size: 13px;
 }
 
 .campaignview-searchicon {
-	position: absolute;
-	background: url('/template/images/campviewsearchicon.png');
-	width: 16px;
-	height: 16px;
-	margin-top: 11px;
+    position: absolute;
+    background: url('/template/images/campviewsearchicon.png');
+    width: 16px;
+    height: 16px;
+    margin-top: 11px;
     margin-left: 8px;
 }
 
 .campaignview-dropbutton {
-	float: left;
-	width: 40px;
-	background: #EFEFEE;
-	border-bottom: 1px solid #E3E1E0;
-	color: #7773A8;
-	text-align: center;
-	line-height: 40px;
-	font-weight: 600;
+    float: left;
+    width: 40px;
+    background: #EFEFEE;
+    border-bottom: 1px solid #E3E1E0;
+    color: #7773A8;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
     font-size: 20px;
     height: 38px;
     cursor: pointer;
 }
 
 .campaignview-dropbutton:hover {
-	background: #7773A8;
-	color: #FFFFFF;
+    background: #7773A8;
+    color: #FFFFFF;
 }
 
 .campaignview-droppedarea {
-	float: left;
-	width: 100%;
-	border-bottom: 1px solid #E3E1E0;
-	background: #EFEFEE;
-	height: 80px;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #E3E1E0;
+    background: #EFEFEE;
+    height: 80px;
 }
 
 .campview-dropwhere {
-	float: left;
-	width: 142px;
-	margin-top: 20px;
-	margin-left: 20px;
+    float: left;
+    width: 142px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .campview-droptitle {
-	float: left;
-	width: 100%;
-	color: #878787;
-	font-size: 10px;
-	margin-bottom: 5px;
+    float: left;
+    width: 100%;
+    color: #878787;
+    font-size: 10px;
+    margin-bottom: 5px;
 }
 
 .campview-dropwhere select {
-	width: 100%;
-	background: #FFFFFF;
-	border: 1px solid #E3E1E0;
-	height: 28px;
-	font-size: 11px;
-	color: #7773A8;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	padding: 0 6px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E3E1E0;
+    height: 28px;
+    font-size: 11px;
+    color: #7773A8;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    padding: 0 6px;
     line-height: 22px;
 }
 
 .campview-selectarrow {
-	position: absolute;
-	background: url('/template/images/campviewselectarrow.png');
-	width: 9px;
-	height: 4px;
-	margin-top: -15px;
+    position: absolute;
+    background: url('/template/images/campviewselectarrow.png');
+    width: 9px;
+    height: 4px;
+    margin-top: -15px;
     margin-left: 123px;
 }
 
@@ -358,7 +357,7 @@ input.campaignview-search {
 }
 
 .campview-searchinput input {
-	width: calc(100% - 14px);
+    width: calc(100% - 14px);
     background: #FFFFFF;
     border: 1px solid #E3E1E0;
     height: 26px;
@@ -373,17 +372,17 @@ input.campaignview-search {
 }
 
 .campview-dropandwhere select {
-	width: 100%;
-	background: #FFFFFF;
-	border: 1px solid #E3E1E0;
-	height: 28px;
-	font-size: 11px;
-	color: #7773A8;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	padding: 0 6px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E3E1E0;
+    height: 28px;
+    font-size: 11px;
+    color: #7773A8;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    padding: 0 6px;
     line-height: 22px;
 }
 
@@ -409,7 +408,7 @@ input.campaignview-search {
 }
 
 .campview-dropmin input, .campview-droptomax input {
-	width: calc(100% - 14px);
+    width: calc(100% - 14px);
     background: #FFFFFF;
     border: 1px solid #E3E1E0;
     height: 26px;
@@ -424,185 +423,185 @@ input.campaignview-search {
 }
 
 .campaignview-droppedarea button {
-	width: 91px;
-	height: 26px;
-	background: #7773A8;
-	text-align: center;
-	line-height: 20px;
-	color: #FFFFFF;
-	font-size: 10px;
-	margin-left: 20px;
-	border: 1px solid #7571A5;
-	float: left;
-	margin-top: 38px;
+    width: 91px;
+    height: 26px;
+    background: #7773A8;
+    text-align: center;
+    line-height: 20px;
+    color: #FFFFFF;
+    font-size: 10px;
+    margin-left: 20px;
+    border: 1px solid #7571A5;
+    float: left;
+    margin-top: 38px;
 }
 
 .campaignview-droppedarea button:hover {
-	background: #303749;
-	border: 1px solid #303749;
-	cursor: pointer;
+    background: #303749;
+    border: 1px solid #303749;
+    cursor: pointer;
 }
 
 .campview-camplistwrap {
-	display: inline-block;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	overflow-x: auto;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    overflow-x: auto;
 }
 
 .campview-camplistwrap .ingrid {
-	display: inline-block;
-	width: 100%;
-	min-width: 1100px;
+    display: inline-block;
+    width: 100%;
+    min-width: 1100px;
 }
 
 .campview-camplistwrap .ingrid div {
-	max-width: 100% !important;
+    max-width: 100% !important;
 }
 
 .campview-camplistwrap .ingrid .grid-header-bg {
-	left: 0 !important;
+    left: 0 !important;
 }
 
 .campview-camplistwrap table {
-	width: 100%;
-	float: left;
+    width: 100%;
+    float: left;
 }
 
 .campview-camplistwrap .ingrid > div:first-child {
-	max-width: 100%;
-	height: auto !important;
+    max-width: 100%;
+    height: auto !important;
 }
 
 .campview-campoff {
-	background: url('/template/images/campviewoff.png');
-	width: 15px;
-	height: 15px;
-	margin-right: 12px;
-	float: left;
+    background: url('/template/images/campviewoff.png');
+    width: 15px;
+    height: 15px;
+    margin-right: 12px;
+    float: left;
 }
 
 .campview-campoff:hover, .campview-campoffactive {
-	background: url('/template/images/campviewoff.png') 0 -15px;
+    background: url('/template/images/campviewoff.png') 0 -15px;
 }
 
 .campview-campon {
-	background: url('/template/images/campviewon.png');
-	width: 20px;
-	height: 15px;
-	float: left;
+    background: url('/template/images/campviewon.png');
+    width: 20px;
+    height: 15px;
+    float: left;
 }
 
 .campview-campon:hover, .campview-camponactive {
-	background: url('/template/images/campviewon.png') 0 -15px;
+    background: url('/template/images/campviewon.png') 0 -15px;
 }
 
 .campaign-creationwrap {
-	float: left;
-	/*width: 50%;*/
-	width: calc(100% - 701px);
-	background: #EFEFEE;
+    float: left;
+    /*width: 50%;*/
+    width: calc(100% - 701px);
+    background: #EFEFEE;
 }
 
 .campaign-outputwrap {
-	float: right;
-	/*width: calc(50% - 1px);*/
-	width: 700px;
-	background: #FFFFFF;
-	border-left: 1px solid #E3E1E0;
-	height: calc(100% - 97px);
+    float: right;
+    /*width: calc(50% - 1px);*/
+    width: 700px;
+    background: #FFFFFF;
+    border-left: 1px solid #E3E1E0;
+    height: calc(100% - 97px);
 }
 
 .campaign-videoarea {
-	float: left;
-	margin-left: 30px;
-	margin-top: 30px;
-	width: calc(100% - 60px);
-	/*background: #555555;*/
-	text-align: center;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    width: calc(100% - 60px);
+    /*background: #555555;*/
+    text-align: center;
 }
 
 .campaign-creationwrap form {
-	float: left;
-	width: calc(100% - 60px);
-	margin-left: 30px;
-	margin-top: 30px;
+    float: left;
+    width: calc(100% - 60px);
+    margin-left: 30px;
+    margin-top: 30px;
 }
 
 .campaign-creationwrap form label {
-	float: left;
-	width: 100%;
-	font-size: 10px;
-	color: #7773A8;
-	font-weight: 600;
-	margin-bottom: 9px;
+    float: left;
+    width: 100%;
+    font-size: 10px;
+    color: #7773A8;
+    font-weight: 600;
+    margin-bottom: 9px;
 }
 
 .campaign-creationwrap form input {
-	float: left;
-	width: calc(100% - 30px);
-	padding: 0 15px;
-	height: 43px;
-	border: 1px solid #E7E5E4;
-	font-size: 13px;
+    float: left;
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    height: 43px;
+    border: 1px solid #E7E5E4;
+    font-size: 13px;
 }
 
 .campaign-creationwrap form .campaign-creationvidsize input[type="checkbox"] {
-	float: left;
-	width: 14px;
-	height: 14px;
+    float: left;
+    width: 14px;
+    height: 14px;
 }
 
 .campaign-creationwrap form .campaign-creationvidsize span {
-	float: left;
-	font-size: 10px;
-	color: #868686;
-	margin-top: 4px;
+    float: left;
+    font-size: 10px;
+    color: #868686;
+    margin-top: 4px;
     margin-left: 5px;
 }
 
 .campaign-creationwrap form .campaign-creationyoutube {
-	display: inline-block;
-	margin-bottom: 25px;
-	width: 100%;
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .campaign-creationwrap form .campaign-creationvidsize {
-	display: inline-block;
-	margin-bottom: 25px;
-	width: 100%;
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .campaign-creationwrap form button {
-	float: left;
-	width: calc(100% + 60px);
-	background: #7A76AC;
-	height: 46px;
-	text-align: center;
-	color: #FFFFFF;
-	line-height: 46px;
-	font-size: 10px;
-	border: none;
-	margin-left: -30px;
-	cursor: pointer;
+    float: left;
+    width: calc(100% + 60px);
+    background: #7A76AC;
+    height: 46px;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 46px;
+    font-size: 10px;
+    border: none;
+    margin-left: -30px;
+    cursor: pointer;
 }
 
 .campaign-creationwrap form button:hover {
-	background: #75709E;
+    background: #75709E;
 }
 
 .campaign-creationwrap form .campaign-creationchoosead {
-	display: inline-block;
+    display: inline-block;
     margin-bottom: 45px;
-	width: 100%;
+    width: 100%;
 }
 
 .campaign-creationwrap form .campaign-creationchoosead select {
-	float: left;
-	width: 100%;
-	-webkit-appearance: none;
-	font-size: 13px;
+    float: left;
+    width: 100%;
+    -webkit-appearance: none;
+    font-size: 13px;
     line-height: 43px;
     border-radius: 0;
     border: none;
@@ -613,79 +612,79 @@ input.campaignview-search {
 }
 
 .campvideoarea-embedtitles {
-	float: left;
-	width: calc(100% - 60px);
-	margin-top: 33px;
-	padding: 0 30px;
-	margin-bottom: 10px;
+    float: left;
+    width: calc(100% - 60px);
+    margin-top: 33px;
+    padding: 0 30px;
+    margin-bottom: 10px;
 }
 
 .campvideoarea-embedcodetitle {
-	float: left;
-	font-size: 10px;
-	color: #868686;
-	font-weight: 600;
+    float: left;
+    font-size: 10px;
+    color: #868686;
+    font-weight: 600;
 }
 
 .campvideoarea-copycodetitle {
-	float: right;
-	font-size: 10px;
-	/*color: #868686;*/
-	color: #02AAFF;
-	font-weight: 600;
-	cursor: pointer;
+    float: right;
+    font-size: 10px;
+    /*color: #868686;*/
+    color: #02AAFF;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .campvideoarea-copycodetitle:hover {
-	color: #3589C3;
+    color: #3589C3;
 }
 
 .campvideoarea-codearea {
-	float: left;
-	width: calc(100% - 60px);
-	background: #F3FBFC;
-	padding: 30px;
+    float: left;
+    width: calc(100% - 60px);
+    background: #F3FBFC;
+    padding: 30px;
 }
 
 .campvideoarea-codearea pre {
-	font-size: 12px;
-	color: #868686;
-	float: left;
-	width: 100%;
+    font-size: 12px;
+    color: #868686;
+    float: left;
+    width: 100%;
 }
 
 .campvideoarea-codearea textarea {
-	font-size: 12px;
-	color: #868686;
-	float: left;
-	width: 100%;
-	border:none;
-	background: none;
-	overflow: hidden;
-	max-width: 100%;
+    font-size: 12px;
+    color: #868686;
+    float: left;
+    width: 100%;
+    border:none;
+    background: none;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 ul.rightside-navdroparea {
-	right: 2px;
-	position: absolute;
-	width: 177px;
-	padding: 0;
-	margin: 0;
-	margin-top: 50px;
-	z-index: 9999;
+    right: 2px;
+    position: absolute;
+    width: 177px;
+    padding: 0;
+    margin: 0;
+    margin-top: 50px;
+    z-index: 9999;
 }
 
 ul.rightside-navdroparea a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 ul.rightside-navdroparea li {
-	list-style-type: none;
-	text-align: center;
-	color: #FFFFFF;
-	border: 1px solid #5C5882;
-	border-top: none;
-	font-size: 12px;
+    list-style-type: none;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #5C5882;
+    border-top: none;
+    font-size: 12px;
     line-height: 50px;
     height: 50px;
     width: 100%;
@@ -694,102 +693,102 @@ ul.rightside-navdroparea li {
 }
 
 ul.rightside-navdroparea a li:first-child {
-	border-bottom: 1px solid #5C5882;
+    border-bottom: 1px solid #5C5882;
 }
 
 ul.rightside-navdroparea li:hover {
-	background: #262B3A;
+    background: #262B3A;
 }
 
 #loginpage {
-	background: #303749;
+    background: #303749;
 }
 
 .loginwrapper {
-	width: 276px;
-	margin: 0 auto;
-	margin-top: 100px;
+    width: 276px;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 
 .loginlogo {
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 50px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .loginwrapper form {
-	float: left;
-	width: 100%;
+    float: left;
+    width: 100%;
 }
 
 .loginwrapper form div {
-	float: left;
-	width: 100%;
-	margin-bottom: 9px;
+    float: left;
+    width: 100%;
+    margin-bottom: 9px;
 }
 
 .loginwrapper form input {
-	background: #EEEEEE;
-	width: calc(100% - 55px);
-	padding: 0 15px 0 40px;
-	height: 46px;
-	line-height: 46px;
-	font-size: 12px;
-	color: #777;
-	border: none;
+    background: #EEEEEE;
+    width: calc(100% - 55px);
+    padding: 0 15px 0 40px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 12px;
+    color: #777;
+    border: none;
 }
 
 .loginwrapper form button {
-	background: #8883B9;
-	text-align: center;
-	display: inline-block;
-	width: 100%;
-	height: 46px;
-	line-height: 46px;
-	font-size: 12px;
-	color: #FFFFFF;
-	border: none;
-	cursor: pointer;
+    background: #8883B9;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
 }
 
 .loginwrapper form button:hover {
-	background: #75709E;
+    background: #75709E;
 }
 
 .loginemailicon {
-	position: absolute;
-	background: url('/template/images/loginemailicon.png') no-repeat;
-	width: 18px;
-	height: 16px;
-	margin-top: -30px;
+    position: absolute;
+    background: url('/template/images/loginemailicon.png') no-repeat;
+    width: 18px;
+    height: 16px;
+    margin-top: -30px;
     margin-left: 10px;
 }
 
 .loginpassicon {
-	position: absolute;
-	background: url('/template/images/loginpassicon.png') no-repeat;
-	width: 15px;
-	height: 18px;
-	margin-top: -32px;
+    position: absolute;
+    background: url('/template/images/loginpassicon.png') no-repeat;
+    width: 15px;
+    height: 18px;
+    margin-top: -32px;
     margin-left: 10px;
 }
 
 .loginadditional {
-	float: left;
-	width: 100%;
-	margin-top: 60px;
+    float: left;
+    width: 100%;
+    margin-top: 60px;
 }
 
 .loginadditional .login-registerbutton, .loginadditional .login-lostpassbutton {
-	width: 50%;
-	font-size: 12px;
-	color: #FFFFFF;
-	text-align: center;
-	float: left;
+    width: 50%;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    float: left;
 }
 
 .accountpass-leftsep {
-	float: left;
+    float: left;
     width: 50%;
     height: 46px;
     border-bottom: 1px solid #E3E1E0;
@@ -797,7 +796,7 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap {
-	width: 100%;
+    width: 100%;
     background: #EFEFEE;
     position: absolute;
     height: calc(100% - 50px);
@@ -805,8 +804,8 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap form {
-	float: left;
-	max-width: 700px;
+    float: left;
+    max-width: 700px;
     width: calc(100% - 60px);
     margin-left: 30px;
     margin-top: 30px;
@@ -814,13 +813,13 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap form div {
-	float: left;
-	width: 100%;
-	margin-bottom: 20px;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .accountpasswrap form label {
-	float: left;
+    float: left;
     width: 100%;
     font-size: 10px;
     color: #7773A8;
@@ -829,7 +828,7 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap form input {
-	float: left;
+    float: left;
     width: calc(100% - 30px);
     padding: 0 15px;
     height: 43px;
@@ -838,7 +837,7 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap form button {
-	float: left;
+    float: left;
     width: 100%;
     background: #7A76AC;
     height: 46px;
@@ -851,50 +850,47 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpasswrap form button:hover {
-	background: #75709E;
+    background: #75709E;
 }
 
 
 .video_size_width {
-	width: 80px !important;
-	margin-left: 30px;
-	/*margin-top: 30px;*/
-	margin-top: -13px;
-	display: inline-block;
+    width: 80px !important;
+    margin-left: 30px;
+    /*margin-top: 30px;*/
+    margin-top: -13px;
+    display: inline-block;
 }
 
 .video_size_height {
-	width: 80px !important;
-	margin-left: 30px;
-	/*margin-top: 30px;*/
-	margin-top: -13px;
-	display: inline-block;
+    width: 80px !important;
+    margin-left: 30px;
+    /*margin-top: 30px;*/
+    margin-top: -13px;
+    display: inline-block;
 }
 
 .width_100 {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .vjs-afterglow-skin .vjs-mute-control, .vjs-afterglow-skin .vjs-volume-menu-button {
-	margin-right: 70px !important;
+    margin-right: 70px !important;
 }
 
 .edit_icon {
-	width: 15px;
-	height: 15px;
+    width: 15px;
+    height: 15px;
 }
 
 .accountpass-accountidwrap {
-	float: left;
-	width: calc(100% - 60px);
-	margin-left: 30px;
-	margin-top: 30px;
-	margin-right: 30px;
+    float: left;
+    width: 100%;
 }
 
 .accountpass-accountidtitle {
-	float: left;
+    float: left;
     width: 100%;
     font-size: 10px;
     color: #7773A8;
@@ -905,24 +901,18 @@ ul.rightside-navdroparea li:hover {
 }
 
 .accountpass-accountid {
-	float: left;
-	width: 100%;
-	/*height: 43px;*/
-	/*background: #DDDDDD;*/
-	height: 52px;
-	background: #FFFFFF;
-	text-align: center;
-	line-height: 52px;
-	font-size: 12px;
-	color: #666666;
-	border: 1px solid #DDDDDD;
-	text-transform: uppercase;
-	font-weight: 600;
-	margin-bottom: 2px;
+    float: left;
+    width: 100%;
+    height: 43px;
+    background: #DDDDDD;
+    text-align: center;
+    line-height: 43px;
+    font-size: 21px;
+    color: #666;
 }
 
 .loginform-registertitle {
-	float: left;
+    float: left;
     width: 100%;
     margin-bottom: 10px;
     color: #fff;
@@ -1021,37 +1011,72 @@ button.sitevalidation-removesite:hover {
 }
 
 .sitevalidation-worksaddtl span {
-	color: #777777;
-	float: right;
-	margin-bottom: 7px;
+    color: #777777;
+    float: right;
+    margin-bottom: 7px;
+}
+
+.loginform-error {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #ff0000;
+    font-size: 12px;
 }
 
 .copied::after {
-  float:left;
-  content: "copied";
-  font-size: 12px;
-  padding: 2px 6px;
-  color: #fff;
-  background-color: #22a;
-  border-radius: 3px;
-  opacity: 0;
-  will-change: opacity, transform;
-  animation: showcopied 2.5s ease;
-  margin-top: -3px;
-  margin-right: 10px;
-  margin-bottom: -3px;
+    float:left;
+    content: "copied";
+    font-size: 12px;
+    padding: 2px 6px;
+    color: #fff;
+    background-color: #22a;
+    border-radius: 3px;
+    opacity: 0;
+    will-change: opacity, transform;
+    animation: showcopied 2.5s ease;
+    margin-top: -3px;
+    margin-right: 10px;
+    margin-bottom: -3px;
 }
 
 @keyframes showcopied {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  70% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    70% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.verify-success span {
+    text-align: center;
+    color: #fff;
+}
+
+.verify-success img {
+    display: block;
+    margin: 0 auto;
+}
+
+.verify-success button {
+    background: #8883B9;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
 }
