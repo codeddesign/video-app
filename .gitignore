@@ -1,4 +1,6 @@
 /vendor
+
+!/vendor/getprove
 /node_modules
 Homestead.yaml
 Homestead.json

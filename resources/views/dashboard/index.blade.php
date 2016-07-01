@@ -136,9 +136,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
 
-<script src="/template/js/d3.v3.js"></script>
-<script src="/template/js/nv.d3.js"></script>
-
 <script src="/template/js/sparkline.min.js"></script>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.js"></script>

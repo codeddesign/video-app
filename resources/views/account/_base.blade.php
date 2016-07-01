@@ -17,6 +17,9 @@
 <script src="https://use.typekit.net/lwk5wec.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
+<!-- Custom javascript -->
+<script type="text/javascript" src="/template/js/account.js"></script>
+
 </head>
 <body id="loginpage">
 

@@ -73,20 +73,69 @@ class AccountController extends Controller
     {
         $this->redirectHomeWhenUser();
 
-        $data = $request->only(['email', 'password', 'confirm_password']);
-        if ($data['password'] != $data['confirm_password']) {
-            return view('account.register', ['error' => 'Passwords do not match']);
-        }
+        $data = $request->only(['email', 'password']);
 
         if (User::whereEmail($data['email'])->first()) {
-            return view('account.register', ['error' => 'This account already exists']);
+            return response()->json(['status' => 0]);
+        } else {
+            return response()->json(['status' => 1]);
         }
 
-        $user = User::create($data);
+    }
 
-        Auth::login($user);
+    public function postVerify(Request $request)
+    {
+        $data = $request->all();
 
-        return redirect('/');
+        $url = 'https://api.nexmo.com/verify/json?' . http_build_query([
+                'api_key' => '43756f0f',
+                'api_secret' => 'dee2bce0b4e8c12a',
+                'number' => $data['number'],
+                'brand' => 'ADS'
+            ]);
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+
+        $result = json_decode($response);
+
+        if($result->status == 0) {
+            return response()->json(['status' => 0, 'request_id' => $result->request_id]);
+        } else if($result->status == 3) {
+            return response()->json(['status' => 3]);
+        } else if($result->status == 10) {
+            return response()->json(['status' => 10]);
+        }
+    }
+
+    public function getVerify(Request $request)
+    {
+        $data = $request->all();
+
+        $url = 'https://api.nexmo.com/verify/check/json?' . http_build_query([
+                'api_key' => '43756f0f',
+                'api_secret' => 'dee2bce0b4e8c12a',
+                'request_id' => $data['request_id'],
+                'code' => $data['pin']
+            ]);
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+
+        $result = json_decode($response);
+
+        if($result->status == 0) {
+            $user = User::create($data);
+            Auth::login($user);
+
+            return response()->json(['status' => 0]);
+        } else if($result->status == 16) {
+            return response()->json(['status' => 16]);
+        }
+
+        exit;
     }
 
     /**

@@ -9,7 +9,6 @@
     <link href="/template/css/ingrid.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
-    <link href="/template/css/nv.d3.css" rel="stylesheet" type="text/css">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
     <!-- include typekit font -->
