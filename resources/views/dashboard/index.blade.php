@@ -224,6 +224,8 @@ $(document).ready(function() {
         sorting: false
     });
 
+    var ctx = $('#graph_total').get(0).getContext("2d");
+
     var data = {
         labels: ["Jul 1", "Jul 2", "Jul 3", "Jul 4", "Jul 5", "Jul 6", "Jul 7"],
         datasets: [
@@ -397,7 +399,72 @@ $(document).ready(function() {
 //        this.origDraw(ease);
 //    };
 
-    var ctx = $('#graph_total').get(0).getContext("2d");
+    var helpers = Chart.helpers;
+//    Chart.controllers.bar.prototype.setHoverStyle = function(rectangle) {
+//        debugger;
+//        var dataset = this.chart.data.datasets[rectangle._datasetIndex];
+//        var index = rectangle._index;
+//
+//        var custom = rectangle.custom || {};
+//        var model = rectangle._model;
+//        model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.getValueAtIndexOrDefault(dataset.hoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
+//        model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.getValueAtIndexOrDefault(dataset.hoverBorderColor, index, helpers.getHoverColor(model.borderColor));
+//        model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
+//    };
+    var currentElement;
+    helpers.extend(Chart.Controller.prototype, {
+        getElementAtEvent: function(e) {
+            var me = this;
+            var eventPosition = helpers.getRelativePosition(e, me.chart);
+            var elementsArray = [];
+
+            helpers.each(me.data.datasets, function(dataset, datasetIndex) {
+                if (me.isDatasetVisible(datasetIndex)) {
+                    var meta = me.getDatasetMeta(datasetIndex);
+                    helpers.each(meta.data, function(element, index) {
+                        if (element.inRange(eventPosition.x, eventPosition.y)) {
+                            elementsArray.push(element);
+                            return elementsArray;
+                        }
+                    });
+                }
+            });
+            currentElement = elementsArray[0];
+            return elementsArray;
+        },
+        updateHoverStyle: function(elements, mode, enabled) {
+
+            var method = enabled? 'setHoverStyle' : 'removeHoverStyle';
+            var element, i;
+
+            switch (mode) {
+                case 'single':
+                    elements = [ elements[0] ];
+                    break;
+                case 'label':
+                case 'dataset':
+                    // elements = elements;
+                    break;
+                default:
+                    // unsupported mode
+                    return;
+            }
+
+            for (i=0; i<elements.length; i++) {
+                element = elements[i];
+                if (element) {
+                    if(currentElement && element._datasetIndex == currentElement._datasetIndex) {
+                        element._chart.config.data.datasets[i].hoverBackgroundColor = "rgb(63,72,92)";
+                        this.getDatasetMeta(element._datasetIndex).controller[method](element);
+                    } else {
+                        this.getDatasetMeta(element._datasetIndex).controller[method](element);
+                    }
+                }
+                element._chart.config.data.datasets[i].hoverBackgroundColor = "rgb(2,163,222)";
+            }
+        }
+    });
+
     var chart = new Chart(ctx, {
         type: 'bar',
         data: data,
@@ -412,7 +479,8 @@ $(document).ready(function() {
                         fontSize: 15
                     },
                     gridLines: {
-                        display: false
+                        display: false,
+                        offsetGridLines: false
                     },
                     barPercentage: 0.9,
                     categoryPercentage: 0.98
@@ -430,6 +498,21 @@ $(document).ready(function() {
                         display: false
                     }
                 }]
+            },
+            tooltips: {
+                caretSize: 5,
+                backgroundColor: 'rgb(63,72,92)',
+                callbacks: {
+                    title: function() {
+                        return '';
+                    },
+                    label: function() {
+                        return 'Reviews:    2091';
+                    },
+                    afterLabel: function() {
+                        return 'Revenue:    $12.00';
+                    }
+                }
             }
         }
     });
