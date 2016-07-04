@@ -228,51 +228,178 @@ $(document).ready(function() {
         labels: ["Jul 1", "Jul 2", "Jul 3", "Jul 4", "Jul 5", "Jul 6", "Jul 7"],
         datasets: [
             {
-                label: "My First dataset",
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(5,164,222,1)",
-                borderColor: "rgba(5,164,222,1)",
-                pointBorderColor: "rgba(5,164,222,1)",
-                pointBackgroundColor: "rgba(255,255,255,1)",
-                pointBorderWidth: 2,
-                pointRadius: 5,
-                pointHitRadius: 10,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(5,164,222,1)",
-                pointHoverBorderColor: "rgba(5,164,222,1)",
-                pointHoverBorderWidth: 2,
-                data: [100, 700, 500, 1300, 1100, 300, 900]
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [300, 300, 300, 300, 300, 300, 300]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [280, 280, 280, 280, 280, 280, 280]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [520, 520, 520, 520, 520, 520, 520]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [480, 480, 480, 480, 480, 480, 480]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [510, 510, 510, 510, 510, 510, 510]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [1020, 1020, 1020, 1020, 1020, 1020, 1020]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [710, 710, 710, 710, 710, 710, 710]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [860, 860, 860, 860, 860, 860, 860]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [360, 360, 360, 360, 360, 360, 360]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [420, 420, 420, 420, 420, 420, 420]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [740, 740, 740, 740, 740, 740, 740]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [940, 940, 940, 940, 940, 940, 940]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [1740, 1740, 1740, 1740, 1740, 1740, 1740]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [1400, 1400, 1400, 1400, 1400, 1400, 1400]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [280, 280, 280, 280, 280, 280, 280]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [220, 220, 220, 220, 220, 220, 220]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [480, 480, 480, 480, 480, 480, 480]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [740, 740, 740, 740, 740, 740, 740]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [880, 880, 880, 880, 880, 880, 880]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [1000, 1000, 1000, 1000, 1000, 1000, 1000]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [660, 660, 660, 660, 660, 660, 660]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [1240, 1240, 1240, 1240, 1240, 1240, 1240]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [260, 260, 260, 260, 260, 260, 260]
+            },
+            {
+                backgroundColor: "rgb(136,212,237)",
+                borderWidth: 0,
+                hoverBackgroundColor: "rgb(2,163,222)",
+                data: [720, 720, 720, 720, 720, 720, 720]
             }
         ]
     };
 
-    Chart.controllers.line.prototype.origDraw = Chart.controllers.line.prototype.draw;
-    Chart.controllers.line.prototype.draw = function (ease) {
-        var me = this;
-        var meta = me.getMeta();
-        var points = meta.data || [];
-
-        for (var i=0; i<points.length; i++) {
-            if (points[i]._view.backgroundColor == "rgba(5,164,222,1)") {
-                var point = points[i];
-
-                var gridLineOptions = point._xScale.options.gridLines;
-                ctx.lineWidth = gridLineOptions.lineWidth;
-                ctx.strokeStyle = "rgba(5,164,222,1)";
-                ctx.beginPath();
-                ctx.moveTo(point._model.x, (point._xScale.top + point._xScale.bottom) / 2);
-                ctx.lineTo(point._model.x, 0);
-                ctx.stroke();
-                ctx.restore();
-            }
-        }
-        this.origDraw(ease);
-    };
+//    Chart.controllers.line.prototype.origDraw = Chart.controllers.line.prototype.draw;
+//    Chart.controllers.line.prototype.draw = function (ease) {
+//        var me = this;
+//        var meta = me.getMeta();
+//        var points = meta.data || [];
+//
+//        for (var i=0; i<points.length; i++) {
+//            if (points[i]._view.backgroundColor == "rgba(5,164,222,1)") {
+//                var point = points[i];
+//
+//                var gridLineOptions = point._xScale.options.gridLines;
+//                ctx.lineWidth = gridLineOptions.lineWidth;
+//                ctx.strokeStyle = "rgba(5,164,222,1)";
+//                ctx.beginPath();
+//                ctx.moveTo(point._model.x, (point._xScale.top + point._xScale.bottom) / 2);
+//                ctx.lineTo(point._model.x, 0);
+//                ctx.stroke();
+//                ctx.restore();
+//            }
+//        }
+//        this.origDraw(ease);
+//    };
 
     var ctx = $('#graph_total').get(0).getContext("2d");
     var chart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: data,
         options: {
             responsive: true,
@@ -283,22 +410,31 @@ $(document).ready(function() {
                 xAxes: [{
                     ticks: {
                         fontSize: 15
-                    }
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    barPercentage: 0.9,
+                    categoryPercentage: 0.98
                 }],
                 yAxes: [{
                     ticks: {
                         fontSize: 15,
                         callback: function(value) {
                             return '$' + value;
-                        }
+                        },
+                        min: 0,
+                        stepSize: 200
+                    },
+                    gridLines: {
+                        display: false
                     }
                 }]
-            },
-            tooltips: {
-                mode: 'label'
             }
         }
     });
+
+    console.log(chart);
 });
 </script>
 
