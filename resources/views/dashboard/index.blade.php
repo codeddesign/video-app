@@ -305,7 +305,7 @@ $(document).ready(function() {
                 backgroundColor: "rgb(136,212,237)",
                 borderWidth: 0,
                 hoverBackgroundColor: "rgb(2,163,222)",
-                data: [1740, 1740, 1740, 1740, 1740, 1740, 1740]
+                data: [1700, 1700, 1700, 1700, 1700, 1700, 1700]
             },
             {
                 backgroundColor: "rgb(136,212,237)",
@@ -376,41 +376,7 @@ $(document).ready(function() {
         ]
     };
 
-//    Chart.controllers.line.prototype.origDraw = Chart.controllers.line.prototype.draw;
-//    Chart.controllers.line.prototype.draw = function (ease) {
-//        var me = this;
-//        var meta = me.getMeta();
-//        var points = meta.data || [];
-//
-//        for (var i=0; i<points.length; i++) {
-//            if (points[i]._view.backgroundColor == "rgba(5,164,222,1)") {
-//                var point = points[i];
-//
-//                var gridLineOptions = point._xScale.options.gridLines;
-//                ctx.lineWidth = gridLineOptions.lineWidth;
-//                ctx.strokeStyle = "rgba(5,164,222,1)";
-//                ctx.beginPath();
-//                ctx.moveTo(point._model.x, (point._xScale.top + point._xScale.bottom) / 2);
-//                ctx.lineTo(point._model.x, 0);
-//                ctx.stroke();
-//                ctx.restore();
-//            }
-//        }
-//        this.origDraw(ease);
-//    };
-
     var helpers = Chart.helpers;
-//    Chart.controllers.bar.prototype.setHoverStyle = function(rectangle) {
-//        debugger;
-//        var dataset = this.chart.data.datasets[rectangle._datasetIndex];
-//        var index = rectangle._index;
-//
-//        var custom = rectangle.custom || {};
-//        var model = rectangle._model;
-//        model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.getValueAtIndexOrDefault(dataset.hoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
-//        model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.getValueAtIndexOrDefault(dataset.hoverBorderColor, index, helpers.getHoverColor(model.borderColor));
-//        model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
-//    };
     var currentElement;
     helpers.extend(Chart.Controller.prototype, {
         getElementAtEvent: function(e) {
@@ -492,7 +458,7 @@ $(document).ready(function() {
                             return '$' + value;
                         },
                         min: 0,
-                        stepSize: 200
+                        stepSize: 100
                     },
                     gridLines: {
                         display: false
@@ -510,7 +476,7 @@ $(document).ready(function() {
                         return 'Reviews:    2091';
                     },
                     afterLabel: function() {
-                        return 'Revenue:    $12.00';
+                        return 'Revenue:   $'+currentElement._chart.config.data.datasets[currentElement._datasetIndex].data[currentElement._index];
                     }
                 }
             }
