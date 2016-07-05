@@ -540,7 +540,7 @@ input.campaignview-search {
 
 .campaign-creationwrap form input {
     float: left;
-    width: calc(100% - 30px);
+    width: calc(100% - 60px);
     padding: 0 15px;
     height: 43px;
     border: 1px solid #E7E5E4;
@@ -565,6 +565,32 @@ input.campaignview-search {
     display: inline-block;
     margin-bottom: 25px;
     width: 100%;
+}
+
+.campaign-creationwrap form .campaign-creationyoutube .status-icon {
+    height: 45px;
+    padding-left: 5px;
+
+}
+
+.campaign-creationwrap form .campaign-creationyoutube .status-icon.red {
+    display: inline-block;
+    color: red;
+}
+
+.campaign-creationwrap form .campaign-creationyoutube .status-icon.green {
+    display: inline-block;
+    color: green;
+}
+
+.campaign-creationwrap form .campaign-creationyoutube .status-icon.blue {
+    display: inline-block;
+    color: blue;
+}
+
+.campaign-creationwrap form .campaign-creationyoutube .status-icon i {
+    line-height: 45px;
+    font-size: 23px;
 }
 
 .campaign-creationwrap form .campaign-creationvidsize {
@@ -609,6 +635,14 @@ input.campaignview-search {
     border: 1px solid #E7E5E4;
     background: #FFFFFF;
     cursor: pointer;
+}
+
+.campaignform-error {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #ff0000;
+    font-size: 12px;
 }
 
 .campvideoarea-embedtitles {

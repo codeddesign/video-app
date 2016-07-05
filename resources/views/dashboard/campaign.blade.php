@@ -18,27 +18,29 @@
 	</div>
 
 	<div class="campaign-creationwrap">
-		<form action="/campaign" method="post">
+		<form onsubmit="return createCampaign()" name="campaignForm">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="campaign-creationyoutube">
 				<label>YOUTUBE URL</label>
-				<input name="video_url" type="text" placeholder="https://www.youtube.com/watch?v=HgbHx4CY300" required
+				<input id="video_url" name="video_url" type="text" placeholder="https://www.youtube.com/watch?v=HgbHx4CY300" required
                     @if(isset($campaign)) value="https://www.youtube.com/watch?v={{$campaign->video_url}}" @endif
                 >
+                <span class="status-icon @if(isset($campaign)) green @endif "><i class="fa @if(isset($campaign)) fa-check @endif"></i></span>
 			</div>
 			<div class="campaign-creationyoutube">
 				<label>CAMPAIGN NAME</label>
-				<input name="campaign_name" type="text" required
+                <div class="campaignform-error hidden">Already same title exists.</div>
+				<input id="campaign_name" name="campaign_name" type="text" required
                     @if(isset($campaign)) value="{{ $campaign->campaign_name }}" @endif
                 >
 			</div>
 			<div class="campaign-creationvidsize">
 				<label>VIDEO SIZE</label>
-				<input name="auto_resize" onmouseup="autoResize()" type="checkbox"><span>AUTO-RESIZE</span>
-				<input class="video_size_width" name="video_width" type="text" placeholder="width(px)" required
+				<input id="auto_resize" name="auto_resize" type="checkbox" onclick="autoResize()"><span>AUTO-RESIZE</span>
+				<input id="video_width" class="video_size_width" name="video_width" type="text" placeholder="width(px)" required
                     @if(isset($campaign)) value="{{ $campaign->video_width }}" @endif
                 >
-				<input class="video_size_height" name="video_height" type="text" placeholder="height(px)" required
+				<input id="video_height" class="video_size_height" name="video_height" type="text" placeholder="height(px)" required
                     @if(isset($campaign)) value="{{ $campaign->video_height }}" @endif
                 >
 			</div>

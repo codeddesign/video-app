@@ -27,12 +27,10 @@ class CampaignController extends ControllerUser
         if (!$this->user->campaignByName($data['campaign_name'])) {
             $campaign = $this->user->addCampaign($data);
 
-            return redirect('/campaign/view/'.$campaign->id);
+            return response()->json(['status' => 1, 'id' => $campaign->id]);
+        } else {
+            return response()->json(['status' => 0]);
         }
-
-        return view('dashboard.campaign', [
-            'error' => 'This campaign name is taken',
-        ]);
     }
 
     public function getView($campaignId)

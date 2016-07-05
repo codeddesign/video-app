@@ -5,12 +5,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
     <title>Video App</title>
+
+    <!-- Font-awesome icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet" type="text/css">
+
     <!-- ingrid default stylesheet -->
     <link href="/template/css/ingrid.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
+
+    <!-- jQuery debounce -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.js"></script>
+
+    <script type="text/javascript" src="/template/js/dashboard.js"></script>
     <!-- include typekit font -->
     <script src="https://use.typekit.net/lwk5wec.js"></script>
     <script>try { Typekit.load({ async: true }); } catch (e) {}</script>
