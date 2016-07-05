@@ -8,7 +8,7 @@ function checkValidation() {
     if(typeof Id == "string") {
         $('.status-icon i').removeClass('fa-check').removeClass('fa-times').addClass('fa-spinner fa-pulse');
         $('.status-icon').removeClass('red').removeClass('green').addClass('blue');
-        $.get('https://www.googleapis.com/youtube/v3/videos?id=' + Id + '&key=AIzaSyBD3w7wuVKatU9aejflyOt7TQiGlOmqQzA&part=snippet,contentDetails,statistics,status')
+        $.get('https://www.googleapis.com/youtube/v3/videos?id=' + Id + '&key=AIzaSyAIjv2KfeLl3IFlS841O8ctyDKytX0togE&part=snippet,contentDetails,statistics,status')
             .done(function(data) {
                 if(data.items.length) {
                     $('.status-icon i').removeClass('fa-times').removeClass('fa-spinner fa-pulse').addClass('fa-check');
