@@ -24,7 +24,7 @@
     </div>
 
     <div class="accountpass-accountidwrap" style="margin-bottom:30px;">
-        <div class="accountpass-accountidtitle">WEBSITES ADDED</div>
+        <div class="accountpass-accountidtitle" style="margin-bottom:12px;border-top:1px solid #DDDDDD;padding-top:40px;">WEBSITES ADDED</div>
 
         <div v-for="site in sites">
             <div class="accountpass-accountid">
