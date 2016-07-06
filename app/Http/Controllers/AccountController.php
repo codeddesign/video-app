@@ -91,7 +91,7 @@ class AccountController extends Controller
                 'api_key' => '43756f0f',
                 'api_secret' => 'dee2bce0b4e8c12a',
                 'number' => $data['number'],
-                'brand' => 'ADS'
+                'brand' => 'Ad3'
             ]);
 
         $ch = curl_init($url);
