@@ -36,10 +36,12 @@
         </li>
     </ul>
 
+	<div class="currentcamp-createbutton"><a href="/campaign">CREATE NEW CAMPAIGN</a></div>
+
     <ul class="totalstats-row">
         <li>
             <div class="campaignstats-digit">
-                <canvas id="graph_total" width="1000" height="200"></canvas>
+                <canvas id="graph_total" width="1000" height="285"></canvas>
             </div>
         </li>
     </ul>
@@ -47,7 +49,7 @@
     <!-- CAMPAIGN SELECTION AREA -->
     <div class="campaignselection-wrap">
         <div class="currentcamp-title">CURRENT CAMPAIGN</div>
-        <div class="currentcamp-createbutton"><a href="/campaign">CREATE CAMPAIGN</a></div>
+        
 
         <div class="campaignview-wrap">
             <form @submit.prevent="">
@@ -227,7 +229,7 @@ $(document).ready(function() {
     var ctx = $('#graph_total').get(0).getContext("2d");
 
     var data = {
-        labels: ["Jul 1", "Jul 2", "Jul 3", "Jul 4", "Jul 5", "Jul 6", "Jul 7"],
+        labels: ["Jul 1", "Jul 2", "Jul 3", "Jul 4", "Jul 5", "Jul 6"],
         datasets: [
             {
                 backgroundColor: "rgb(136,212,237)",
@@ -442,23 +444,23 @@ $(document).ready(function() {
             scales: {
                 xAxes: [{
                     ticks: {
-                        fontSize: 15
+                        fontSize: 13
                     },
                     gridLines: {
                         display: false,
                         offsetGridLines: false
                     },
-                    barPercentage: 0.9,
+                    barPercentage: 0.8,
                     categoryPercentage: 0.98
                 }],
                 yAxes: [{
                     ticks: {
-                        fontSize: 15,
+                        fontSize: 13,
                         callback: function(value) {
                             return '$' + value;
                         },
                         min: 0,
-                        stepSize: 100
+                        stepSize: 200
                     },
                     gridLines: {
                         display: false
@@ -466,14 +468,14 @@ $(document).ready(function() {
                 }]
             },
             tooltips: {
-                caretSize: 5,
+                caretSize: 0,
                 backgroundColor: 'rgb(63,72,92)',
                 callbacks: {
                     title: function() {
                         return '';
                     },
                     label: function() {
-                        return 'Reviews:    2091';
+                        return 'Views:    2091';
                     },
                     afterLabel: function() {
                         return 'Revenue:   $'+currentElement._chart.config.data.datasets[currentElement._datasetIndex].data[currentElement._index];
