@@ -206,10 +206,8 @@ ul.totalstats-row li {
 }
 
 ul.totalstats-row li div {
-	width: calc(100% - 30px);
-	border-right: 1px solid #E3E1E0;
+	width: 100%;
 	margin-top: 0;
-	padding-top: 15px;
 	height: 331px;
 }
 
@@ -1148,88 +1146,19 @@ button.sitevalidation-removesite:hover {
     cursor: pointer;
 }
 
-.selectadtype-overlay {
-	width: calc(100% - 1px);
-	background: #303749;
-	background-size: cover;
-	border-left: 1px solid #5C5882;
-	display: inline-block;
-	padding-bottom: 70px;
+table.datagrid th {
+    border-right: 1px solid #E3E1E0;
+    text-align: center;
 }
 
-.selectadtype-title {
-	text-align: center;
-	color: #FFFFFF;
-	font-size: 20px;
-	margin-top: 86px;
-	margin-bottom: 50px;
-	font-weight: 100;
+table.datagrid td {
+    text-align: center;
 }
 
-.selectadtype-wrapper {
-	width: calc(100% - 231px);
-	margin-left: 131px;
-	float: left;
+table.datagrid th:last-child {
+    border-right: none;
 }
 
-ul.selectadtype-adtypes {
-	float: left;
-    margin: 0;
-    width: 100%;
-}
-
-ul.selectadtype-adtypes li {
-	width: 220px;
-	height: 230px;
-	float: left;
-	border: 2px solid #303749;
-	list-style-type: none;
-	margin-right: 20px;
-}
-
-ul.selectadtype-adtypes li:nth-child(4n) {
-	margin-right: 0;
-}
-
-ul.selectadtype-adtypes li:hover {
-	border: 2px solid #4596CB;
-	-moz-box-shadow: 1px 1px 18px rgba(80, 159, 208, 0.3);
-	-webkit-box-shadow: 1px 1px 18px rgba(80, 159, 208, 0.3);
-	box-shadow: 1px 1px 18px rgba(80, 159, 208, 0.3);
-	background: #22252E;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-}
-
-ul.selectadtype-adtypes li img {
-	width: 181px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 17px;
-}
-
-.selectadtype-adtypetitle {
-	float: left;
-	width: 100%;
-	text-align: center;
-	font-size: 18px;
-	color: #DDDDDD;
-	margin-top: 24px;
-}
-
-.selectadtype-adtypeselect {
-	float: left;
-	width: 100%;
-	text-align: center;
-	font-size: 14px;
-	color: #4596CB;
-	margin-top: 21px;
-    letter-spacing: 0.4px;
-    display: none;
-}
-
-ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
-	display: block;
+.remove_icon {
+    margin-top: -15px;
 }
