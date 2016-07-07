@@ -9,6 +9,55 @@
 @endsection
 
 @section('content')
+
+	<div class="selectadtype-overlay">
+		<div class="selectadtype-title">Select your ad type to proceed:</div>
+		<div class="selectadtype-wrapper">
+			<ul class="selectadtype-adtypes">
+				<li>
+					<img src="/template/images/adtype-sidebarrow.png">
+					<div class="selectadtype-adtypetitle">Sidebar Row</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-actionoverlay.png">
+					<div class="selectadtype-adtypetitle">Action Overlay</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-standard.png">
+					<div class="selectadtype-adtypetitle">Standard</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-halfpagegallery.png">
+					<div class="selectadtype-adtypetitle">Half-Page Gallery</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-fullwidthgallery.png">
+					<div class="selectadtype-adtypetitle">Full-Width Gallery</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-horizontalrow.png">
+					<div class="selectadtype-adtypetitle">Horizontal Row</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-onscrolldisplay.png">
+					<div class="selectadtype-adtypetitle">On-Ccroll Display</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+				<li>
+					<img src="/template/images/adtype-incontentgallery.png">
+					<div class="selectadtype-adtypetitle">In-Content Gallery</div>
+					<div class="selectadtype-adtypeselect">select this ad</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 	<div class="createcampaign-leftsep">
 		<div class="display-septext">CREATION</div>
 	</div>
