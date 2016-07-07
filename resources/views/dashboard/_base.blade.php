@@ -41,8 +41,12 @@
                 <li class="{{ set_active_nav('/analytics', 'active') }}">ANALYTICS</li>
             </a>
 
-            <a href="/campaign">
-                <li class="{{ set_active_nav('/campaign', 'active') }}">CREATE CAMPAIGN</li>
+            <a href="#">
+                <li class="{{ set_active_nav('/campaigns', 'active') }}">CAMPAIGNS</li>
+            </a>
+            
+            <a href="/create-campaign">
+                <li class="{{ set_active_nav('/create-campaign', 'active') }}">CREATE CAMPAIGN</li>
             </a>
 
             <a href="/wordpress">
