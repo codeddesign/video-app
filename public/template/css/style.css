@@ -206,10 +206,8 @@ ul.totalstats-row li {
 }
 
 ul.totalstats-row li div {
-	width: calc(100% - 30px);
-	border-right: 1px solid #E3E1E0;
+	width: 100%;
 	margin-top: 0;
-	padding-top: 15px;
 	height: 331px;
 }
 
@@ -1146,4 +1144,21 @@ button.sitevalidation-removesite:hover {
     color: #FFFFFF;
     border: none;
     cursor: pointer;
+}
+
+table.datagrid th {
+    border-right: 1px solid #E3E1E0;
+    text-align: center;
+}
+
+table.datagrid td {
+    text-align: center;
+}
+
+table.datagrid th:last-child {
+    border-right: none;
+}
+
+.remove_icon {
+    margin-top: -15px;
 }
