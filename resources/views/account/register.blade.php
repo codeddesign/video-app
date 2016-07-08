@@ -43,7 +43,7 @@
         <img src="/template/images/verify-success.png">
         <p>SUCCESS!</p>
     </span>
-    <button>GO TO YOUR ACCOUNT</button>
+    <button>GO TO LOGIN PAGE</button>
 </div>
 
 @include('account._additional', ['on' => 'register'])

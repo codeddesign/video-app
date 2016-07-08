@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Auth;
+use Mail;
 
 class AccountController extends Controller
 {
@@ -35,8 +36,11 @@ class AccountController extends Controller
      */
     public function postLogin(Request $request)
     {
-        if (!Auth::attempt($request->only(['email', 'password']))) {
-            return view('admin/login', [
+        $credential = $request->only(['email', 'password']);
+        $credential['confirmed'] = 1;
+
+        if (!Auth::attempt($credential)) {
+            return view('account.login', [
                 'error' => 'Please enter your account again',
             ]);
         }
@@ -80,10 +84,14 @@ class AccountController extends Controller
         } else {
             return response()->json(['status' => 1]);
         }
-
     }
 
-    public function postVerify(Request $request)
+    /**
+     * @param Request $request
+     * Phone number verify
+     */
+
+    public function postPhoneVerify(Request $request)
     {
         $data = $request->all();
 
@@ -109,7 +117,7 @@ class AccountController extends Controller
         }
     }
 
-    public function getVerify(Request $request)
+    public function getPhoneVerify(Request $request)
     {
         $data = $request->all();
 
@@ -127,17 +135,44 @@ class AccountController extends Controller
         $result = json_decode($response);
 
         if($result->status == 0) {
-            $user = User::create($data);
-            Auth::login($user);
+            $data['confirmation_code'] = str_random(30);
+            User::create($data);
+
+            Mail::send('account.email', ['confirmation_code' => $data['confirmation_code']], function($message) use ($data) {
+                $message->from('noreply@ad3media.com','WebMaster');
+
+                $message->to($data['email'])->subject('Verify your email address');
+            });
 
             return response()->json(['status' => 0]);
         } else if($result->status == 16) {
             return response()->json(['status' => 16]);
         }
-
-        exit;
     }
 
+    /**
+     * @param Request $request
+     * Email Verify
+     */
+
+    public function getEmailVerify($confirmation_code)
+    {
+        if(!$confirmation_code) {
+            throw new InvalidConfirmationCodeException;
+        }
+
+        $user = User::whereConfirmationCode($confirmation_code)->first();
+
+        if(!$user) {
+            throw new InvalidConfirmationCodeException;
+        }
+
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
+        $user->save();
+
+        return view('account.login');
+    }
     /**
      * @return View
      */

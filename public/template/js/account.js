@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('.verify-success').hide();
 
     $('.verify-success').on('click','button',function() {
-        location.href = '/settings';
+        location.href = '/account/login';
     });
 });
 
@@ -43,7 +43,7 @@ function postVerify() {
 
     $.ajax({
         type: "POST",
-        url: '/account/verify',
+        url: '/account/phone-verify',
         data: {
             _token : document.getElementsByName('_token')[0].value,
             number : document.getElementsByName('number')[0].value
@@ -68,7 +68,7 @@ function getVerify() {
 
     $.ajax({
         type: "GET",
-        url: '/account/verify',
+        url: '/account/phone-verify',
         data: {
             _token : document.getElementsByName('_token')[0].value,
             request_id : request_id,
