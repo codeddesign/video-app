@@ -144,6 +144,14 @@ ul.navlist li:hover, ul.navlist li.active {
     border-bottom: 1px solid #E3E1E0;
 }
 
+.createcampaign-fullwidthsep {
+    float: left;
+    width: 100%;
+    height: 46px;
+    border-right: 1px solid #E3E1E0;
+    border-bottom: 1px solid #E3E1E0;
+}
+
 .createcampaign-rightsep {
     float: left;
     width: 700px;
@@ -1249,4 +1257,157 @@ ul.selectadtype-adtypes li img {
 
 ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 	display: block;
+}
+
+.createcampaign-fulltoparea {
+	float: left;
+	width: 100%;
+	background: #EFEFEE;
+	/*height: 360px;*/
+	border-bottom: 1px solid #E3E1E0;
+}
+
+.createcampaign-middlecreatewrap {
+	width: 650px;
+    margin: 0 auto;
+    display: block;
+    float: none;
+}
+
+.createcampaign-middlecreatewrap form {
+	margin-bottom: 40px;
+}
+
+.createcampaign-middlecreatewrap form input {
+	width: calc(100% - 30px);
+}
+
+.createcampaign-middlecreatewrap form button {
+	margin-left: 0;
+	width: 100%;
+}
+
+.createcampain-adtestingwrap {
+	float: left;
+	background: #FFFFFF;
+	width: 100%;
+}
+
+.createcampaign-adtestingarea {
+	width: 840px;
+	margin: 0 auto;
+	display: block;
+}
+
+.createcampaign-adtestingtitle {
+	float: left;
+	width: 100%;
+	text-align: center;
+	color: #6C679E;
+	font-size: 16px;
+	font-weight: 500;
+	border-bottom: 4px solid #6C679E;
+	padding-bottom: 10px;
+	margin-top: 60px;
+	margin-bottom: 37px;
+}
+
+.createcampaign-browseroutwrap {
+	width: calc(900px - 28px);
+	padding: 14px;
+	background: #EAEAEA;
+	display: block;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	min-height: 500px;
+	margin-left: -30px;
+	float: left;
+	margin-bottom: 60px;
+}
+
+.createcampaign-browsercircles {
+	float: left;
+	width: 33px;
+	height: 8px;
+	background: url('/template/images/createcamp-browsercircles.png');
+}
+
+.createcampaign-browsericons {
+	float: left;
+	width: 65px;
+	height: 17px;
+	clear: left;
+    margin-top: 12px;
+	background: url('/template/images/createcamp-browsericons.png');
+}
+
+.createcampaign-browserbar {
+	float: left;
+	width: 614px;
+	height: 17px;
+	background: #FFFFFF;
+	margin-left: 20px;
+	margin-top: 11px;
+}
+
+.createcampaign-browserwhitearea {
+	float: left;
+	width: calc(100% - 68px);
+	min-height: 400px;
+	background: #FFFFFF;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-top: 12px;
+	padding: 34px;
+}
+
+.createcampaign-browserleft {
+	float: left;
+	width: 568px;
+}
+
+.createcampaign-browserright {
+	float: right;
+	width: calc(226px - 36px);
+	padding: 18px;
+	background: #F0F0F0;
+}
+
+.createcampaign-browserinwrap {
+	float: left;
+	margin-bottom: 17px;
+	width: 100%;
+}
+
+.createcampaign-browserbar1 {
+	float: left;
+	height: 20px;
+	background: #DDDDDD;
+	margin-bottom: 7px;
+}
+
+.createcampaign-browserbar2 {
+	float: left;
+	height: 246px;
+	background: #CCCCCC;
+	margin-bottom: 7px;
+}
+
+.createcampaign-browserbar3 {
+	float: left;
+	height: 156px;
+	width: 150px;
+	margin-right: 17px;
+	background: #CCCCCC;
+	margin-bottom: 7px;
+}
+
+.createcampaign-browserbar4 {
+	float: left;
+	height: 148px;
+	width: 190px;
+	background: #CCCCCC;
+	margin-bottom: 7px;
 }

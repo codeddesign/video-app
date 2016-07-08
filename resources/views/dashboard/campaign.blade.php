@@ -57,7 +57,114 @@
 			</ul>
 		</div>
 	</div>
+	
+<!-- ON-SCROLL DISPLAY AD TYPE CREATION -->
+	<div class="createcampaign-fullwidthsep">
+		<div class="display-septext">ON-SCROLL DISPLAY AD TYPE CREATION</div>
+	</div>
+	<div class="createcampaign-fulltoparea">
+		<div class="campaign-creationwrap createcampaign-middlecreatewrap">
+			<form onsubmit="" name="campaignForm">
+				<input type="hidden" name="_token" value="">
+				<div class="campaign-creationyoutube">
+					<label>CAMPAIGN NAME</label>
+	                <div class="campaignform-error hidden">Already same title exists.</div>
+					<input id="campaign_name" name="campaign_name" type="text" required>
+				</div>
+				<div class="campaign-creationvidsize">
+					<label>VIDEO SIZE</label>
+					<input id="auto_resize" name="auto_resize" type="checkbox" onclick="autoResize()"><span>AUTO-RESIZE</span>
+					<input id="video_width" class="video_size_width" name="video_width" type="text" placeholder="width(px)" required
+	                    @if(isset($campaign)) value="{{ $campaign->video_width }}" @endif
+	                >
+					<input id="video_height" class="video_size_height" name="video_height" type="text" placeholder="height(px)" required
+	                    @if(isset($campaign)) value="{{ $campaign->video_height }}" @endif
+	                >
+				</div>
+	
+				<button>GENERATE EMBED LINK</button>
+			</form>
+		</div>
+	</div>
+	<div class="createcampain-adtestingwrap">
+		<div class="createcampaign-adtestingarea">
+			<div class="createcampaign-adtestingtitle">Ad Testing Area</div>
+			<div class="createcampaign-browseroutwrap">
+				<div class="createcampaign-browsercircles"></div>
+				<div class="createcampaign-browsericons"></div>
+				<div class="createcampaign-browserbar"></div>
+				<div class="createcampaign-browserwhitearea">
+					<div class="createcampaign-browserleft">
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar1" style="width:350px;background:#CCCCCC;"></div>
+							<div class="createcampaign-browserbar1" style="width:300px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:255px;"></div>
+							<div class="createcampaign-browserbar1" style="width:550px;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar2" style="width:100%;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar3"></div>
+							
+							<div class="createcampaign-browserbar1" style="width:338px;"></div>
+							<div class="createcampaign-browserbar1" style="width:288px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+							<div class="createcampaign-browserbar1" style="width:335px;"></div>
+							<div class="createcampaign-browserbar1" style="width:100px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:285px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar3"></div>
+							
+							<div class="createcampaign-browserbar1" style="width:338px;"></div>
+							<div class="createcampaign-browserbar1" style="width:288px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+							<div class="createcampaign-browserbar1" style="width:335px;"></div>
+							<div class="createcampaign-browserbar1" style="width:100px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:285px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar3"></div>
+							
+							<div class="createcampaign-browserbar1" style="width:338px;"></div>
+							<div class="createcampaign-browserbar1" style="width:288px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+							<div class="createcampaign-browserbar1" style="width:335px;"></div>
+							<div class="createcampaign-browserbar1" style="width:100px;"></div>
+							<div class="createcampaign-browserbar1" style="margin-left:12px;width:285px;"></div>
+							<div class="createcampaign-browserbar1" style="width:399px;"></div>
+						</div>
+					</div>
+					<div class="createcampaign-browserright">
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar4"></div>
+							<div class="createcampaign-browserbar1" style="width:90px;"></div>
+							<div class="createcampaign-browserbar1" style="width:120px;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar4"></div>
+							<div class="createcampaign-browserbar1" style="width:90px;"></div>
+							<div class="createcampaign-browserbar1" style="width:120px;"></div>
+						</div>
+						<div class="createcampaign-browserinwrap">
+							<div class="createcampaign-browserbar4"></div>
+							<div class="createcampaign-browserbar1" style="width:90px;"></div>
+							<div class="createcampaign-browserbar1" style="width:120px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+
+<!-- BASIC AD TYPE CREATION -->
 	<div class="createcampaign-leftsep">
 		<div class="display-septext">CREATION</div>
 	</div>
