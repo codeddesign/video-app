@@ -206,11 +206,10 @@ ul.totalstats-row li {
 }
 
 ul.totalstats-row li div {
-	width: calc(100% - 30px);
+	width: 100%;
 	border-right: 1px solid #E3E1E0;
 	margin-top: 0;
 	height: 331px;
-	padding-top: 15px;
 }
 
 ul.totalstats-row li div canvas {
@@ -283,7 +282,7 @@ ul.totalstats-row li div canvas {
 
 input.campaignview-search {
     float: left;
-    width: calc(100% - 86px);
+    width: calc(100% - 40px);
     height: 38px;
     padding: 0 15px 0 30px;
     border: none;
@@ -892,7 +891,7 @@ ul.rightside-navdroparea li:hover {
 
 .accountpasswrap form button {
     float: left;
-    width: 100%;
+    width: calc(100% - 30px);
     background: #7A76AC;
     height: 46px;
     text-align: center;
@@ -1009,6 +1008,7 @@ button.sitevalidation-removesite {
 	margin-right: 12px;
 	cursor: pointer;
 	font-size: 11px;
+    line-height: 27px;
 }
 
 button.sitevalidation-removesite:hover {
@@ -1249,4 +1249,11 @@ ul.selectadtype-adtypes li img {
 
 ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 	display: block;
+}
+
+.campaign-dateselect {
+    float: left;
+    width: 300px;
+    margin-left: 20px;
+    margin-top: 15px;
 }

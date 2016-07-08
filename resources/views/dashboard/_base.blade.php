@@ -6,20 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
     <title>Video App</title>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+
     <!-- Font-awesome icon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet" type="text/css">
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
     <!-- ingrid default stylesheet -->
     <link href="/template/css/ingrid.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
-
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
 
     <!-- jQuery debounce -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.js"></script>
 
-    <script type="text/javascript" src="/template/js/dashboard.js"></script>
     <!-- include typekit font -->
     <script src="https://use.typekit.net/lwk5wec.js"></script>
     <script>try { Typekit.load({ async: true }); } catch (e) {}</script>
