@@ -67,7 +67,7 @@
         </li>
     </ul>
 
-    <!-- CAMPAIGN SELECTION AREA -->
+    <!-- CAMPAIGN SELECTION AREA
     <div class="campaignselection-wrap">
         <div class="currentcamp-title">CURRENT CAMPAIGN</div>
         
@@ -115,7 +115,6 @@
                     </div>
                     <button>SEARCH</button>
                 </div>
-                <!-- end .campaignview-droppedarea -->
             </form>
 
             <div class="campview-camplistwrap">
@@ -153,8 +152,84 @@
                 </table>
             </div>
         </div>
-        <!-- end .campaignview-wrap -->
     </div>
+    -->
+    
+    <div class="dashboard-dailystatstitle">DAILY STATS</div>
+    <ul class="dashboard-dailystatstitles">
+	    <li>DATE</li>
+	    <li>REQUESTS</li>
+	    <li>FILL-RATE</li>
+	    <li>eCPM</li>
+	    <li>REVENUE</li>
+    </ul>
+    <ul class="dashboard-dailystatslist">
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+	    <li>
+		    <div class="dashboard-statslist1">July 10, 2016</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">18,000</div>
+		    <div class="dashboard-statslist2">$479</div>
+		    <div class="dashboard-statslist2">$479</div>
+	    </li>
+    </ul>
+    
+    
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
