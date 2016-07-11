@@ -1,6 +1,7 @@
 @extends('account._base')
 
 @section('content')
+
 <form action="/account/login" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div>

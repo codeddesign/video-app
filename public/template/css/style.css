@@ -1259,7 +1259,6 @@ ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 	display: block;
 }
 
-<<<<<<< HEAD
 .createcampaign-fulltoparea {
 	float: left;
 	width: 100%;
@@ -1406,16 +1405,16 @@ ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 }
 
 .createcampaign-browserbar4 {
-	float: left;
-	height: 148px;
-	width: 190px;
-	background: #CCCCCC;
-	margin-bottom: 7px;
-=======
+    float: left;
+    height: 148px;
+    width: 190px;
+    background: #CCCCCC;
+    margin-bottom: 7px;
+}
+
 .campaign-dateselect {
     float: left;
     width: 300px;
     margin-left: 20px;
     margin-top: 15px;
->>>>>>> b580234e73d2aaccd78d19217090f5da291923f3
 }
