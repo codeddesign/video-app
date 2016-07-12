@@ -27,6 +27,9 @@
     <link href="/template/css/ingrid.css" rel="stylesheet" type="text/css">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
+    
+    <!-- add creation steps -->
+    <script type="text/javascript" src="/template/js/jquery.steps.min.js"></script>
 
     <!-- jQuery debounce -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.js"></script>

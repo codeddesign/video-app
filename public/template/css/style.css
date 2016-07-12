@@ -553,7 +553,7 @@ input.campaignview-search {
     float: left;
     width: calc(100% - 60px);
     margin-left: 30px;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 
 .campaign-creationwrap form label {
@@ -590,7 +590,7 @@ input.campaignview-search {
 
 .campaign-creationwrap form .campaign-creationyoutube {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     width: 100%;
 }
 
@@ -622,21 +622,21 @@ input.campaignview-search {
 
 .campaign-creationwrap form .campaign-creationvidsize {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     width: 100%;
 }
 
 .campaign-creationwrap form button {
     float: left;
-    width: calc(100% + 60px);
+    width: calc(100% - 30px);
     background: #7A76AC;
     height: 46px;
     text-align: center;
     color: #FFFFFF;
-    line-height: 46px;
-    font-size: 10px;
+    line-height: 44px;
+    font-size: 12px;
     border: none;
-    margin-left: -30px;
+    /*margin-left: -30px;*/
     cursor: pointer;
 }
 
@@ -1186,7 +1186,7 @@ table.datagrid th:last-child {
 .selectadtype-title {
 	text-align: center;
 	color: #FFFFFF;
-	font-size: 20px;
+	font-size: 17px;
 	margin-top: 86px;
 	margin-bottom: 50px;
 	font-weight: 100;
@@ -1263,9 +1263,6 @@ ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 .createcampaign-fulltoparea {
 	float: left;
 	width: 100%;
-	background: #EFEFEE;
-	/*height: 360px;*/
-	border-bottom: 1px solid #E3E1E0;
 }
 
 .createcampaign-middlecreatewrap {
@@ -1283,10 +1280,12 @@ ul.selectadtype-adtypes li:hover .selectadtype-adtypeselect {
 	width: calc(100% - 30px);
 }
 
+/*
 .createcampaign-middlecreatewrap form button {
 	margin-left: 0;
 	width: 100%;
 }
+*/
 
 .createcampain-adtestingwrap {
 	float: left;
@@ -1505,4 +1504,45 @@ ul.dashboard-dailystatslist li:hover .dashboard-statslist2 {
 ul.dashboard-dailystatslist li .dashboard-statslist2:nth-child(5n) {
 	color: #1BA850;
 	font-weight: 600;
+}
+
+#adcreation-form h3 {
+	font-size: 0;
+	text-indent: -9999px;
+	display: none;
+}
+
+#adcreation-form .steps ul {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 45px;
+	border-bottom: 1px solid #5C5882;
+}
+
+#adcreation-form .steps ul li {
+	float: left;
+	width: 180px;
+	display: inline-block;
+	border-left: 1px solid #5C5882;
+	border-right: 1px solid #5C5882;
+	line-height: 45px;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#adcreation-form .steps ul li a span.current-info {
+	display: none;
+}
+
+#adcreation-form .steps ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#adcreation-form .steps ul li.current {
+	background: #4596CB;
+	color: #FFFFFF;
 }

@@ -10,82 +10,106 @@
 
 @section('content')
 
+<script>
+	$(document).ready(function(){
+		$("#adcreation-form").steps({
+		    headerTag: "h3",
+		    bodyTag: ".adcreation-section",
+		    transitionEffect: "fade",
+		    autoFocus: true,
+		    enablePagination: true
+		});
+	});
+</script>
 	<div class="selectadtype-overlay">
-		<div class="selectadtype-title">Select your ad type to proceed:</div>
-		<div class="selectadtype-wrapper">
-			<ul class="selectadtype-adtypes">
-				<li>
-					<img src="/template/images/adtype-sidebarrow.png">
-					<div class="selectadtype-adtypetitle">Sidebar Row</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-actionoverlay.png">
-					<div class="selectadtype-adtypetitle">Action Overlay</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-standard.png">
-					<div class="selectadtype-adtypetitle">Standard</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-halfpagegallery.png">
-					<div class="selectadtype-adtypetitle">Half-Page Gallery</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-fullwidthgallery.png">
-					<div class="selectadtype-adtypetitle">Full-Width Gallery</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-horizontalrow.png">
-					<div class="selectadtype-adtypetitle">Horizontal Row</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-onscrolldisplay.png">
-					<div class="selectadtype-adtypetitle">On-Ccroll Display</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-				<li>
-					<img src="/template/images/adtype-incontentgallery.png">
-					<div class="selectadtype-adtypetitle">In-Content Gallery</div>
-					<div class="selectadtype-adtypeselect">select this ad</div>
-				</li>
-			</ul>
+		<div id="adcreation-form">
+	        <!-- start select ad type -->
+	        <h3>Select Ad Type</h3>
+	        <div class="adcreation-section">
+		        <div class="selectadtype-title">Select your ad type to proceed:</div>
+				<div class="selectadtype-wrapper">
+					<ul class="selectadtype-adtypes">
+						<li>
+							<img src="/template/images/adtype-sidebarrow.png">
+							<div class="selectadtype-adtypetitle">Sidebar Row</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-actionoverlay.png">
+							<div class="selectadtype-adtypetitle">Action Overlay</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-standard.png">
+							<div class="selectadtype-adtypetitle">Standard</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-halfpagegallery.png">
+							<div class="selectadtype-adtypetitle">Half-Page Gallery</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-fullwidthgallery.png">
+							<div class="selectadtype-adtypetitle">Full-Width Gallery</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-horizontalrow.png">
+							<div class="selectadtype-adtypetitle">Horizontal Row</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-onscrolldisplay.png">
+							<div class="selectadtype-adtypetitle">On-Ccroll Display</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+						<li>
+							<img src="/template/images/adtype-incontentgallery.png">
+							<div class="selectadtype-adtypetitle">In-Content Gallery</div>
+							<div class="selectadtype-adtypeselect">select this ad</div>
+						</li>
+					</ul>
+				</div>
+			</div>	
+			<!-- end select ad type -->
+			<!-- start create ad name -->
+	        <h3>Create Ad Name</h3>
+	        <div class="adcreation-section">
+		        <div class="selectadtype-title">Create a Reference Name for your Ad:</div>
+				<div class="selectadtype-wrapper">
+					<div class="createcampaign-fulltoparea">
+						<div class="campaign-creationwrap createcampaign-middlecreatewrap">
+							<form onsubmit="" name="campaignForm">
+								<input type="hidden" name="_token" value="">
+								<div class="campaign-creationyoutube">
+									<label>CAMPAIGN NAME</label>
+					                <div class="campaignform-error hidden">Already same title exists.</div>
+									<input id="campaign_name" name="campaign_name" type="text" required>
+								</div>
+								<div class="campaign-creationvidsize">
+									<label>VIDEO SIZE</label>
+									<input id="auto_resize" name="auto_resize" type="checkbox" onclick="autoResize()"><span>AUTO-RESIZE</span>
+									<input id="video_width" class="video_size_width" name="video_width" type="text" placeholder="width(px)" required
+					                    @if(isset($campaign)) value="{{ $campaign->video_width }}" @endif
+					                >
+									<input id="video_height" class="video_size_height" name="video_height" type="text" placeholder="height(px)" required
+					                    @if(isset($campaign)) value="{{ $campaign->video_height }}" @endif
+					                >
+								</div>
+					
+								<button>PROCEED TO AD PREVIEW</button>
+							</form>
+						</div>
+					</div>
+				</div>
+	        </div>	
+			<!-- end create ad name -->
 		</div>
+	
 	</div>
 	
-<!-- ON-SCROLL DISPLAY AD TYPE CREATION -->
-	<div class="createcampaign-fullwidthsep">
-		<div class="display-septext">ON-SCROLL DISPLAY AD TYPE CREATION</div>
-	</div>
-	<div class="createcampaign-fulltoparea">
-		<div class="campaign-creationwrap createcampaign-middlecreatewrap">
-			<form onsubmit="" name="campaignForm">
-				<input type="hidden" name="_token" value="">
-				<div class="campaign-creationyoutube">
-					<label>CAMPAIGN NAME</label>
-	                <div class="campaignform-error hidden">Already same title exists.</div>
-					<input id="campaign_name" name="campaign_name" type="text" required>
-				</div>
-				<div class="campaign-creationvidsize">
-					<label>VIDEO SIZE</label>
-					<input id="auto_resize" name="auto_resize" type="checkbox" onclick="autoResize()"><span>AUTO-RESIZE</span>
-					<input id="video_width" class="video_size_width" name="video_width" type="text" placeholder="width(px)" required
-	                    @if(isset($campaign)) value="{{ $campaign->video_width }}" @endif
-	                >
-					<input id="video_height" class="video_size_height" name="video_height" type="text" placeholder="height(px)" required
-	                    @if(isset($campaign)) value="{{ $campaign->video_height }}" @endif
-	                >
-				</div>
-	
-				<button>GENERATE EMBED LINK</button>
-			</form>
-		</div>
-	</div>
+	<!-- HIDDEN FOR NOW
 	<div class="createcampain-adtestingwrap">
 		<div class="createcampaign-adtestingarea">
 			<div class="createcampaign-adtestingtitle">Ad Testing Area</div>
@@ -162,7 +186,7 @@
 			</div>
 		</div>
 	</div>
-
+	-->
 
 <!-- BASIC AD TYPE CREATION -->
 	<div class="createcampaign-leftsep">
