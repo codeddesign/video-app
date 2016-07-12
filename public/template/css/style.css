@@ -1526,11 +1526,14 @@ ul.dashboard-dailystatslist li .dashboard-statslist2:nth-child(5n) {
 	width: 180px;
 	display: inline-block;
 	border-left: 1px solid #5C5882;
-	border-right: 1px solid #5C5882;
 	line-height: 45px;
 	text-align: center;
 	color: #FFFFFF;
 	text-decoration: none;
+}
+
+#adcreation-form .steps ul li:last-child {
+	border-right: 1px solid #5C5882;
 }
 
 #adcreation-form .steps ul li a span.current-info {
