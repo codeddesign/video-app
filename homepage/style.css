@@ -901,8 +901,8 @@ ul.highimpact-adlist li:hover .adlist-viewdemo {
 	margin-right: 32px;
 	margin-bottom: 32px;
 	float: left;
-	font-weight: 100;
-	left: 0.6px;
+	font-weight: 200;
+	letter-spacing: 0.6px;
 }
 
 .homepage-earningwrap .startearningmore input:nth-child(2n) {
@@ -915,7 +915,7 @@ ul.highimpact-adlist li:hover .adlist-viewdemo {
 	font-weight: 300;
 }
 
-.homepage-earningwrap .startearningmore submit {
+.homepage-earningwrap .startearningmore #mc-embedded-subscribe {
 	text-align: center;
     font-size: 20px;
     color: #FFFFFF;
@@ -924,8 +924,9 @@ ul.highimpact-adlist li:hover .adlist-viewdemo {
     display: block;
     margin: 0 auto;
     height: 56px;
-    width: 350px;
-    margin-top: 167px;
+    /*width: 350px;*/
+    width: 100%;
+    /*margin-top: 167px;*/
     line-height: 56px;
     -webkit-transform: translateZ(0);
 	transform: translateZ(0);
@@ -938,9 +939,13 @@ ul.highimpact-adlist li:hover .adlist-viewdemo {
 	transition-duration: 0.5s;
 	-webkit-transition-property: color, background-color;
 	transition-property: color, background-color;
+	cursor: pointer;
+	font-weight: 300;
+	border: none;
+	letter-spacing: 0.6px;
 }
 
-.homepage-earningwrap .startearningmore submit:hover, .homepage-earningwrap .startearningmore submit:focus, .homepage-earningwrap .startearningmore submit:active {
+.homepage-earningwrap .startearningmore #mc-embedded-subscribe:hover, .homepage-earningwrap .startearningmore #mc-embedded-subscribe:focus, .homepage-earningwrap .startearningmore #mc-embedded-subscribe:active {
   -webkit-animation-name: hvr-back-pulse;
   animation-name: hvr-back-pulse;
   -webkit-animation-duration: 1s;
