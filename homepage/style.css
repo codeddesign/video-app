@@ -74,6 +74,7 @@
 body {
 	margin: 0;
 	font-family: "proxima-nova",sans-serif;
+	min-width: 550px;
 }
 
 .homepage-headerarea {
@@ -83,6 +84,7 @@ body {
 	height: 934px;
 	position: relative;
 	border-bottom: 8px solid #F4F4F8;
+	overflow: hidden;
 }
 
 .navwrap {
@@ -121,6 +123,10 @@ ul.headernav li {
 
 ul.headernav li:nth-child(3) {
 	margin-right: 70px;
+}
+
+ul.headernav li:nth-child(4) {
+	margin-right: 0;
 }
 
 .navmore {
