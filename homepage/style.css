@@ -90,7 +90,7 @@ body {
 	margin: 0 auto;
 	margin-top: 43px;
 	position: relative;
-	z-index: 1;
+	/*z-index: 1;*/
 }
 
 .logo {
@@ -98,6 +98,8 @@ body {
 	width: 58px;
 	height: 21px;
 	float: left;
+	position: relative;
+    z-index: 99999;
 }
 
 ul.headernav {
@@ -128,10 +130,26 @@ ul.headernav li:nth-child(3) {
 	float: left;
 	cursor: pointer;
 	margin-top: -2px;
+	position: relative;
+    z-index: 99999;
 }
 
 .navmore:hover {
 	background: url('images/navmore.png') 0 -16px;
+}
+
+.closenavmore {
+	background: url('images/closemainnav.png');
+	width: 19px;
+	height: 17px;
+	position: relative;
+	z-index: 99999;
+	cursor: pointer;
+	display: none;
+}
+
+.closenavmore:hover {
+	background: url('images/closemainnav.png') 0 -17px;
 }
 
 .headermap {
@@ -155,6 +173,8 @@ ul.headernav li:nth-child(3) {
 	float: left;
 	width: 100%;
 	margin-top: 180px;
+	position: relative;
+	z-index: 1;
 }
 
 .headertag-high {
@@ -191,6 +211,8 @@ ul.headernav li:nth-child(3) {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	position: relative;
+	z-index: 1;
 }
 
 .under-headertagline li {
@@ -207,6 +229,8 @@ ul.headernav li:nth-child(3) {
 	float: left;
 	width: 100%;
 	margin-top: 114px;
+	position: relative;
+	z-index: 1;
 }
 
 .getstarted-learnmore {
@@ -449,6 +473,22 @@ ul.headernav li:nth-child(3) {
 
 .header-graphwrap ul li:nth-child(46) {
 	height: 551px;
+}
+
+.header-graphwrap ul li:nth-child(47) {
+	height: 568px;
+}
+
+.header-graphwrap ul li:nth-child(48) {
+	height: 581px;
+}
+
+.header-graphwrap ul li:nth-child(49) {
+	height: 615px;
+}
+
+.header-graphwrap ul li:nth-child(50) {
+	height: 640px;
 }
 
 .homepage-featuresarea {
@@ -972,4 +1012,44 @@ footer {
 	font-weight: 600;
 	color: #444444;
 	margin-bottom: 9px;
+}
+
+.mainnav-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #22252E;
+	z-index: 99999;
+	display: none;
+}
+
+ul.navoverlay-list {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: absolute;
+	top: 14%;
+}
+
+ul.navoverlay-list li {
+	background: transparent;
+	height: 74px;
+	line-height: 78px;
+	padding: 0;
+	padding-right: 100px;
+	padding-left: 50px;
+	color: #6464A0;
+	font-size: 45px;
+	font-weight: 100;
+	text-align: right;
+	list-style-type: none;
+	text-align: center;
+}
+
+ul.navoverlay-list li:hover {
+	background: #1C1F27;
+}
+
+ul.navoverlay-list li:nth-child(4) {
+	margin-top: 40px;
 }

@@ -24,6 +24,7 @@
 
 <script>
 	$(document).ready(function(){
+		// SLICK CAROUSEL
 		$('.homepage-slickcarousel').slick({
 		  centerMode: true,
 		  centerPadding: '130px',
@@ -50,11 +51,36 @@
 		    }
 		  ]
 		});
+		
+		// SHOW/HIDE NAV OVERLAY
+		$('.navmore').click(function(){
+			$('.mainnav-overlay').show();
+			$(this).css('display','none');
+			$('.closenavmore').css('display','block');
+			$('body').css('overflow','hidden');
+		});
+		$('.closenavmore').click(function(){
+			$('.mainnav-overlay').hide();
+			$(this).css('display','none');
+			$('.navmore').css('display','block');
+			$('body').css('overflow','inherit');
+		});
+		
 	});
 </script>
 
 </head>
 <body>
+
+<div class="mainnav-overlay">
+	<ul class="navoverlay-list">
+		<li>FEATURES</li>
+		<li>WP PLUGIN</li>
+		<li>DEVELOPER API</li>
+		<li>ABOUT US</li>
+		<li>CONTACT SUPPORT</li>
+	</ul>
+</div>
 
 <div class="homepage-headerarea">
 	<div class="headermap"></div>
@@ -67,6 +93,7 @@
 				<li>LOGIN</li>
 				<li>
 					<div class="navmore"></div>
+					<div class="closenavmore"></div>
 				</li>
 			</ul>
 			
@@ -87,6 +114,10 @@
 		</div>
 		<div class="header-graphwrap">
 			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
 				<li></li>
 				<li></li>
 				<li></li>
