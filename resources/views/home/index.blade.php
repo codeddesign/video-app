@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=550, user-scalable=no">
     <title>Ad3Media</title>
     <link href="/home/style.css" rel="stylesheet" type="text/css">
     <link href="/home/responsive.css" rel="stylesheet" type="text/css">
@@ -47,11 +47,11 @@
                         slidesToShow: 3
                     }
                 }, {
-                    breakpoint: 480,
+                    breakpoint: 560,
                     settings: {
-                        arrows: false,
+                        arrows: true,
                         centerMode: true,
-                        centerPadding: '0px',
+                        centerPadding: '20px',
                         slidesToShow: 3
                     }
                 }]
@@ -202,35 +202,35 @@
             </li>
             <li>
                 <div class="homepage-slickimage">
-                    <img src="/home/images/highmoney.png" style="width:93px;">
+                    <img src="/home/images/highanalytics.png" style="width:93px;">
                 </div>
                 <div class="homepage-slicktitle">Powerful Analytics</div>
                 <div class="homepage-slickcontent">We track everything so that you are never in the dark about how your ad's are performing.</div>
             </li>
             <li>
                 <div class="homepage-slickimage">
-                    <img src="/home/images/highmoney.png" style="width:93px;">
+                    <img src="/home/images/highresponsive.png" style="width:97px;">
                 </div>
                 <div class="homepage-slicktitle">100% Responsive Video Ads</div>
                 <div class="homepage-slickcontent">All of our ad type's are 100% responsive and mobile friendly to provide you with the highest conversion rates possible</div>
             </li>
             <li>
                 <div class="homepage-slickimage">
-                    <img src="/home/images/highmoney.png" style="width:93px;">
+                    <img src="/home/images/higheasysetup.png" style="width:100px;">
                 </div>
                 <div class="homepage-slicktitle">Super Easy Setup</div>
                 <div class="homepage-slickcontent">Setup any ad type in less than 30-seconds with no technical knowledge required.</div>
             </li>
             <li>
                 <div class="homepage-slickimage">
-                    <img src="/home/images/highmoney.png" style="width:93px;">
+                    <img src="/home/images/highwordpressplugin.png" style="width:64px;">
                 </div>
                 <div class="homepage-slicktitle">WordPress Plugin</div>
                 <div class="homepage-slickcontent">Simple plugin & play to setup your video ad's in less than 10 seconds. Absolutely no technical knowledge required.</div>
             </li>
             <li>
                 <div class="homepage-slickimage">
-                    <img src="/home/images/highmoney.png" style="width:93px;">
+                    <img src="/home/images/highnocharge.png" style="width:90px;">
                 </div>
                 <div class="homepage-slicktitle">$0 Cost</div>
                 <div class="homepage-slickcontent">Upload and Play your video's for free! There is absolutely no cost.</div>
@@ -322,9 +322,12 @@
 
     <div id="betasignup" class="homepage-startearning">
         <div class="homepage-earningwrap">
-            <div class="homepage-earningtitle">Start Earning More Today</div>
+            <!--<div class="homepage-earningtitle">Start Earning More Today</div>-->
+            <div class="homepage-earningtitle">Sign Up For Our Beta Release</div>
             <div class="homepage-earningdesc">Proven conversion rates, industry leading revenue returns, and a 30-second signup.
-                <br>It doesn’t get any better than this!</div>
+                <br>
+                It doesn’t get any better than this!
+            </div>
 
             <form action="//aptone.us3.list-manage.com/subscribe/post?u=c4f47191c48fc179e46e77975&amp;id=d8c704b2db" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="startearningmore validate" target="_blank" novalidate>
                 <input name="FNAME" id="mce-FNAME" placeholder="full name">

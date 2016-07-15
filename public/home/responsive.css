@@ -217,7 +217,7 @@
 		padding: 0 10px;
 		margin-top: 9px;
 		font-size: 14px;
-		line-height: 20px;
+		line-height: 18px;
 	}
 	.homepage-slicktitle {
 		margin-top: 9px;
@@ -230,7 +230,7 @@
 		margin-bottom: 21px;
 	}
 	ul.homepage-slickcarousel li {
-		margin: 0 2px;
+		margin: 0 4px;
 	}
 	.logo {
 		background: url('images/mobilelogo.png');
