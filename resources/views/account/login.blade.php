@@ -19,7 +19,7 @@
 
 @include('account._additional', ['on' => 'login'])
 
-<script src="/js/all.js"></script>
+<script src="/js/vuepack.js"></script>
 <script>
     new Vue({
         el: 'body',
@@ -41,6 +41,8 @@
 
                 this.$http.post('/account/login', this.user)
                     .then(function(response) {
+                        this.user.password = '';
+
                         if (response.data.redirect) {
                             location.href = response.data.redirect;
 
@@ -50,6 +52,8 @@
                         console.error('Failed to authenticate. Contact dev if problem persists.');
                     })
                     .catch(function(response) {
+                        this.user.password = '';
+
                         this.error = (response.data) ? response.data.message : response;
                     });
             }

@@ -55,7 +55,7 @@
 
 @include('account._additional', ['on' => 'register'])
 
-<script src="/js/all.js"></script>
+<script src="/js/vuepack.js"></script>
 <script>
     new Vue({
         el: 'body',
@@ -74,80 +74,55 @@
             this.$els.email.focus();
         },
         methods: {
-            register: function() {
+            requestThenNext: function(path, data, next) {
                 this.error = false;
 
+                this.$http.post(path, data)
+                    .then(function(response) {
+                        if (response.data.message) {
+                            this.error = response.data.message;
+                        }
+
+                        if (next) {
+                            this.step = next;
+
+                            this.$nextTick(function() {
+                                if (this.$els[next]) {
+                                    this.$els[next].focus();
+                                }
+                            });
+                        }
+                    })
+                    .catch(function(response) {
+                        if (response.data.message) {
+                            this.error = response.data.message;
+
+                            return false;
+                        }
+                    });
+            },
+
+            register: function() {
                 if (this.user.password != this.user.password_confirm) {
                     this.error = 'Passwords do not match';
                     return false;
                 }
 
-                this.$http.post('/account/register', this.user)
-                    .then(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-                        }
-
-                        this.step = 'phone';
-                        this.$nextTick(function() {
-                            this.$els.phone.focus();
-                        });
-                    })
-                    .catch(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-
-                            return false;
-                        }
-                    });
+                this.requestThenNext('/account/register', this.user, 'phone');
             },
             addPhone: function() {
-                this.error = false;
+                var data = {
+                    phone: this.user.phone
+                };
 
-                this.$http
-                    .post('/account/verify-phone', {
-                        phone: this.user.phone
-                    })
-                    .then(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-                        }
-
-                        this.step = 'phone_code'
-                        this.$nextTick(function() {
-                            this.$els.phone_code.focus();
-                        })
-                    })
-                    .catch(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-
-                            return false;
-                        }
-                    });
+                this.requestThenNext('/account/verify-phone', data, 'phone_code')
             },
             codeConfirm: function() {
-                this.error = false;
+                var data = {
+                    phone_code: this.user.phone_code
+                };
 
-                this.$http
-                    .post('/account/verify-phone-code', {
-                        phone_code: this.user.phone_code
-                    })
-                    .then(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-                        }
-
-                        this.step = 'completed';
-                    })
-                    .catch(function(response) {
-                        if (response.data.message) {
-                            this.error = response.data.message;
-
-                            return false;
-                        }
-                    });
-
+                this.requestThenNext('/account/verify-phone-code', data, 'completed')
             }
         }
     });

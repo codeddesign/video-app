@@ -12,6 +12,10 @@ Route::controller('/plugin', 'PluginController');
 
 Route::controller('/dashboard', 'DashboardController');
 
+Route::get('/token', function () {
+    return ['token' => csrf_token()];
+});
+
 Route::get('/', function () {
     return view('home.index');
 });

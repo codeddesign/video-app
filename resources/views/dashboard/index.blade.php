@@ -1,10 +1,8 @@
 @extends('dashboard._base')
 
-@section('page_name') DASHBOARD @endsection
+@section('page_name') DASHBOARD  @endsection @section('content')
 
-@section('content')
-
-<div class="page-index" >
+<div class="page-index">
     <div class="display-leftsep">
         <div class="display-septext">VIDEO PLAYS</div>
     </div>
@@ -40,9 +38,9 @@
         <div class="form-group">
             <div class='input-group date' id='datetimepicker6'>
                 <input type='text' class="form-control" />
-            <span class="input-group-addon">
+                <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+                </span>
             </div>
         </div>
     </div>
@@ -50,9 +48,9 @@
         <div class="form-group">
             <div class='input-group date' id='datetimepicker7'>
                 <input type='text' class="form-control" />
-            <span class="input-group-addon">
+                <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+                </span>
             </div>
         </div>
     </div>
@@ -142,8 +140,6 @@
             <div class="dashboard-statslist2">$479</div>
         </li>
     </ul>
-
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
@@ -151,6 +147,10 @@
 <script src="/template/js/sparkline.min.js"></script>
 
 <script src="/template/js/dashboard.js"></script>
-<script src="/js/all.js"></script>
-<script>new Vue({el: '.campaignstats-row'});</script>
+<script src="/js/vuepack.js"></script>
+<script>
+    new Vue({
+        el: '.page-index'
+    });
+</script>
 @endsection
