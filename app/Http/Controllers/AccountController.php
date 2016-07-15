@@ -33,7 +33,7 @@ class AccountController extends Controller
      */
     public function getLogin()
     {
-        $this->redirectHomeWhenUser();
+        $this->redirectWhenUser();
 
         return view('account.login');
     }
@@ -52,7 +52,7 @@ class AccountController extends Controller
             return response(['message' => 'Credentials do not match our records'], 403);
         }
 
-        return ['redirect' => '/'];
+        return ['redirect' => '/dashboard'];
     }
 
     /**
@@ -70,7 +70,7 @@ class AccountController extends Controller
      */
     public function getRegister()
     {
-        $this->redirectHomeWhenUser();
+        $this->redirectWhenUser();
 
         return view('account.register');
     }
@@ -173,7 +173,7 @@ class AccountController extends Controller
      */
     public function getRecover()
     {
-        $this->redirectHomeWhenUser();
+        $this->redirectWhenUser();
 
         return view('account.recover');
     }
@@ -183,7 +183,7 @@ class AccountController extends Controller
      */
     public function postRecover()
     {
-        $this->redirectHomeWhenUser();
+        $this->redirectWhenUser();
 
         return view('account.recover'); // todo
     }
@@ -191,10 +191,10 @@ class AccountController extends Controller
     /**
      * Redirect to home page.
      */
-    protected function redirectHomeWhenUser()
+    protected function redirectWhenUser()
     {
         if ($this->user) {
-            Redirect::to('/')->send();
+            Redirect::to('/dashboard')->send();
             exit;
         }
     }

@@ -10,7 +10,7 @@ class DashboardController extends ControllerUser
 {
     public function getIndex()
     {
-        return view('dashboard');
+        return view('dashboard.index');
     }
 
     /**
@@ -19,10 +19,10 @@ class DashboardController extends ControllerUser
     public function getProfile()
     {
         if (!$this->user) {
-            return redirect('/');
+            return redirect('/account');
         }
 
-        return view('profile');
+        return view('dashboard.profile');
     }
 
     /**
@@ -31,7 +31,7 @@ class DashboardController extends ControllerUser
     public function postProfile(Request $request)
     {
         if (!$this->user) {
-            return redirect('/');
+            return redirect('/account');
         }
 
         $data = $request->only(['password', 'confirm_password']);
@@ -44,7 +44,7 @@ class DashboardController extends ControllerUser
         $this->user->password = $data['password'];
         $this->user->save();
 
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
     public function postGlobalSearch(Request $request)

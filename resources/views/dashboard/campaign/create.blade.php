@@ -1,4 +1,4 @@
-@extends('_base')
+@extends('dashboard._base')
 
 @section('page_name')
     @if(!isset($campaign))

@@ -13,7 +13,7 @@ class WebsiteConfigController extends ControllerUser
      */
     public function getIndex()
     {
-        return view('website_config.index');
+        return view('dashboard.website_config.index');
     }
 
     /**

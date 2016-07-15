@@ -1,10 +1,9 @@
-@extends('_base')
+@extends('dashboard._base')
 
 @section('content')
 <div class="page-index" v-cloak>
     <div class="campaignselection-wrap">
         <div class="currentcamp-title">CURRENT CAMPAIGN</div>
-
 
         <div class="campaignview-wrap">
             <form @submit.prevent="">
@@ -89,7 +88,7 @@
     </div>
 </div>
 
-@include('_vue')
+<script src="/js/all.js"></script>
 <script>
     new Vue({
         el: '.page-index',

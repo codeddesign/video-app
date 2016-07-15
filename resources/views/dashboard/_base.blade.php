@@ -48,8 +48,8 @@
         </div>
 
         <ul class="navlist">
-            <a href="/">
-                <li class="{{ set_active_nav('/', 'active') }}">DASHBOARD</li>
+            <a href="/dashboard">
+                <li class="{{ set_active_nav('/dashboard', 'active') }}">DASHBOARD</li>
             </a>
 
             <a href="#">
@@ -83,7 +83,7 @@
             <!-- ACCOUNT DETAILS -->
             <div id="accountdetails" class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
             <ul id="accountdetails-navdroparea" class="rightside-navdroparea" style="display:none;">
-                <a href="/profile">
+                <a href="/dashboard/profile">
                     <li>EDIT ACCOUNT</li>
                 </a>
                 <a href="/account/logout">
@@ -91,8 +91,8 @@
                 </a>
             </ul>
 
-			<!-- AVAILABLE WEBSITES -->
-			<div id="availablesites" class="rightside-navdropdown">WEBSITES <span></span></div>
+            <!-- AVAILABLE WEBSITES -->
+            <div id="availablesites" class="rightside-navdropdown">WEBSITES <span></span></div>
             <ul id="availablesites-navdroparea" class="rightside-navdroparea" style="display:none;">
                 <a href="##">
                     <li>SITE.COM</li>
@@ -107,8 +107,8 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-            	// WEBSITE LIST DROPDOWN
-            	$('#availablesites, #availablesites-navdroparea').mouseover(function() {
+                // WEBSITE LIST DROPDOWN
+                $('#availablesites, #availablesites-navdroparea').mouseover(function() {
                     $('#availablesites-navdroparea').show();
                     $('#availablesites').css('background', '#303749');
                     //$('#availablesites').css('border-right', '1px solid #303749');

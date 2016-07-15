@@ -10,4 +10,8 @@ Route::controller('/website-config', 'WebsiteConfigController');
 
 Route::controller('/plugin', 'PluginController');
 
-Route::controller('/', 'DashboardController');
+Route::controller('/dashboard', 'DashboardController');
+
+Route::get('/', function () {
+    return view('home.index');
+});

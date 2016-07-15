@@ -1,4 +1,4 @@
-@extends('_base')
+@extends('dashboard._base')
 
 @section('content')
 
@@ -44,7 +44,7 @@
     </div>
 </div>
 
-@include('_vue')
+<script src="/js/all.js"></script>
 <script type="text/javascript">
     new Vue({
         el: '.page-websiteconfig',
