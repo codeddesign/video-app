@@ -12,7 +12,12 @@ class CampaignController extends ControllerUser
 
     public function getIndex()
     {
-        return view('dashboard.campaign');
+        return view('campaign.list');
+    }
+
+    public function getCreate()
+    {
+        return view('campaign.create');
     }
 
     public function postIndex(Request $request)
@@ -35,7 +40,7 @@ class CampaignController extends ControllerUser
 
     public function getView($campaignId)
     {
-        return view('dashboard.campaign', [
+        return view('campaign.create', [
             'campaign' => $this->user->campaignById($campaignId),
         ]);
     }

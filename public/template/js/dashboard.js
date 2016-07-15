@@ -1,81 +1,3 @@
-new Vue({
-    el: '.page-index',
-    data: {
-        search: '',
-        advancedSearch: false,
-        response: {
-            campaigns: [],
-            stats: {
-                campaign: {},
-                day: {
-                    list: {},
-                    plays: 0,
-                    revenue: 0
-                },
-                month: {
-                    list: {},
-                    plays: 0,
-                    revenue: 0
-                }
-            }
-        },
-        startDate: null,
-        endDate: null
-    },
-
-    created: function() {
-        this.$http.get('/campaign/stats')
-            .then(function(response) {
-                this.response = response.data;
-            });
-    },
-
-    computed: {
-        graphStats: function() {
-            var keys = Object.keys(this.response.stats);
-
-            if (!keys.length) {
-                return false;
-            }
-
-            keys.forEach(function(key) {
-                if (this.response.stats[key] == null || this.response.stats[key].list == null) {
-                    return false;
-                }
-
-                $("#graph_" + key).sparkline(this.response.stats[key].list.plays, {
-                    type: 'bar',
-                    barWidth: 4,
-                    height: '50px',
-                    barColor: '#757092',
-                    negBarColor: '#c6c6c6'
-                });
-
-                $("#graph_" + key + '_r').sparkline(this.response.stats[key].list.revenue, {
-                    type: 'bar',
-                    barWidth: 4,
-                    height: '50px',
-                    barColor: '#757092',
-                    negBarColor: '#c6c6c6'
-                });
-            }.bind(this));
-        }
-    },
-
-    methods: {
-        toggleAdvancedSearch: function() {
-            this.advancedSearch = !this.advancedSearch;
-        },
-        formatDate: function(date) {
-            if (date === null) {
-                return "[null]";
-            } else {
-                return date.format("YYYY-MM-DD");
-            }
-        }
-    }
-});
-
 $(document).ready(function() {
     $('#datetimepicker6').datetimepicker();
     $('#datetimepicker7').datetimepicker({
@@ -87,7 +9,7 @@ $(document).ready(function() {
     $("#datetimepicker7").on("dp.change", function (e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
-    
+
     var ctx = $('#graph_total').get(0).getContext("2d");
 
     var data = {

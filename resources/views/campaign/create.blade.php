@@ -1,4 +1,4 @@
-@extends('dashboard._base')
+@extends('_base')
 
 @section('page_name')
     @if(!isset($campaign))
@@ -71,7 +71,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>	
+			</div>
 			<!-- end select ad type -->
 			<!-- start create ad name -->
 	        <h3>Create Ad Name</h3>
@@ -97,18 +97,18 @@
 					                    @if(isset($campaign)) value="{{ $campaign->video_height }}" @endif
 					                >
 								</div>
-					
+
 								<button>PROCEED TO AD PREVIEW</button>
 							</form>
 						</div>
 					</div>
 				</div>
-	        </div>	
+	        </div>
 			<!-- end create ad name -->
 		</div>
-	
+
 	</div>
-	
+
 	<!-- HIDDEN FOR NOW
 	<div class="createcampain-adtestingwrap">
 		<div class="createcampaign-adtestingarea">
@@ -130,7 +130,7 @@
 						</div>
 						<div class="createcampaign-browserinwrap">
 							<div class="createcampaign-browserbar3"></div>
-							
+
 							<div class="createcampaign-browserbar1" style="width:338px;"></div>
 							<div class="createcampaign-browserbar1" style="width:288px;"></div>
 							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
@@ -142,7 +142,7 @@
 						</div>
 						<div class="createcampaign-browserinwrap">
 							<div class="createcampaign-browserbar3"></div>
-							
+
 							<div class="createcampaign-browserbar1" style="width:338px;"></div>
 							<div class="createcampaign-browserbar1" style="width:288px;"></div>
 							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
@@ -154,7 +154,7 @@
 						</div>
 						<div class="createcampaign-browserinwrap">
 							<div class="createcampaign-browserbar3"></div>
-							
+
 							<div class="createcampaign-browserbar1" style="width:338px;"></div>
 							<div class="createcampaign-browserbar1" style="width:288px;"></div>
 							<div class="createcampaign-browserbar1" style="margin-left:12px;width:98px;"></div>
@@ -188,7 +188,7 @@
 	</div>
 	-->
 
-<!-- BASIC AD TYPE CREATION -->
+	<!-- BASIC AD TYPE CREATION -->
 	<div class="createcampaign-leftsep">
 		<div class="display-septext">CREATION</div>
 	</div>

@@ -6,14 +6,14 @@ use App\WordpressSite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class WordpressController extends ControllerUser
+class WebsiteConfigController extends ControllerUser
 {
     /**
      * @return View
      */
     public function getIndex()
     {
-        return view('dashboard.wordpress');
+        return view('website_config.index');
     }
 
     /**

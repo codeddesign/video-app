@@ -17,6 +17,7 @@ abstract class ControllerUser extends Controller
             }
 
             Redirect::to('/account')->send();
+            exit;
         }
     }
 }

@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Adcube\Nexmo;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Auth;
 use Mail;
+use Session;
 
 class AccountController extends Controller
 {
+    /**
+     * Session key that holds the user information when attempting to create a new account.
+     *
+     * @string
+     */
+    const SESSION_KEY = 'TEMPORARY_USER';
+
     /**
      * @return Redirect
      */
@@ -40,12 +49,10 @@ class AccountController extends Controller
         $credential['confirmed'] = 1;
 
         if (!Auth::attempt($credential)) {
-            return view('account.login', [
-                'error' => 'Please enter your account again',
-            ]);
+            return response(['message' => 'Credentials do not match our records'], 403);
         }
 
-        return redirect('/');
+        return ['redirect' => '/'];
     }
 
     /**
@@ -75,96 +82,84 @@ class AccountController extends Controller
      */
     public function postRegister(Request $request)
     {
-        $this->redirectHomeWhenUser();
-
         $data = $request->only(['email', 'password']);
 
-        if (User::whereEmail($data['email'])->first()) {
-            return response()->json(['status' => 0]);
-        } else {
-            return response()->json(['status' => 1]);
+        $user = User::whereEmail($data['email'])->first();
+        if ($user) {
+            Session::set(self::SESSION_KEY, $user);
+
+            if ($user->confirmed) {
+                return response(['message' => 'This email already exists in our records.'], 403);
+            }
+
+            return ['message' => 'This account already exists, but was never verified.'];
+        }
+
+        $user = User::create($data);
+
+        Session::set(self::SESSION_KEY, $user);
+
+        return ['success' => true];
+    }
+
+    /**
+     * Phone number verify.
+     *
+     * @param Request $request
+     */
+    public function postVerifyPhone(Request $request)
+    {
+        try {
+            $response = Nexmo::verifyNumber($request->get('phone'));
+
+            return ['success' => 'true'];
+        } catch (\Exception $ex) {
+            return response(['message' => $ex->getMessage()], 403);
+        }
+    }
+
+    public function postVerifyPhoneCode(Request $request)
+    {
+        try {
+            $response = Nexmo::verifyCode($request->get('phone_code'));
+
+            if ($response->status == 0) {
+                $user = Session::get(self::SESSION_KEY);
+                $user->confirmation_code = $request->get('phone_code');
+                $user->save();
+
+                Mail::send('account.email', ['confirmation_code' => $user['confirmation_code']], function ($message) use ($user) {
+                    $message->from('noreply@ad3media.com', 'WebMaster');
+
+                    $message->to($user['email'])->subject('Verify your email address');
+                });
+
+                Session::remove(self::SESSION_KEY);
+
+                return ['success' => true];
+            }
+
+            return ['success' => false, 'message' => $response->error_text];
+        } catch (\Exception $ex) {
+            return response(['message' => $ex->getMessage()], 403);
         }
     }
 
     /**
+     * Email Verify.
+     *
      * @param Request $request
-     * Phone number verify
      */
-
-    public function postPhoneVerify(Request $request)
-    {
-        $data = $request->all();
-
-        $url = 'https://api.nexmo.com/verify/json?' . http_build_query([
-                'api_key' => '43756f0f',
-                'api_secret' => 'dee2bce0b4e8c12a',
-                'number' => $data['number'],
-                'brand' => 'Ad3'
-            ]);
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-
-        $result = json_decode($response);
-
-        if($result->status == 0) {
-            return response()->json(['status' => 0, 'request_id' => $result->request_id]);
-        } else if($result->status == 3) {
-            return response()->json(['status' => 3]);
-        } else if($result->status == 10) {
-            return response()->json(['status' => 10]);
-        }
-    }
-
-    public function getPhoneVerify(Request $request)
-    {
-        $data = $request->all();
-
-        $url = 'https://api.nexmo.com/verify/check/json?' . http_build_query([
-                'api_key' => '43756f0f',
-                'api_secret' => 'dee2bce0b4e8c12a',
-                'request_id' => $data['request_id'],
-                'code' => $data['pin']
-            ]);
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-
-        $result = json_decode($response);
-
-        if($result->status == 0) {
-            $data['confirmation_code'] = str_random(30);
-            User::create($data);
-
-            Mail::send('account.email', ['confirmation_code' => $data['confirmation_code']], function($message) use ($data) {
-                $message->from('noreply@ad3media.com','WebMaster');
-
-                $message->to($data['email'])->subject('Verify your email address');
-            });
-
-            return response()->json(['status' => 0]);
-        } else if($result->status == 16) {
-            return response()->json(['status' => 16]);
-        }
-    }
-
-    /**
-     * @param Request $request
-     * Email Verify
-     */
-
     public function getEmailVerify($confirmation_code)
     {
-        if(!$confirmation_code) {
-            throw new InvalidConfirmationCodeException;
+        if (!$confirmation_code) {
+            throw new InvalidConfirmationCodeException();
         }
 
         $user = User::whereConfirmationCode($confirmation_code)->first();
 
-        if(!$user) {
-            throw new InvalidConfirmationCodeException;
+        if (!$user) {
+            throw new InvalidConfirmationCodeException();
         }
 
         $user->confirmed = 1;
@@ -200,6 +195,7 @@ class AccountController extends Controller
     {
         if ($this->user) {
             Redirect::to('/')->send();
+            exit;
         }
     }
 }

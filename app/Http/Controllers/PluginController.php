@@ -28,7 +28,7 @@ class PluginController extends Controller
 
         return $this->corsResponse([
             'campaign' => $campaign->id,
-            'youtube'  => $campaign->video_url
+            'youtube' => $campaign->video_url,
         ]);
     }
 

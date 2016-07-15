@@ -6,7 +6,7 @@ Route::controller('/campaign', 'CampaignController');
 
 Route::controller('/track', 'TrackController');
 
-Route::controller('/wordpress', 'WordpressController');
+Route::controller('/website-config', 'WebsiteConfigController');
 
 Route::controller('/plugin', 'PluginController');
 

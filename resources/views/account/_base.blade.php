@@ -1,37 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<html>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-<title>Video App</title>
-<link href="/template/css/style.css" rel="stylesheet" type="text/css">
-<!-- ingrid default stylesheet -->
-<style media="all" type="text/css">@import "/template/css/ingrid.css";</style>
+    <head>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!-- include ingrid lib -->
-<script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+            <meta charset="utf-8" id="token" value="{{ csrf_token() }}">
+            <title>Video App</title>
+            <link href="/template/css/style.css" rel="stylesheet" type="text/css">
+        </head>
+    </head>
 
-<!-- include typekit font -->
-<script src="https://use.typekit.net/lwk5wec.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <body>
 
-<!-- Custom javascript -->
-<script type="text/javascript" src="/template/js/account.js"></script>
+        <body id="loginpage">
+            <div class="loginwrapper">
+                <div class="loginlogo">
+                    <center>
+                        <img src="/template/images/videologo.png" width="78" height="29">
+                    </center>
+                </div>
 
-</head>
-<body id="loginpage">
+                @yield('content')
+            </div>
 
-<div class="loginwrapper">
-    <div class="loginlogo">
-        <center>
-            <img src="/template/images/videologo.png" width="78" height="29">
-        </center>
-    </div>
+        </body>
 
-    @yield('content')
-</div>
-
-</body>
 </html>

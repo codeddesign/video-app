@@ -10,25 +10,25 @@ class DashboardController extends ControllerUser
 {
     public function getIndex()
     {
-        return view('dashboard.index');
+        return view('dashboard');
     }
 
     /**
      * @return Redirect|View
      */
-    public function getSettings()
+    public function getProfile()
     {
         if (!$this->user) {
             return redirect('/');
         }
 
-        return view('dashboard.settings');
+        return view('profile');
     }
 
     /**
      * @return Redirect|View
      */
-    public function postSettings(Request $request)
+    public function postProfile(Request $request)
     {
         if (!$this->user) {
             return redirect('/');

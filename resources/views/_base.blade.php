@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta charset="utf-8" id="token" value="{{ csrf_token() }}">
     <title>Video App</title>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
@@ -27,7 +28,7 @@
     <link href="/template/css/ingrid.css" rel="stylesheet" type="text/css">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/template/js/jquery.ingrid.js"></script>
-    
+
     <!-- add creation steps -->
     <script type="text/javascript" src="/template/js/jquery.steps.min.js"></script>
 
@@ -55,16 +56,16 @@
                 <li class="{{ set_active_nav('/analytics', 'active') }}">ANALYTICS</li>
             </a>
 
-            <a href="#">
-                <li class="{{ set_active_nav('/campaigns', 'active') }}">CAMPAIGNS</li>
-            </a>
-            
-            <a href="/create-campaign">
-                <li class="{{ set_active_nav('/create-campaign', 'active') }}">CREATE CAMPAIGN</li>
+            <a href="/campaign">
+                <li class="{{ set_active_nav('/campaign', 'active') }}">CAMPAIGNS</li>
             </a>
 
-            <a href="/wordpress">
-                <li class="{{ set_active_nav('/wordpress', 'active') }}">WEBSITE CONFIG</li>
+            <a href="/campaign/create">
+                <li class="{{ set_active_nav('/campaign-create', 'active') }}">CREATE CAMPAIGN</li>
+            </a>
+
+            <a href="/website-config">
+                <li class="{{ set_active_nav('/website-config', 'active') }}">WEBSITE CONFIG</li>
             </a>
 
             <a href="#">
@@ -82,7 +83,7 @@
             <!-- ACCOUNT DETAILS -->
             <div id="accountdetails" class="rightside-navdropdown">ACCOUNT DETAILS <span></span></div>
             <ul id="accountdetails-navdroparea" class="rightside-navdroparea" style="display:none;">
-                <a href="/settings">
+                <a href="/profile">
                     <li>EDIT ACCOUNT</li>
                 </a>
                 <a href="/account/logout">

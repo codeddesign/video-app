@@ -1549,3 +1549,11 @@ ul.dashboard-dailystatslist li .dashboard-statslist2:nth-child(5n) {
 	background: #4596CB;
 	color: #FFFFFF;
 }
+
+form > div.error {
+    background-color: red;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 12px;
+}
