@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<script src="/js/all.js"></script>
+<script src="/js/vuepack.js"></script>
 <script type="text/javascript">
     new Vue({
         el: '.page-websiteconfig',

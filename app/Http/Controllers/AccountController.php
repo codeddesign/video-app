@@ -46,10 +46,15 @@ class AccountController extends Controller
     public function postLogin(Request $request)
     {
         $credential = $request->only(['email', 'password']);
-        $credential['confirmed'] = 1;
 
         if (!Auth::attempt($credential)) {
             return response(['message' => 'Credentials do not match our records'], 403);
+        }
+
+        if (!Auth::user()->confirmed) {
+            Auth::logout();
+
+            return response(['message' => 'Please confirm your email address first'], 403);
         }
 
         return ['redirect' => '/dashboard'];
