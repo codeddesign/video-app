@@ -212,4 +212,34 @@
 	.footerleft {
 		margin-bottom: 23px;
 	}
+	.homepage-slickcontent {
+	    width: calc(100% - 20px);
+		padding: 0 10px;
+		margin-top: 9px;
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.homepage-slicktitle {
+		margin-top: 9px;
+		font-size: 18px;
+		width: calc(100% - 20px);
+		height: 42px;
+		margin: 0px 10px;
+	}
+	.homepage-slickimage {
+		margin-bottom: 21px;
+	}
+	ul.homepage-slickcarousel li {
+		margin: 0 2px;
+	}
+	.logo {
+		background: url('images/mobilelogo.png');
+		width: 81px;
+		height: 29px;
+	}
+	.navmore {
+		background: url('images/mobilenavmore.png');
+		width: 33px;
+		height: 28px;
+	}
 }
