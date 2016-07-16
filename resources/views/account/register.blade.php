@@ -72,8 +72,31 @@
         },
         ready: function() {
             this.$els.email.focus();
+
+            this.handleGivenStep();
         },
         methods: {
+            handleGivenStep: function() {
+                var virtual = document.createElement('a'),
+                    query,
+                    data = {};
+
+                virtual.href = location.href;
+
+                query = virtual.search.replace('?', '').split('=');
+                query.forEach(function(key, index) {
+                    if (query[index + 1]) {
+                        data[key] = query[index + 1]
+                    }
+                })
+
+                switch (data.step) {
+                    case 'phone':
+                        this.error = 'This account already exists, but was never verified.';
+                        this.step = 'phone';
+                        break;
+                }
+            },
             requestThenNext: function(path, data, next) {
                 this.error = false;
 

@@ -51,10 +51,13 @@ class AccountController extends Controller
             return response(['message' => 'Credentials do not match our records'], 403);
         }
 
-        if (!Auth::user()->confirmed) {
+        $user = Auth::user();
+        if (!$user->confirmation_code) {
+            Session::set(self::SESSION_KEY, $user);
+
             Auth::logout();
 
-            return response(['message' => 'Please confirm your email address first'], 403);
+            return ['redirect' => '/account/register?step=phone'];
         }
 
         return ['redirect' => '/dashboard'];
@@ -93,11 +96,11 @@ class AccountController extends Controller
         if ($user) {
             Session::set(self::SESSION_KEY, $user);
 
-            if ($user->confirmed) {
-                return response(['message' => 'This email already exists in our records.'], 403);
+            if (!$user->confirmation_code) {
+                return ['message' => 'This account already exists, but was never verified.'];
             }
 
-            return ['message' => 'This account already exists, but was never verified.'];
+            return response(['message' => 'This email already exists in our records.'], 403);
         }
 
         $user = User::create($data);

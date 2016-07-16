@@ -64,8 +64,8 @@ class Nexmo
         $secret = env('NEXMO_SECRET');
         $brand = env('NEXMO_BRAND');
 
-        $nexmo = (new self(compact('key', 'secret', 'brand'), compact('number'), 'number'))
-            ->request();
+        $nexmo = new self(compact('key', 'secret', 'brand'), compact('number'), 'number');
+        $nexmo->request();
 
         Session::set(self::SESSION_KEY, $nexmo->response());
 
@@ -88,8 +88,8 @@ class Nexmo
         }
 
         $request_id = $data->request_id;
-        $nexmo = (new self(compact('key', 'secret'), compact('request_id', 'code'), 'code'))
-            ->request();
+        $nexmo = new self(compact('key', 'secret'), compact('request_id', 'code'), 'code');
+        $nexmo->request();
 
         Session::remove(self::SESSION_KEY);
 
