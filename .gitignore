@@ -1,10 +1,6 @@
 /vendor
-
-!/vendor/getprove
 /node_modules
+/public/storage
 Homestead.yaml
 Homestead.json
 .env
-sftp-config.json
-
-.idea

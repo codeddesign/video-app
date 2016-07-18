@@ -2,21 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller as BaseController;
 
-abstract class Controller extends BaseController
+class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * @var User|null
+     */
     protected $user;
 
+    /**
+     * Make user availalable to all controllers and views.
+     */
     public function __construct()
     {
-        $this->user = \Auth::user();
+        $this->user = Auth::user();
 
         view()->share('user', $this->user);
+    }
+
+    /**
+     * @param mixed $data
+     * @param int   $status
+     *
+     * @return Response
+     */
+    public function crossResponse($data, $status = 200)
+    {
+        return response($data, $status)->header('Access-Control-Allow-Origin', '*');
     }
 }

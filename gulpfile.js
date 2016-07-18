@@ -9,6 +9,6 @@ elixir(function(mix) {
             './node_modules/vue-resource/dist/vue-resource.min.js',
             'vue.js'
         ],
-        'public/js/vuepack.js'
+        'public/assets/js/vuepack.js'
     );
 });

@@ -50,9 +50,10 @@ class WordpressSite extends Model
     protected static function linkDomain($link)
     {
         $parsed = parse_url($link);
+        if (!isset($parsed['host'])) {
+            return false;
+        }
 
-        $domain = strtolower($parsed['host']);
-
-        return str_replace('www.', '', $domain);
+        return str_replace('www.', '', strtolower($parsed['host']));
     }
 }

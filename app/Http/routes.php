@@ -1,21 +1,17 @@
 <?php
 
-Route::controller('/account', 'AccountController');
+Route::group(['prefix' => '/app'], function () {
+    Route::controller('/website-config', 'WebsiteConfigController');
 
-Route::controller('/campaign', 'CampaignController');
+    Route::controller('/campaign', 'CampaignController');
+
+    Route::controller('/profile', 'ProfileController');
+
+    Route::controller('/', 'AppController');
+});
 
 Route::controller('/track', 'TrackController');
 
-Route::controller('/website-config', 'WebsiteConfigController');
-
 Route::controller('/plugin', 'PluginController');
 
-Route::controller('/dashboard', 'DashboardController');
-
-Route::get('/token', function () {
-    return ['token' => csrf_token()];
-});
-
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::controller('/', 'HomeController');

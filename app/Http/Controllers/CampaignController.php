@@ -2,49 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\MonthStats;
-use App\User;
+use App\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
-class CampaignController extends ControllerUser
+class CampaignController extends Controller
 {
-    const CENTS = .3;
-
+    /**
+     * @return View
+     */
     public function getIndex()
     {
-        return view('dashboard.campaign.index');
+        return view('app.campaign.index');
     }
 
+    /**
+     * @return View
+     */
     public function getCreate()
     {
-        return view('dashboard.campaign.create');
+        return view('app.campaign.create', ['campaign_types' => json_encode(Campaign::$types)]);
     }
 
-    public function postIndex(Request $request)
+    public function getList()
     {
-        $data = $request->only([
-            'campaign_name',
-            'video_url',
-            'video_width',
-            'video_height',
-        ]);
-
-        if (!$this->user->campaignByName($data['campaign_name'])) {
-            $campaign = $this->user->addCampaign($data);
-
-            return response()->json(['status' => 1, 'id' => $campaign->id]);
-        } else {
-            return response()->json(['status' => 0]);
-        }
+        return [
+            'campaigns' => $this->user->campaigns,
+        ];
     }
 
-    public function getView($campaignId)
-    {
-        return view('dashboard.campaign.create', [
-            'campaign' => $this->user->campaignById($campaignId),
-        ]);
-    }
-
+    /**
+     * @param int $campaignId
+     *
+     * @return Redirect
+     */
     public function getDelete($campaignId)
     {
         $campaign = $this->user->campaignById($campaignId);
@@ -53,16 +45,55 @@ class CampaignController extends ControllerUser
             $campaign->delete();
         }
 
-        return redirect('/');
+        return redirect('/app/campaign');
     }
 
-    public function getStats()
+    /**
+     * @param int $campaignId
+     *
+     * @return string
+     */
+    public function getView($campaignId)
     {
-        $stats = MonthStats::current($this->user);
+        return 'todo';
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function postPreviewLink(Request $request)
+    {
+        return [
+            'url' => self::jsEmbedLink(0),
+        ];
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function postSave(Request $request)
+    {
+        $campaign = $this->user->addCampaign($request->all());
 
         return [
-            'campaigns' => $this->user->campaigns,
-            'stats' => $stats->data(),
+            'url' => self::jsEmbedLink($campaign->id),
+            'campaign' => $campaign,
         ];
+    }
+
+    /**
+     * @param string $campaignId
+     *
+     * @return string
+     */
+    protected static function jsEmbedLink($campaignId)
+    {
+        $pattern = '%s/p%s.js';
+
+        return sprintf($pattern, env('PLAYER_HOST'), $campaignId);
     }
 }

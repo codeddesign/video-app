@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\CampaignPlay;
+use App\CampaignEvent;
 use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
     public function getIndex(Request $request)
     {
-        if ($request->get('event') == 'yt:playing') {
-            CampaignPlay::create([
-                'campaign_id' => $request->get('campaign'),
-                'referer' => $_SERVER['HTTP_REFERER'],
-            ]);
-        }
+        CampaignEvent::create([
+            'campaign_id' => $request->get('i'),
+            'name' => $request->get('n'),
+            'event' => $request->get('e'),
+        ]);
 
         return response($this->onePixel())
             ->header('Access-Control-Allow-Origin', '*')

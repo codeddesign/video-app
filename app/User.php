@@ -2,38 +2,31 @@
 
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\Access\Authorizable;
+use App\Services\Youtube;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use SoftDeletes;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
-    protected $fillable = ['email', 'password'];
+    protected $fillable = [
+        'email',
+        'password',
+    ];
 
     /**
-     * The attributes excluded from the model's JSON form.
-     *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'verified_email',
+        'verified_phone',
+    ];
 
     /**
      * @param string $password
@@ -41,6 +34,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = \Hash::make($password);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function tokens()
+    {
+        return $this->hasMany(UserToken::class);
     }
 
     /**
@@ -60,6 +61,57 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * Sets verified phone to true.
+     *
+     * @return User
+     */
+    public function confirmPhone()
+    {
+        $this->verified_phone = true;
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Sets verified email to true.
+     *
+     * @return User
+     */
+    public function confirmedEmail()
+    {
+        $this->verified_email = true;
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Creates new campaign for the current user.
+     * Adds campaign videos if there are any.
+     *
+     * @param array $data
+     *
+     * @return Campaign
+     */
+    public function addCampaign(array $data)
+    {
+        // add campaign
+        $data['user_id'] = $this->id;
+
+        if (!Campaign::typeHasName($data['type'])) {
+            $data['name'] = Youtube::title($data);
+        }
+
+        $campaign = Campaign::create($data);
+
+        // add campaign videos
+        $campaign->addVideos($data);
+
+        return $campaign;
+    }
+
+    /**
      * @param string $link
      *
      * @return WordpressSite
@@ -75,30 +127,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * @param int $id
      *
-     * @return Wordpressite|null
-     */
-    public function wordpressById($id)
-    {
-        return $this->wordpress()
-                    ->whereId($id)
-                    ->first();
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return Campaign|null
-     */
-    public function campaignByName($name)
-    {
-        return $this->campaigns()
-                    ->whereCampaignName($name)
-                    ->first();
-    }
-
-    /**
-     * @param int $id
-     *
      * @return Campaign|null
      */
     public function campaignById($id)
@@ -109,16 +137,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * @param array $data
+     * @param int $id
      *
-     * @return Campaign
+     * @return Wordpressite|null
      */
-    public function addCampaign(array $data)
+    public function wordpressById($id)
     {
-        $data['user_id'] = $this->id;
-
-        $campaign = Campaign::create($data);
-
-        return $campaign;
+        return $this->wordpress()
+                    ->whereId($id)
+                    ->first();
     }
 }

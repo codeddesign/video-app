@@ -7,8 +7,6 @@ class CreateCampaignsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -16,31 +14,23 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
 
             $table->integer('user_id')
-                ->unsigned()
-                ->references('id')->on('users');
+                ->unsigned()->references('id')->on('users');
 
-            $table->string('campaign_name')->index();
+            $table->string('name')->index();
+
+            $table->string('type')->index();
 
             $table->integer('rpm')->default(0)->index();
 
-            $table->string('video_url')->index();
-
-            $table->integer('video_width')->index();
-            $table->integer('video_height')->index();
-
-            $table->integer('video_plays')->index();
-            $table->float('revenue')->index();
-
-            $table->string('active')->index();
+            $table->string('size')->default('auto')->index();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

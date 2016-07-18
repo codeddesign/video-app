@@ -10,14 +10,16 @@ Vue.http.interceptors.push(function(request, next) {
     if (request.method == 'post') {
         Vue.http.headers.common['X-CSRF-TOKEN'] = $token.getAttribute('value');
 
-        this.$http.get('/token')
-            .then(function(response) {
-                $token.setAttribute('value', response.data.token);
-            })
-            .catch(function() {
-                console.error('Failed to get token')
-            })
+        // this.$http.get('/app/token')
+        //     .then(function(response) {
+        //         $token.setAttribute('value', response.data.token);
+        //     })
+        //     .catch(function() {
+        //         console.error('Failed to get token')
+        //     })
     }
 
     next();
 });
+
+Vue.config.devtools = true;
