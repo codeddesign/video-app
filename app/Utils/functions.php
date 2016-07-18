@@ -53,3 +53,11 @@ function refererUtil()
 {
     return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 }
+
+/**
+ * @return string
+ */
+function ipUtil()
+{
+    return (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : '';
+}

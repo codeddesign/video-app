@@ -23,6 +23,7 @@ class CampaignEvent extends Model
 
         self::creating(function ($campaignEvent) {
             $campaignEvent->referer = refererUtil();
+            $campaignEvent->ip = ipUtil();
         });
     }
 }

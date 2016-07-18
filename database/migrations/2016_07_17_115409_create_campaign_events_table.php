@@ -22,7 +22,9 @@ class CreateCampaignEventsTable extends Migration
 
             $table->string('event')->index();
 
-            $table->string('referer')->index();
+            $table->string('referer')->default(null)->index();
+
+            $table->string('ip')->default(null)->index();
 
             $table->timestamps();
             $table->softDeletes();
