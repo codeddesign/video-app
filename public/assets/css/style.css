@@ -247,8 +247,9 @@ ul.totalstats-row li div canvas {
 
 .campaignselection-wrap {
     float: left;
-    width: calc(100% - 72px);
-    margin-left: 36px;
+    width: 100%;
+    /*width: calc(100% - 72px);
+    margin-left: 36px;*/
 }
 
 .currentcamp-title {
@@ -284,15 +285,15 @@ ul.totalstats-row li div canvas {
 .campaignview-wrap {
     float: left;
     width: 100%;
-    border: 1px solid #E3E1E0;
-    margin-top: 8px;
+    /*border: 1px solid #E3E1E0;*/
+    /*margin-top: 8px;*/
     margin-bottom: 50px;
 }
 
 input.campaignview-search {
     float: left;
-    width: calc(100% - 40px);
-    height: 38px;
+    width: calc(100% - 130px);
+    height: 40px;
     padding: 0 15px 0 30px;
     border: none;
     border-bottom: 1px solid #E3E1E0;
@@ -312,15 +313,15 @@ input.campaignview-search {
 
 .campaignview-dropbutton {
     float: left;
-    width: 40px;
+    width: 130px;
     background: #EFEFEE;
     border-bottom: 1px solid #E3E1E0;
     color: #7773A8;
     text-align: center;
     line-height: 40px;
     font-weight: 600;
-    font-size: 20px;
-    height: 38px;
+    font-size: 12px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -1157,19 +1158,6 @@ button.sitevalidation-removesite:hover {
     cursor: pointer;
 }
 
-table.datagrid th {
-    border-right: 1px solid #E3E1E0;
-    text-align: center;
-}
-
-table.datagrid td {
-    text-align: center;
-}
-
-table.datagrid th:last-child {
-    border-right: none;
-}
-
 .remove_icon {
     margin-top: -15px;
 }
@@ -1560,4 +1548,150 @@ form > div.error {
     padding: 10px 0;
     text-align: center;
     font-size: 12px;
+}
+
+ul.campaigngrid-title {
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+ul.campaigngrid-title li {
+    width: 11%;
+    background: #F5F5F4;
+    border-right: 1px solid #E3E1E0;
+    border-bottom: 1px solid #E3E1E0;
+    font-size: 10px;
+    line-height: 43px;
+    padding-left: 20px;
+    display: inline-block;
+    float: left;
+    list-style-type: none;
+}
+
+ul.campaigngrid-title li:nth-child(1), ul.campaigngrid-title li:nth-child(2) {
+	width: calc(100% - 780px);
+}
+
+ul.campaigngrid-title li:nth-child(2) {
+	min-width: 216px;
+}
+
+ul.campaigngrid-title li:nth-child(1), ul.campaigngrid-title li:nth-child(5) {
+	width: 120px;
+}
+
+ul.campaigngrid-title li:nth-child(3), ul.campaigngrid-title li:nth-child(4), ul.campaigngrid-title li:nth-child(6), ul.campaigngrid-title li:nth-child(7), ul.campaigngrid-title li:nth-child(8), ul.campaigngrid-title li:nth-child(9) {
+	width: 90px;
+}
+
+ul.campaigngrid-title li:nth-child(9) {
+	border-right: none;
+}
+
+ul.campaigngrid {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+ul.campaigngrid li {
+	float: left;
+    width: 100%;
+    list-style-type: none;
+    height: 41px;
+    line-height: 43px;
+    border-bottom: 1px solid #E3E1E0;
+}
+
+.camplist-data1 {
+	padding-left: 20px;
+    font-size: 13px;
+    color: #FFFFFF;
+    height: 40px;
+    background: #6C689E;
+    width: 120px;
+    float: left;
+}
+
+.camplist-data2 {
+	float: left;
+    width: calc(100% - 780px);
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data3 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data4 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data5 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data6 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data7 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data8 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
+}
+
+.camplist-data9 {
+	float: left;
+    width: 90px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #666666;
+    height: 40px;
+    background: #FFFFFF;
 }

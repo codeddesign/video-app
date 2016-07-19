@@ -3,8 +3,6 @@
 @section('content')
 <div class="page-index" v-cloak>
     <div class="campaignselection-wrap">
-        <div class="currentcamp-title">CURRENT CAMPAIGN</div>
-
         <div class="campaignview-wrap">
             <form @submit.prevent="">
                 <input class="campaignview-search" name="all_search" id="all_search" placeholder="search for.." v-model="search">
@@ -13,7 +11,7 @@
             <form action="#" method="post">
                 <div class="campaignview-searchicon"></div>
 
-                <div class="campaignview-dropbutton" @click="toggleAdvancedSearch">+</div>
+                <div class="campaignview-dropbutton" @click="toggleAdvancedSearch">advanced search</div>
                 <div class="campaignview-droppedarea" v-if="advancedSearch">
                     <div class="campview-dropwhere">
                         <div class="campview-droptitle">WHERE</div>
@@ -51,6 +49,31 @@
             </form>
 
             <div class="campview-camplistwrap">
+	            <ul class="campaigngrid-title">
+		            <li>CAMPAIGN ID</li>
+		            <li>CAMPAIGN REFERENCE</li>
+		            <li>CREATE</li>
+		            <li>eCPM</li>
+		            <li>VIDEO PLAYS</li>
+		            <li>REVENUE</li>
+		            <li>CODE</li>
+		            <li>DELETE</li>
+		            <li>EDIT</li>
+	            </ul>
+	            <ul class="campaigngrid">
+		            <li>
+		            	<div class="camplist-data1">1234</div>
+		            	<div class="camplist-data2">Testing 1</div>
+		            	<div class="camplist-data3">3 weeks ago</div>
+		            	<div class="camplist-data4">2,000</div>
+		            	<div class="camplist-data5">$100</div>
+		            	<div class="camplist-data6"></div>
+		            	<div class="camplist-data7"></div>
+		            	<div class="camplist-data8"></div>
+		            	<div class="camplist-data9"></div>
+		            </li>
+	            </ul>
+	            
                 <table id="table1" class="datagrid grid-header-bg">
                     <thead>
                         <tr>
