@@ -41,7 +41,7 @@ class CampaignEvent extends Model
     public static function stats($data)
     {
         // range
-        $from = date('Y-m-d', strtotime(date('Y-m-d').' -1 day'));
+        $from = date('Y-m-d');
         if (isset($data['from']) && trim($data['from'])) {
             $from = trim($data['from']);
         }
@@ -66,8 +66,8 @@ class CampaignEvent extends Model
                 $count = self::select(DB::raw('count(*) as total'))
                     ->whereName($name)
                     ->whereEvent($event->event)
-                    ->where('created_at', '>=', $from.' 20:00:00')
-                    ->where('created_at', '<=', $to.' 19:59:59')
+                    ->where('created_at', '>=', $from.' 00:00:00')
+                    ->where('created_at', '<=', $to.' 20:00:00')
                     ->first();
 
                 $names[$name][$index]['total'] = $count->total;
