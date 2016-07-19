@@ -123,7 +123,7 @@
                         from: false,
                         to: false,
                         page: 1,
-                        limit: 10
+                        limit: 50
                     }
                 },
                 ready: function() {
