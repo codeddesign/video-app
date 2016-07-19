@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 
 class CampaignEvent extends Model
 {
@@ -33,57 +34,48 @@ class CampaignEvent extends Model
     }
 
     /**
-     * @return array
-     */
-    public static function eventTypes()
-    {
-        return self::select('name', 'event')->distinct('name', 'event')->get();
-    }
-
-    /**
      * @param array $data
      *
      * @return array
      */
-    public static function eventList($data)
+    public static function stats($data)
     {
         // range
-        $from = date('Y-m-d', strtotime(date('Y-m-d').' -2 day'));
-        if (isset($data['from']) && $data['from']) {
-            $from = $data['from'];
+        $from = date('Y-m-d', strtotime(date('Y-m-d').' -1 day'));
+        if (isset($data['from']) && trim($data['from'])) {
+            $from = trim($data['from']);
         }
 
         $to = date('Y-m-d');
-        if (isset($data['to']) && $data['to']) {
-            $to = $data['to'];
+        if (isset($data['to']) && trim($data['to'])) {
+            $to = trim($data['to']);
         }
 
-        // date
-        $events = self::where('created_at', '>=', $from.' 20:00:00')
-            ->where('created_at', '<=', $to.' 19:59:59');
+        $names = self::select('name', 'event')
+            ->distinct('name', 'event')
+            ->get()
+            ->groupBy('name');
 
-        // event types
-        if (isset($data['types']) && count($data['types'])) {
-            $events->where(function ($q) use ($events, $data) {
-                foreach ($data['types'] as $unique => $info) {
-                    $q->orWhere(function ($q) use ($info) {
-                        $q->where('name', '=', $info['name'])
-                            ->where('event', '=', $info['event']);
-                    });
+        foreach ($names as $name => $events) {
+            foreach ($events as $index => $event) {
+                if (stripos($event->event, 'fail') !== false) {
+                    unset($names[$name][$index]);
+                    continue;
                 }
-            });
+
+                $count = self::select(DB::raw('count(*) as total'))
+                    ->whereName($name)
+                    ->whereEvent($event->event)
+                    ->where('created_at', '>=', $from.' 20:00:00')
+                    ->where('created_at', '<=', $to.' 19:59:59')
+                    ->first();
+
+                $names[$name][$index]['total'] = $count->total;
+            }
+
+            $names[$name] = array_values($names[$name]->toArray());
         }
 
-        // pagination
-        $page = (isset($data['page']) && $data['page']) ? ($data['page'] - 1) : 0;
-        $limit = (isset($data['limit']) && $data['limit']) ? ($data['limit']) : 100;
-
-        $events->skip($page * $limit)->take($limit);
-
-        return [
-            'events' => $events->get(),
-            'total' => $events->count(),
-            'limit' => $limit,
-        ];
+        return $names;
     }
 }

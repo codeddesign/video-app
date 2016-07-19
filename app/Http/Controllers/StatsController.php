@@ -12,11 +12,8 @@ class StatsController extends Controller
         return view('stats.index');
     }
 
-    public function postInfo(Request $request)
+    public function getInfo(Request $request)
     {
-        return [
-            'types' => CampaignEvent::eventTypes(),
-            'info' => CampaignEvent::eventList($request->all()),
-        ];
+        return CampaignEvent::stats($request->all());
     }
 }
