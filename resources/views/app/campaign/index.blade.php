@@ -70,17 +70,17 @@
 		            	<div class="camplist-data6">$@{{ 'n/a' }}</div>
 		            	<div class="camplist-data7">
 			            	<a href="#">
-                                <img class="remove_icon" src="/assets/images/codeicon.png">
+                                <div class="embedcode_icon"></div>
                             </a>
 		            	</div>
 		            	<div class="camplist-data8">
 			            	<a href="/app/campaign/delete/@{{ campaign.id }}">
-                                <img class="remove_icon" src="/assets/images/campviewoff.png">
+                                <div class="remove_icon"></div>
                             </a>
 		            	</div>
 		            	<div class="camplist-data9">
 			            	<a href="/app/campaign/view/@{{ campaign.id }}">
-                                <img class="edit_icon" src="/assets/images/edit.png">
+                                <div class="edit_icon"></div>
                             </a>
 		            	</div>
 		            </li>

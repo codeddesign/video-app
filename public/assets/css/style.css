@@ -8,6 +8,14 @@ body {
     background: #F9F9F7;
 }
 
+a {
+	text-decoration: none;
+}
+
+img {
+	border: none;
+}
+
 .leftsidebar {
     float: left;
     background: #303749;
@@ -946,6 +954,26 @@ ul.rightside-navdroparea li:hover {
 .edit_icon {
     width: 15px;
     height: 15px;
+    background: url('/assets/images/edit_icon.png');
+    margin-left: 18px;
+    margin-top: 13px;
+}
+
+.edit_icon:hover {
+    background: url('/assets/images/edit_icon.png') 0 -15px;
+}
+
+.embedcode_icon {
+	width: 15px;
+	height: 15px;
+	background: url('/assets/images/embedcode_icon.png');
+    margin-left: 18px;
+    margin-top: 13px;
+	
+}
+
+.embedcode_icon:hover {
+	background: url('/assets/images/embedcode_icon.png') 0 -15px;
 }
 
 .accountpass-accountidwrap {
@@ -1160,7 +1188,16 @@ button.sitevalidation-removesite:hover {
 }
 
 .remove_icon {
-    margin-top: -15px;
+    margin-top: 13px;
+    background: url('/assets/images/remove_icon.png');
+    width: 15px;
+    height: 15px;
+    border: none;
+    margin-left: 18px;
+}
+
+.remove_icon:hover {
+	background: url('/assets/images/remove_icon.png') 0 -15px;
 }
 
 .selectadtype-overlay {
@@ -1707,5 +1744,5 @@ ul.campaigngrid li:nth-child(2n) .camplist-data1 {
 }
 
 ul.campaigngrid li:nth-child(2n) div {
-	background: #F3FBFC;
+	background-color: #F3FBFC;
 }
