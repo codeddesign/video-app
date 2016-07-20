@@ -40,6 +40,10 @@
                 background-color: #fff;
                 border: 1px solid #ddd;
             }
+            
+            .list-group-item div:first-child {
+	            color: red;
+            }
 
             .container {
                 max-width: 50%;
