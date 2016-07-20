@@ -41,24 +41,21 @@ class CampaignEvent extends Model
     public static function stats($data)
     {
         // range
-        $from = date('Y-m-d');
-        if (isset($data['from']) && trim($data['from'])) {
-            $from = trim($data['from']);
-        }
+        $from = (isset($data['from']) && trim($data['from'])) ? $data['from'] : date('Y-m-d');
+        $to = (isset($data['to']) && trim($data['to'])) ? $data['to'] : date('Y-m-d');
 
-        $to = date('Y-m-d');
-        if (isset($data['to']) && trim($data['to'])) {
-            $to = trim($data['to']);
-        }
+        $from = date('Y-m-d H:i:s', strtotime($from.' 00:00:00 -4 hours'));
+        $to = date('Y-m-d H:i:s', strtotime($to.' 23:59:59 -4 hours'));
 
         $names = self::select('name', 'event')
             ->distinct('name', 'event')
             ->get()
             ->groupBy('name');
 
+        $ignoreFailed = false; //
         foreach ($names as $name => $events) {
             foreach ($events as $index => $event) {
-                if (stripos($event->event, 'fail') !== false) {
+                if ($ignoreFailed && stripos($event->event, 'fail') !== false) {
                     unset($names[$name][$index]);
                     continue;
                 }
@@ -66,8 +63,8 @@ class CampaignEvent extends Model
                 $count = self::select(DB::raw('count(*) as total'))
                     ->whereName($name)
                     ->whereEvent($event->event)
-                    ->where('created_at', '>=', $from.' 00:00:00')
-                    ->where('created_at', '<=', $to.' 20:00:00')
+                    ->where('created_at', '>=', $from)
+                    ->where('created_at', '<=', $to)
                     ->first();
 
                 $names[$name][$index]['total'] = $count->total;
