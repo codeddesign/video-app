@@ -326,7 +326,8 @@ input.campaignview-search {
 }
 
 .campaignview-dropbutton:hover {
-    background: #7773A8;
+    /*background: #7773A8;*/
+    background: #444444;
     color: #FFFFFF;
 }
 
@@ -1169,6 +1170,7 @@ button.sitevalidation-removesite:hover {
 	border-left: 1px solid #5C5882;
 	display: inline-block;
 	padding-bottom: 70px;
+	height: 100%;
 }
 
 .selectadtype-title {
@@ -1601,9 +1603,13 @@ ul.campaigngrid li {
 	float: left;
     width: 100%;
     list-style-type: none;
-    height: 41px;
+    height: 40px;
     line-height: 43px;
-    border-bottom: 1px solid #E3E1E0;
+    /*border-bottom: 1px solid #E3E1E0;*/
+}
+
+ul.campaigngrid li:nth-child(2n) {
+	
 }
 
 .camplist-data1 {
@@ -1614,6 +1620,10 @@ ul.campaigngrid li {
     background: #6C689E;
     width: 120px;
     float: left;
+}
+
+ul.campaigngrid li:nth-child(2n) .camplist-data1 {
+	background: #615E8F;
 }
 
 .camplist-data2 {
@@ -1648,7 +1658,7 @@ ul.campaigngrid li {
 
 .camplist-data5 {
 	float: left;
-    width: 90px;
+    width: 120px;
     padding-left: 20px;
     font-size: 13px;
     color: #666666;
@@ -1694,4 +1704,8 @@ ul.campaigngrid li {
     color: #666666;
     height: 40px;
     background: #FFFFFF;
+}
+
+ul.campaigngrid li:nth-child(2n) div {
+	background: #F3FBFC;
 }

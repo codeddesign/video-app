@@ -61,16 +61,28 @@
 		            <li>EDIT</li>
 	            </ul>
 	            <ul class="campaigngrid">
-		            <li>
+		            <li v-for="campaign in response.campaigns | filterBy search">
 		            	<div class="camplist-data1">1234</div>
-		            	<div class="camplist-data2">Testing 1</div>
-		            	<div class="camplist-data3">3 weeks ago</div>
-		            	<div class="camplist-data4">2,000</div>
-		            	<div class="camplist-data5">$100</div>
-		            	<div class="camplist-data6"></div>
-		            	<div class="camplist-data7"></div>
-		            	<div class="camplist-data8"></div>
-		            	<div class="camplist-data9"></div>
+		            	<div class="camplist-data2">@{{ campaign.name }}</div>
+		            	<div class="camplist-data3">@{{ campaign.created_at_humans }}</div>
+		            	<div class="camplist-data4">@{{ 'n/a' }}</div>
+		            	<div class="camplist-data5">@{{ 'n/a' }}</div>
+		            	<div class="camplist-data6">$@{{ 'n/a' }}</div>
+		            	<div class="camplist-data7">
+			            	<a href="#">
+                                <img class="remove_icon" src="/assets/images/codeicon.png">
+                            </a>
+		            	</div>
+		            	<div class="camplist-data8">
+			            	<a href="/app/campaign/delete/@{{ campaign.id }}">
+                                <img class="remove_icon" src="/assets/images/campviewoff.png">
+                            </a>
+		            	</div>
+		            	<div class="camplist-data9">
+			            	<a href="/app/campaign/view/@{{ campaign.id }}">
+                                <img class="edit_icon" src="/assets/images/edit.png">
+                            </a>
+		            	</div>
 		            </li>
 	            </ul>
 	            
