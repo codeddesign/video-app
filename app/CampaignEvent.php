@@ -40,6 +40,8 @@ class CampaignEvent extends Model
      */
     public static function stats($data)
     {
+        set_time_limit(120);
+
         // range
         $from = (isset($data['from']) && trim($data['from'])) ? $data['from'] : date('Y-m-d');
         $to = (isset($data['to']) && trim($data['to'])) ? $data['to'] : date('Y-m-d');
