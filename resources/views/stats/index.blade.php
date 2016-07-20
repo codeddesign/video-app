@@ -50,6 +50,10 @@
                 display: flex;
                 color: black;
             }
+            
+            .row:nth-child(2) {
+	            background: blue;
+            }
 
             .box {
                 cursor: pointer;
