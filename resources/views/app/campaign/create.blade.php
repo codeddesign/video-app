@@ -10,6 +10,11 @@
 
     .selectadtype-overlay li.disabled {
         pointer-events: none;
+        color: #4A5263 !important;
+    }
+    
+    .selectadtype-overlay li.current {
+	    color: #FFFFFF !important;
     }
 
     .videosize {
@@ -40,7 +45,7 @@
     }
 
     .message.success {
-        background: green;
+        background: #4596CB;
     }
 
     label.white {

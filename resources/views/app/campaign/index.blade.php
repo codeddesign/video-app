@@ -62,7 +62,7 @@
 	            </ul>
 	            <ul class="campaigngrid">
 		            <li v-for="campaign in response.campaigns | filterBy search">
-		            	<div class="camplist-data1">1234</div>
+		            	<div class="camplist-data1">@{{ campaign.id }}</div>
 		            	<div class="camplist-data2">@{{ campaign.name }}</div>
 		            	<div class="camplist-data3">@{{ campaign.created_at_humans }}</div>
 		            	<div class="camplist-data4">@{{ 'n/a' }}</div>
@@ -86,6 +86,7 @@
 		            </li>
 	            </ul>
 	            
+	            <!--
                 <table id="table1" class="datagrid grid-header-bg">
                     <thead>
                         <tr>
@@ -125,6 +126,8 @@
                         </tr>
                     </tbody>
                 </table>
+                -->
+                
             </div>
         </div>
     </div>
