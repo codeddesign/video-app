@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Http\Controllers\CampaignController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Session;
 
 class Campaign extends Model
 {
@@ -89,27 +91,47 @@ class Campaign extends Model
 
     /**
      * Humans readable time.
+     * We handle missing created_at when is temporary/on-session.
      */
     public function getCreatedAtHumansAttribute()
     {
+        if (!$this->created_at) {
+            return '1 second ago';
+        }
+
         return $this->created_at->diffForHumans();
     }
 
     /**
+     * It saves them to database only if $toSession is false.
+     *
      * @param array $data
+     * @param bool  $toSession
+     *
+     * @return array
      */
-    public function addVideos(array $data)
+    public function addVideos(array $data, $toSession = false)
     {
         $videos = Video::videosFromData($data);
 
-        foreach ($videos as $video) {
-            if (trim($video)) {
-                Video::create([
+        $list = [];
+        foreach ($videos as $url) {
+            if (trim($url)) {
+                $video = new Video();
+                $video->fill([
                     'campaign_id' => $this->id,
-                    'url' => $video,
+                    'url' => $url,
                 ]);
+
+                if (!$toSession) {
+                    $video->save();
+                }
+
+                $list[] = $video->toArray();
             }
         }
+
+        return $list;
     }
 
     /**
@@ -136,6 +158,9 @@ class Campaign extends Model
 
     /**
      * Returns campaign details and information about campaign's type.
+     * First it makes and attempt to fetch campaign data from session,
+     *  in case it's some data in preview. Otherwise, if non-zero id
+     *  is provided it gets it from database.
      *
      * @param int $id
      *
@@ -143,9 +168,13 @@ class Campaign extends Model
      */
     public static function forPlayer($id)
     {
-        $campaign = self::withTrashed()
-            ->with('videos')
-            ->find($id);
+        $campaign = Session::get(CampaignController::TEMPORARY_PREVIEW_KEY);
+
+        if ($id != 0) {
+            $campaign = self::withTrashed()
+                ->with('videos')
+                ->find($id);
+        }
 
         if (!$campaign) {
             return false;

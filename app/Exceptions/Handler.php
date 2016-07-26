@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($request->ajax()) {
+        if ($request->ajax() && !env('APP_DEBUG')) {
             return response([
                 'error' => true,
                 'message' => $e->getMessage(),

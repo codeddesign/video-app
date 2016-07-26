@@ -88,13 +88,15 @@ class User extends Authenticatable
 
     /**
      * Creates new campaign for the current user.
-     * Adds campaign videos if there are any.
+     *  Adds campaign videos if there are any.
+     *  It saves it to database only if $toSession is false.
      *
      * @param array $data
+     * @param bool  $toSession
      *
      * @return Campaign
      */
-    public function addCampaign(array $data)
+    public function addCampaign(array $data, $toSession = false)
     {
         // add campaign
         $data['user_id'] = $this->id;
@@ -103,10 +105,15 @@ class User extends Authenticatable
             $data['name'] = Youtube::title($data);
         }
 
-        $campaign = Campaign::create($data);
+        $campaign = new Campaign();
+        $campaign->fill($data);
+
+        if (!$toSession) {
+            $campaign->save();
+        }
 
         // add campaign videos
-        $campaign->addVideos($data);
+        $campaign->videos = $campaign->addVideos($data, $toSession);
 
         return $campaign;
     }

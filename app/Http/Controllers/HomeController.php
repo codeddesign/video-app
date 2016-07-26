@@ -7,6 +7,7 @@ use App\CampaignEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Session;
 
 class HomeController extends Controller
 {

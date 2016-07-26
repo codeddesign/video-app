@@ -6,9 +6,15 @@ use App\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Session;
 
 class CampaignController extends Controller
 {
+    /**
+     * Key for session that holds the temporary preview data.
+     */
+    const TEMPORARY_PREVIEW_KEY = 'temporary_preview_key';
+
     /**
      * @return View
      */
@@ -59,18 +65,27 @@ class CampaignController extends Controller
     }
 
     /**
+     * Save preview/temporary campaign and it's videos to session.
+     *
      * @param Request $request
      *
      * @return array
      */
     public function postPreviewLink(Request $request)
     {
+        $campaign = $this->user->addCampaign($request->all(), $toSession = true);
+
+        Session::set(self::TEMPORARY_PREVIEW_KEY, $campaign);
+
         return [
             'url' => self::jsEmbedLink(0),
         ];
     }
 
     /**
+     * Save campaign and it's videos to database.
+     * Remove preview/temporary campaign from session.
+     *
      * @param Request $request
      *
      * @return array
@@ -78,6 +93,8 @@ class CampaignController extends Controller
     public function postSave(Request $request)
     {
         $campaign = $this->user->addCampaign($request->all());
+
+        Session::remove(self::TEMPORARY_PREVIEW_KEY);
 
         return [
             'url' => self::jsEmbedLink($campaign->id),
