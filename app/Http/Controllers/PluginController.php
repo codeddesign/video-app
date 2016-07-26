@@ -9,6 +9,17 @@ use Illuminate\Http\Response;
 
 class PluginController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->middleware('cors', [
+            'only' => [
+                'getCampaignAdd',
+            ],
+        ]);
+    }
+
     public function getIndex()
     {
     }
@@ -24,9 +35,7 @@ class PluginController extends Controller
     {
         $site = WordpressSite::byLink(refererUtil());
         if (!$site) {
-            return $this->response([
-                'error' => 'This site is not approved. Contact your admin.',
-            ]);
+            return response(['error' => 'This site is not approved. Contact your admin.']);
         }
 
         $user = User::find($site->user_id);
@@ -38,21 +47,9 @@ class PluginController extends Controller
             'size' => 'auto',
         ]);
 
-        return $this->response([
+        return response([
             'campaign' => $campaign->id,
             'youtube' => $campaign->video_url,
         ]);
-    }
-
-    /**
-     * Cross-origin response.
-     *
-     * @param array $data
-     *
-     * @return Response|array
-     */
-    private function response(array $data)
-    {
-        return response($data)->header('Access-Control-Allow-Origin', '*');
     }
 }

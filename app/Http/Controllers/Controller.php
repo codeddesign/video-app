@@ -28,15 +28,4 @@ class Controller extends BaseController
 
         view()->share('user', $this->user);
     }
-
-    /**
-     * @param mixed $data
-     * @param int   $status
-     *
-     * @return Response
-     */
-    public function crossResponse($data, $status = 200)
-    {
-        return response($data, $status)->header('Access-Control-Allow-Origin', '*');
-    }
 }

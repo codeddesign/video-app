@@ -7,10 +7,20 @@ use App\CampaignEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-use Session;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->middleware('cors', [
+            'only' => [
+                'getCampaign',
+            ],
+        ]);
+    }
+
     /**
      * @return View
      */
@@ -29,7 +39,7 @@ class HomeController extends Controller
     {
         $campaign = Campaign::forPlayer($id);
         if (!$campaign) {
-            return $this->crossResponse(['message' => 'Campaign does not exist.'], 404);
+            return response(['message' => 'Campaign does not exist.'], 404);
         }
 
         CampaignEvent::create([
@@ -38,6 +48,6 @@ class HomeController extends Controller
             'event' => 'load',
         ]);
 
-        return $this->crossResponse($campaign, 200);
+        return response($campaign, 200);
     }
 }

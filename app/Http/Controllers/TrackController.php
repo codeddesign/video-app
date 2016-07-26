@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->middleware('cors', [
+            'only' => [
+                'getIndex',
+            ],
+        ]);
+    }
+
     public function getIndex(Request $request)
     {
         CampaignEvent::create([
@@ -16,7 +27,6 @@ class TrackController extends Controller
         ]);
 
         return response($this->onePixel())
-            ->header('Access-Control-Allow-Origin', '*')
             ->header('Content-Type', 'image/png');
     }
 
