@@ -61,3 +61,25 @@ function ipUtil()
 {
     return (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : 'n/a';
 }
+
+/**
+ * @return array
+ */
+function env_adTags()
+{
+    $tags = [];
+    foreach ($_ENV as $key => $value) {
+        if (preg_match('/TAG_(.*?)_(.*?)$/', $key, $matched)) {
+            $main = strtolower($matched[1]);
+            $for = strtolower($matched[2]);
+
+            if (!isset($tags[$main])) {
+                $tags[$main] = [];
+            }
+
+            $tags[$main][$for] = $value;
+        }
+    }
+
+    return $tags;
+}

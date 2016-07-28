@@ -203,26 +203,7 @@ class Campaign extends Model
                 $info,
                 ['type', 'available', 'single', 'has_name']
             ),
-            'tags' => self::adTags(),
-        ];
-    }
-
-    /**
-     * Grab the tags from the .env file.
-     *
-     * @return array
-     */
-    protected static function adTags()
-    {
-        return [
-            'general' => [
-                'desktop' => env('TAG_DESKTOP'),
-                'mobile' => env('TAG_MOBILE'),
-            ],
-            'specific' => [
-                'desktop' => '',
-                'mobile' => '',
-            ],
+            'tags' => env_adTags(),
         ];
     }
 }
