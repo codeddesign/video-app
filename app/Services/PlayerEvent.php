@@ -90,6 +90,6 @@ class PlayerEvent
             ipUtil()
         );
 
-        return Storage::put('ads/ad_'.date('Y-m-d').'.txt', $body);
+        return Storage::append('ads/ad_'.date('Y-m-d').'.txt', $body);
     }
 }
