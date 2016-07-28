@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\CampaignEvent;
+use App\Services\PlayerEvent;
 use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
+    /**
+     * Add cors headers.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -18,19 +21,22 @@ class TrackController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return mixed
+     */
     public function getIndex(Request $request)
     {
-        CampaignEvent::create([
-            'campaign_id' => $request->get('i'),
-            'name' => $request->get('n'),
-            'event' => $request->get('e'),
-        ]);
+        PlayerEvent::save($request->only('i', 'n', 'e'));
 
         return response($this->onePixel())
             ->header('Content-Type', 'image/png');
     }
 
     /**
+     * One pixel image.
+     *
      * @return mixed
      */
     protected function onePixel()

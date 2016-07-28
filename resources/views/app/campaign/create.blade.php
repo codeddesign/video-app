@@ -12,7 +12,7 @@
         pointer-events: none;
         color: #4A5263 !important;
     }
-    
+
     .selectadtype-overlay li.current {
 	    color: #FFFFFF !important;
     }
@@ -164,7 +164,7 @@
 <script src="/assets/js/vuepack.js"></script>
 <script>
     new Vue({
-        el: '.selectadtype-overlay',
+        el: 'body',
         data: {
             campaign_types: {!!$campaign_types!!},
             step: 'type',

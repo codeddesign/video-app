@@ -44,6 +44,8 @@
     </head>
 
     <body>
+        <app-modal></app-modal>
+
         <!-- LEFT SIDE -->
         <div class="leftsidebar">
             <div class="logoarea">

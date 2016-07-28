@@ -49,85 +49,43 @@
             </form>
 
             <div class="campview-camplistwrap">
-	            <ul class="campaigngrid-title">
-		            <li>CAMPAIGN ID</li>
-		            <li>CAMPAIGN REFERENCE</li>
-		            <li>CREATE</li>
-		            <li>eCPM</li>
-		            <li>VIDEO PLAYS</li>
-		            <li>REVENUE</li>
-		            <li>CODE</li>
-		            <li>DELETE</li>
-		            <li>EDIT</li>
-	            </ul>
-	            <ul class="campaigngrid">
-		            <li v-for="campaign in response.campaigns | filterBy search">
-		            	<div class="camplist-data1">@{{ campaign.id }}</div>
-		            	<div class="camplist-data2">@{{ campaign.name }}</div>
-		            	<div class="camplist-data3">@{{ campaign.created_at_humans }}</div>
-		            	<div class="camplist-data4">@{{ 'n/a' }}</div>
-		            	<div class="camplist-data5">@{{ 'n/a' }}</div>
-		            	<div class="camplist-data6">$@{{ 'n/a' }}</div>
-		            	<div class="camplist-data7">
-			            	<a href="#">
+                <ul class="campaigngrid-title">
+                    <li>CAMPAIGN ID</li>
+                    <li>CAMPAIGN REFERENCE</li>
+                    <li>CREATED</li>
+                    <li>eCPM</li>
+                    <li>VIDEO PLAYS</li>
+                    <li>REVENUE</li>
+                    <li>CODE</li>
+                    <li>DELETE</li>
+                    <li>EDIT</li>
+                </ul>
+                <ul class="campaigngrid">
+                    <li v-for="campaign in response.campaigns | filterBy search">
+                        <div class="camplist-data1">@{{ campaign.id }}</div>
+                        <div class="camplist-data2">@{{ campaign.name }}</div>
+                        <div class="camplist-data3">@{{ campaign.created_at_humans }}</div>
+                        <div class="camplist-data4">n/a</div>
+                        <div class="camplist-data5">n/a</div>
+                        <div class="camplist-data6">$ n/a</div>
+                        <div class="camplist-data7">
+                            <a href="javascript:;" @click.prevent.default="embedCode(campaign)">
                                 <div class="embedcode_icon"></div>
                             </a>
-		            	</div>
-		            	<div class="camplist-data8">
-			            	<a href="/app/campaign/delete/@{{ campaign.id }}">
+                        </div>
+                        <div class="camplist-data8">
+                            <a href="javascript:;" @click.prevent.default="deleteCampaign(campaign)">
                                 <div class="remove_icon"></div>
                             </a>
-		            	</div>
-		            	<div class="camplist-data9">
-			            	<a href="/app/campaign/view/@{{ campaign.id }}">
+                        </div>
+                        <div class="camplist-data9">
+                            <a href="javascript:;">
                                 <div class="edit_icon"></div>
                             </a>
-		            	</div>
-		            </li>
-	            </ul>
-	            
-	            <!--
-                <table id="table1" class="datagrid grid-header-bg">
-                    <thead>
-                        <tr>
-                            <th>Campaign Name</th>
-                            <th width="290px">Created</th>
-                            <th width="70px">RPM</th>
-                            <th width="105px">Video Plays</th>
-                            <th width="90px">Revenue</th>
-                            <th width="90px">Code</th>
-                            <th width="55px">Delete</th>
-                            <th width="35px">Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="campaign in response.campaigns | filterBy search">
-                            <td>@{{ campaign.name }}</td>
-                            <td>@{{ campaign.created_at_humans }}</td>
-                            <td>@{{ campaign.rpm }}</td>
-                            <td>@{{ 'n/a' }}</td>
-                            <td>$@{{ 'n/a' }}</td>
-                            <td>
-                                <a href="#">
-                                    <img class="remove_icon" src="/assets/images/codeicon.png">
-                                </a>
-                            </td>
+                        </div>
+                    </li>
+                </ul>
 
-                            <td>
-                                <a href="/app/campaign/delete/@{{ campaign.id }}">
-                                    <img class="remove_icon" src="/assets/images/campviewoff.png">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/app/campaign/view/@{{ campaign.id }}">
-                                    <img class="edit_icon" src="/assets/images/edit.png">
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                -->
-                
             </div>
         </div>
     </div>
@@ -136,7 +94,7 @@
 <script src="/assets/js/vuepack.js"></script>
 <script>
     new Vue({
-        el: '.page-index',
+        el: 'body',
         data: {
             search: '',
             advancedSearch: false,
@@ -158,12 +116,28 @@
             toggleAdvancedSearch: function() {
                 this.advancedSearch = !this.advancedSearch;
             },
-            formatDate: function(date) {
-                if (date === null) {
-                    return "[null]";
-                } else {
-                    return date.format("YYYY-MM-DD");
-                }
+
+            deleteCampaign: function(campaign) {
+                this.$broadcast('modal-open', {
+                    title: 'Confirm',
+                    body: 'Are you sure you want to remove "' + campaign.name + '"?',
+                    confirm: true
+                }, function() {
+                    this.$http.get('/app/campaign/delete/' + campaign.id)
+                        .then(function() {
+                            this.response.campaigns.$remove(campaign);
+
+                            this.$broadcast('modal-close');
+                        });
+                }.bind(this));
+            },
+
+            embedCode: function(campaign) {
+                this.$broadcast('modal-open', {
+                    title: 'Copy the code bellow into your website',
+                    body: '<textarea style="width: 100%;height: 100%;resize: none;min-width: 450px;"><script src="{{ env('PLAYER_HOST') }}/p' + campaign.id +'.js"><\/script><\/textarea>',
+                    html: true
+                });
             }
         }
     });

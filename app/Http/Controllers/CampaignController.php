@@ -51,7 +51,9 @@ class CampaignController extends Controller
             $campaign->delete();
         }
 
-        return redirect('/app/campaign');
+        return [
+            'message' => 'Campaign removed'
+        ];
     }
 
     /**
@@ -78,7 +80,7 @@ class CampaignController extends Controller
         Session::set(self::TEMPORARY_PREVIEW_KEY, $campaign);
 
         return [
-            'url' => self::jsEmbedLink(0),
+            'url' => $this->getEmbedLink(),
         ];
     }
 
@@ -97,7 +99,7 @@ class CampaignController extends Controller
         Session::remove(self::TEMPORARY_PREVIEW_KEY);
 
         return [
-            'url' => self::jsEmbedLink($campaign->id),
+            'url' => $this->getEmbedLink($campaign->id),
             'campaign' => $campaign,
         ];
     }
@@ -107,7 +109,7 @@ class CampaignController extends Controller
      *
      * @return string
      */
-    protected static function jsEmbedLink($campaignId)
+    public function getEmbedLink($campaignId = 0)
     {
         $pattern = '%s/p%s.js';
 

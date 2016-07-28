@@ -969,7 +969,7 @@ ul.rightside-navdroparea li:hover {
 	background: url('/assets/images/embedcode_icon.png');
     margin-left: 18px;
     margin-top: 13px;
-	
+
 }
 
 .embedcode_icon:hover {
@@ -1646,7 +1646,7 @@ ul.campaigngrid li {
 }
 
 ul.campaigngrid li:nth-child(2n) {
-	
+
 }
 
 .camplist-data1 {
@@ -1746,3 +1746,72 @@ ul.campaigngrid li:nth-child(2n) .camplist-data1 {
 ul.campaigngrid li:nth-child(2n) div {
 	background-color: #F3FBFC;
 }
+
+
+
+/** Modal */
+.app_modal-overlay {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex-direction: row;
+    -moz-box-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0, .3);
+}
+
+.app_modal {
+    position: relative;
+    margin: auto;
+    min-width: 300px;
+    min-height: 100px;
+    border: 1px #eee solid;
+    background: #fff;
+}
+
+.app_modal-close {
+    cursor: pointer;
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background: #6C689E;
+    color: white;
+}
+
+.app_modal-body {
+    padding: 10px;
+    max-width: 500px;
+}
+
+.app_modal-title {
+    font-weight: bold;
+    border-bottom: 1px #6c689e solid;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.app_modal-footer {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.app_modal-footer button.proceed {
+    background-color: #6c689e;
+    color: white;
+    border: 0;
+    outline: 0;
+    padding: 5px 15px;
+}
+/** end: Modal */

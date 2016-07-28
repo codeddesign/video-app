@@ -51,7 +51,7 @@ function filterModelKeys(array $data, array $keys)
  */
 function refererUtil()
 {
-    return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'n/a';
 }
 
 /**
@@ -59,5 +59,5 @@ function refererUtil()
  */
 function ipUtil()
 {
-    return (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : '';
+    return (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : 'n/a';
 }
