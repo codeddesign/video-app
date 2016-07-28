@@ -74,6 +74,17 @@ class Campaign extends Model
     /**
      * @var array
      */
+    public static $sizes = [
+        'auto' => 'auto',
+        'small' => '560x315',
+        'medium' => '640x360',
+        'large' => '853x480',
+        'hd720' => '1280x720',
+    ];
+
+    /**
+     * @var array
+     */
     protected $fillable = ['user_id', 'name', 'type', 'rpm', 'size'];
 
     /**
@@ -192,6 +203,26 @@ class Campaign extends Model
                 $info,
                 ['type', 'available', 'single', 'has_name']
             ),
+            'tags' => self::adTags(),
+        ];
+    }
+
+    /**
+     * Grab the tags from the .env file.
+     *
+     * @return array
+     */
+    protected static function adTags()
+    {
+        return [
+            'general' => [
+                'desktop' => env('TAG_DESKTOP'),
+                'mobile' => env('TAG_MOBILE'),
+            ],
+            'specific' => [
+                'desktop' => '',
+                'mobile' => '',
+            ],
         ];
     }
 }

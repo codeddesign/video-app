@@ -112,7 +112,7 @@
                                 <label for="video_size">VIDEO SIZE</label>
 
                                 <select id="video_size" class="yt-uix-form-input-select-element" required v-model="campaign.size">
-                                    <option v-for="size in sizes" :value="size">@{{size.description | capitalize }}</optgroup>
+                                    <option v-for="(key, value) in sizes" :value="key" :selected="campaign.size==key">@{{value | capitalize }}</optgroup>
                                 </select>
                             </div>
 
@@ -188,29 +188,11 @@
                 title: 'Get Code',
                 disabled: true
             }],
-            sizes: [{
-                value: 'auto',
-                description: 'auto'
-            }, {
-                value: 'small',
-                description: '560 x 315'
-            }, {
-                value: 'medium',
-                description: '640 x 360'
-            }, {
-                value: 'large',
-                description: '853 x 480'
-            }, {
-                value: 'hd720',
-                description: '1280 x 729'
-            }],
+            sizes: {!!$campaign_sizes!!},
             campaign: {
                 type: false,
                 name: '',
-                size: {
-                    value: 'auto',
-                    description: 'auto'
-                },
+                size: 'auto',
                 video: ''
             },
             backup: {},
@@ -224,13 +206,6 @@
         computed: {
             selectedCampaign: function() {
                 return this.campaign_types[this.campaign.type];
-            },
-            campaignData: function() {
-                var data = JSON.parse(JSON.stringify(this.campaign));
-
-                data['size'] = this.campaign.size.value;
-
-                return data;
             }
         },
 
@@ -295,7 +270,7 @@
                 this.error = false;
                 this.addJSPreview();
 
-                this.$http.post('/app/campaign/preview-link', this.campaignData)
+                this.$http.post('/app/campaign/preview-link', this.campaign)
                     .then(function(response) {
                         this.loading = false;
 
@@ -312,7 +287,7 @@
 
                 this.loading = true;
 
-                this.$http.post('/app/campaign/save', this.campaignData)
+                this.$http.post('/app/campaign/save', this.campaign)
                     .then(function(response) {
                         this.loading = false;
 

@@ -28,7 +28,10 @@ class CampaignController extends Controller
      */
     public function getCreate()
     {
-        return view('app.campaign.create', ['campaign_types' => json_encode(Campaign::$types)]);
+        return view('app.campaign.create', [
+            'campaign_types' => json_encode(Campaign::$types),
+            'campaign_sizes' => json_encode(Campaign::$sizes),
+        ]);
     }
 
     public function getList()
@@ -52,7 +55,7 @@ class CampaignController extends Controller
         }
 
         return [
-            'message' => 'Campaign removed'
+            'message' => 'Campaign removed',
         ];
     }
 
