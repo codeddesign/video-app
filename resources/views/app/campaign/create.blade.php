@@ -238,8 +238,6 @@
                     }
                 });
 
-                console.log(tab);
-
                 if (!tab.disabled) {
                     this.step = tab.name;
                 }

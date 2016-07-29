@@ -49,7 +49,6 @@ class PluginController extends Controller
 
         return response([
             'campaign' => $campaign->id,
-            'youtube' => $campaign->video_url,
         ]);
     }
 }
