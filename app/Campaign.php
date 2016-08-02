@@ -97,7 +97,7 @@ class Campaign extends Model
      */
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class, 'campaign_id');
     }
 
     /**
