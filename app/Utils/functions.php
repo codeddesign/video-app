@@ -69,15 +69,23 @@ function env_adTags()
 {
     $tags = [];
     foreach ($_ENV as $key => $value) {
-        if (preg_match('/TAG_(.*?)_(.*?)$/', $key, $matched)) {
-            $main = strtolower($matched[1]);
-            $for = strtolower($matched[2]);
+        if (preg_match('/TAG_(.*?)_(.*?)[_(.*?)]?$/', $key, $matched)) {
+            $type = strtolower($matched[1]);
+            $mode = strtolower($matched[2]);
 
-            if (!isset($tags[$main])) {
-                $tags[$main] = [];
+            if (preg_match('/(.*?)_(.*?)$/', $mode, $matched)) {
+                $mode = $matched[1];
             }
 
-            $tags[$main][$for] = $value;
+            if (!isset($tags[$type])) {
+                $tags[$type] = [];
+            }
+
+            if (!isset($tags[$type][$mode])) {
+                $tags[$type][$mode] = [];
+            }
+
+            $tags[$type][$mode][] = $value;
         }
     }
 
