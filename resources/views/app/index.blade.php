@@ -5,32 +5,70 @@
 @section('content')
 
 <div class="page-index">
+    <!--
     <div class="display-leftsep">
         <div class="display-septext">VIDEO PLAYS</div>
     </div>
     <div class="display-rightsep">
         <div class="display-septext">REVENUE</div>
     </div>
+    -->
+    <div class="display-dashboardtoparea">
+	    <div class="display-dashboardtimewrap">
+		    <span>Time Range</span>
+		    <select>
+			  <option value="">Today</option>
+			  <option value="">Yesterday</option>
+			  <option value="">Last 7 Days</option>
+			  <option value="">This Month</option>
+			  <option value="">Last Month</option>
+			</select>
+	    </div>
+    </div>
 
     <!-- ANALYTICS STATS -->
+    <!-- TOP ANALYTICS -->
     <ul class="campaignstats-row" :graphStats='graphStats'>
         <li>
-            <div class="campaignstats-title">THIS MONTH</div>
+            <div class="campaignstats-title">REQUESTS</div>
             <div class="campaignstats-digit" id="currentMonthViews">@{{ response.stats.month.plays }}</div>
             <div class="campaignstats-digit"><span id="graph_month"></span></div>
         </li>
         <li>
-            <div class="campaignstats-title">TODAY</div>
+            <div class="campaignstats-title">IMPRESSIONS</div>
             <div class="campaignstats-digit" id="currentDayViews">@{{ response.stats.day.plays }}</div>
             <div class="campaignstats-digit"><span id="graph_day"></span></div>
         </li>
         <li>
-            <div class="campaignstats-title">THIS MONTH</div>
+            <div class="campaignstats-title">REVENUE</div>
             <div class="campaignstats-digit">$@{{ response.stats.month.revenue.toFixed(2) }}</div>
             <div class="campaignstats-digit"><span id="graph_month_r"></span></div>
         </li>
         <li>
-            <div class="campaignstats-title">TODAY</div>
+            <div class="campaignstats-title">eCPM</div>
+            <div class="campaignstats-digit">$@{{ response.stats.day.revenue.toFixed(2) }}</div>
+            <div class="campaignstats-digit"><span id="graph_day_r"></span></div>
+        </li>
+    </ul>
+    <!-- BOTTOM ANALYTICS -->
+    <ul class="campaignstats-row" :graphStats='graphStats'>
+        <li>
+            <div class="campaignstats-title">FILL</div>
+            <div class="campaignstats-digit" id="currentMonthViews">@{{ response.stats.month.plays }}</div>
+            <div class="campaignstats-digit"><span id="graph_month"></span></div>
+        </li>
+        <li>
+            <div class="campaignstats-title">FILL-RATE</div>
+            <div class="campaignstats-digit" id="currentDayViews">@{{ response.stats.day.plays }}</div>
+            <div class="campaignstats-digit"><span id="graph_day"></span></div>
+        </li>
+        <li>
+            <div class="campaignstats-title">ERROR-RATE</div>
+            <div class="campaignstats-digit">$@{{ response.stats.month.revenue.toFixed(2) }}</div>
+            <div class="campaignstats-digit"><span id="graph_month_r"></span></div>
+        </li>
+        <li>
+            <div class="campaignstats-title">USE-RATE</div>
             <div class="campaignstats-digit">$@{{ response.stats.day.revenue.toFixed(2) }}</div>
             <div class="campaignstats-digit"><span id="graph_day_r"></span></div>
         </li>
