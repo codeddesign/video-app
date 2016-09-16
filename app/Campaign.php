@@ -204,6 +204,7 @@ class Campaign extends Model
                 ['type', 'available', 'single', 'has_name']
             ),
             'tags' => env_adTags(),
+            'ip' => ipUtil(),
         ];
     }
 }
