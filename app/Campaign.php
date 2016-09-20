@@ -69,7 +69,13 @@ class Campaign extends Model
             'single' => false,
             'has_name' => true,
         ],
-    ];
+        'sidebarinfinity' => [
+            'title' => 'Sidebar infinity',
+            'available' => true,
+            'single' => true,
+            'has_name' => true,
+        ],
+     ];
 
     /**
      * @var array
