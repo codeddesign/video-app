@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Temporary controller to show stats.
- */
-Route::controller('/stats-101', 'StatsController');
-
 Route::group(['prefix' => '/app'], function () {
     Route::controller('/website-config', 'WebsiteConfigController');
 

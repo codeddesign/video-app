@@ -34,11 +34,13 @@ class CampaignEvent extends Model
     }
 
     /**
+     * @Unused
+     *
      * @param array $data
      *
      * @return array
      */
-    public static function stats($data)
+    public static function ___stats($data)
     {
         set_time_limit(120);
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
-use App\CampaignEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -37,17 +37,37 @@ class HomeController extends Controller
      */
     public function getCampaign(Request $request, $id = null)
     {
-        $campaign = Campaign::forPlayer($id);
+        if ($id != 0 && $campaign = Redis::get('campaign.'.$id)) {
+            return $this->campaignResponse($campaign);
+        }
+
+        if (!$campaign = Campaign::forPlayer($id)) {
+            return $this->campaignResponse();
+        }
+
+        Redis::set('campaign.'.$id, json_encode($campaign));
+
+        return $this->campaignResponse($campaign);
+    }
+
+    /**
+     * @param bool|array $campaign
+     *
+     * @return Response
+     */
+    protected function campaignResponse($campaign = false)
+    {
         if (!$campaign) {
             return response(['message' => 'Campaign does not exist.'], 404);
         }
 
-        CampaignEvent::create([
-            'campaign_id' => $id,
-            'name' => 'app',
-            'event' => 'load',
-        ]);
+        if (is_string($campaign)) {
+            $campaign = json_decode($campaign, true);
+        }
 
-        return response($campaign, 200);
+        return response(array_merge($campaign, [
+            'tags' => env_adTags(),
+            'ip' => ipUtil(),
+        ]));
     }
 }

@@ -9,6 +9,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CampaignEventsSeeder::class);
+        $this->call(AddAdminSeeder::class);
     }
 }
