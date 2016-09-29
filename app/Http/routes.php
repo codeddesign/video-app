@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => '/app'], function () {
+Route::group(['prefix' => '/app', 'middleware' => 'app-dashboard'], function () {
     Route::controller('/website-config', 'WebsiteConfigController');
 
     Route::controller('/campaign', 'CampaignController');
